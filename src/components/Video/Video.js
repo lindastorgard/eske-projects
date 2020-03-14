@@ -16,7 +16,7 @@ const breakpoints = {
 function Video() {
     const { data } = useApi();
     if (data) {
-        console.log(data);
+        // console.log(data);
     }
     return (
         <BreakpointsProvider breakpoints={breakpoints}>

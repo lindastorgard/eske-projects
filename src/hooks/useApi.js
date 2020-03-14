@@ -11,7 +11,9 @@ const useAPI = () => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/posts');
+            const result = await axios(
+                'http://eskeprosjekt.no/wp-json/wp/v2/projects?filter[meta_key]=project_type&filter[meta_compare]=LIKE&filter[meta_value]=residential',
+            );
             setData(result.data);
         } catch (e) {
             setError(e.toString());

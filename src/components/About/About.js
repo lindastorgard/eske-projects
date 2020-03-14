@@ -16,7 +16,7 @@ const breakpoints = {
 function About() {
     const { data } = useApi();
     if (data) {
-        console.log(data);
+        // console.log(data);
     }
     return (
         <BreakpointsProvider breakpoints={breakpoints}>
