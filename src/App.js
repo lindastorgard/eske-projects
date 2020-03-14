@@ -1,7 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import useApi from './hooks/useApi';
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
+import { StyledH3 } from './styles/typography';
+import { BreakpointsProvider } from 'react-with-breakpoints';
+import { ShowAt, HideAt } from 'react-with-breakpoints';
+
+const breakpoints = {
+    small: 468,
+    medium: 768,
+    large: 1024,
+    xlarge: Infinity,
+};
 
 function App() {
     const { data } = useApi();
@@ -9,17 +20,16 @@ function App() {
         console.log(data);
     }
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <BreakpointsProvider breakpoints={breakpoints}>
+            <ThemeProvider theme={theme}>
+                <div className="App">
+                    <HideAt breakpoint="small">
+                        <div>Hello World!</div>
+                    </HideAt>
+                    <StyledH3>hej</StyledH3>
+                </div>
+            </ThemeProvider>
+        </BreakpointsProvider>
     );
 }
 
