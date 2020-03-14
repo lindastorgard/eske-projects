@@ -6,6 +6,7 @@ import About from '../About/About';
 import Home from '../Home/Home';
 import Video from '../Video/Video';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MainCategory from '../../pages/MainCategory';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route exact path="/omoss" component={About} />
                         <Route exact path="/tjenster" component={Services} />
                         <Route exact path="/portfolio" component={Portfolio} />
+                        <Route exact path="/maincategories" component={MainCategory} />
                         <Route exact path="/" component={Home} />
                     </Switch>
                 </div>

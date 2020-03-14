@@ -21,6 +21,9 @@ function Nav() {
                     <li>
                         <Link to={'/video'}>Video</Link>
                     </li>
+                    <li>
+                        <Link to={'/maincategories'}>Main Categries</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
