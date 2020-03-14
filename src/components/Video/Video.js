@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
-import useApi from './hooks/useApi';
+import useApi from '../../hooks/useApi';
 import { ThemeProvider } from 'styled-components';
-import theme from './styles/theme';
-import { StyledH3 } from './styles/typography';
+import theme from '../../styles/theme';
+import { StyledH3 } from '../../styles/typography';
 import { BreakpointsProvider } from 'react-with-breakpoints';
-import { ShowAt, HideAt } from 'react-with-breakpoints';
+// import { HideAt } from 'react-with-breakpoints';
 
 const breakpoints = {
     small: 468,
@@ -14,7 +13,7 @@ const breakpoints = {
     xlarge: Infinity,
 };
 
-function App() {
+function Video() {
     const { data } = useApi();
     if (data) {
         console.log(data);
@@ -22,15 +21,15 @@ function App() {
     return (
         <BreakpointsProvider breakpoints={breakpoints}>
             <ThemeProvider theme={theme}>
-                <div className="App">
-                    <HideAt breakpoint="small">
+                <div>
+                    {/* <HideAt breakpoint="small">
                         <div>Hello World!</div>
-                    </HideAt>
-                    <StyledH3>hej</StyledH3>
+                    </HideAt> */}
+                    <StyledH3>I'm Video</StyledH3>
                 </div>
             </ThemeProvider>
         </BreakpointsProvider>
     );
 }
 
-export default App;
+export default Video;
