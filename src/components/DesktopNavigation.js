@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../utils/urlRoutes';
+import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
+import NavLink from './navigation/NavILink';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -11,36 +12,27 @@ const NavigationWrapper = styled.nav`
     top: 0;
     left: 0;
     overflow-x: hidden;
-    background-color: ${({ theme }) => theme.brand};
 `;
 
-const StyledLinks = styled.li`
-    list-style: none;
-    a {
-        text-decoration: none;
+const LinkCointainer = styled.ul`
+    display: flex;
+    flex-direction: column;
+    & > * {
+        padding: ${({ theme }) => theme.space[0]};
     }
 `;
-
 const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
             <nav>
                 <Link to={LANDING_PAGE.path}>Eskelogo</Link>
                 <div>
-                    <ul>
-                        <StyledLinks>
-                            <Link to={PORTFOLIO.path}>Portfolio</Link>
-                        </StyledLinks>
-                        <StyledLinks>
-                            <Link to={SERVICES.path}>Tjenster</Link>
-                        </StyledLinks>
-                        <StyledLinks>
-                            <Link to={ABOUT.path}>Om Oss</Link>
-                        </StyledLinks>
-                        <StyledLinks>
-                            <Link to={VIDEO.path}>Video</Link>
-                        </StyledLinks>
-                    </ul>
+                    <LinkCointainer>
+                        <NavLink url={PORTFOLIO.path} link="Portfolio" />
+                        <NavLink url={SERVICES.path} link="Tjenster" />
+                        <NavLink url={ABOUT.pat} link="Om Oss" />
+                        <NavLink url={VIDEO.path} link="Video" />
+                    </LinkCointainer>
                 </div>
             </nav>
             {/* <ul>

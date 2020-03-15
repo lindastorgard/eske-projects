@@ -21,35 +21,3 @@ const LandingPage = () => {
     );
 };
 export default LandingPage;
-
-/* {landingpage[0].acf.gallery.map(({ url, id }) => {
-    return (
-        <div key={id}>
-            <img src={url} alt="..." />
-        </div>
-    );
-})} */
-
-//     return (
-//         <BreakpointsProvider breakpoints={breakpoints}>
-//             <ThemeProvider theme={theme}>
-//                 <div>
-//                     {/* <HideAt breakpoint="small">
-//                         <div>Hello World!</div>
-//                     </HideAt> */}
-//                     <StyledH3>I'm Landing Page</StyledH3>
-//                 </div>
-//             </ThemeProvider>
-//         </BreakpointsProvider>
-//     );
-// }
-
-// let x;
-// if (landingpage) {
-//     x = landingpage.reduce((acc, val) => {
-//         console.log(val.acf);
-//         acc.push(val.acf);
-//         return acc;
-//     }, []);
-// }
-// console.log(x);
