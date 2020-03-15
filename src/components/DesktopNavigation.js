@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../utils/urlRoutes';
+import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -16,9 +16,7 @@ const NavigationWrapper = styled.nav`
 
 const StyledLinks = styled.li`
     list-style: none;
-    a {
-        text-decoration: none;
-    }
+    text-decoration: none;
 `;
 
 const DesktopNavigation = () => {
