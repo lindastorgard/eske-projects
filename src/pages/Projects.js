@@ -12,10 +12,6 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section`
-    // display: flex;
-    // align-items: center;
-    // flex-direction: column;
-    // flex-wrap: wrap;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
