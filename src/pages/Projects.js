@@ -3,7 +3,7 @@ import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 
-const Category = () => {
+const Projects = () => {
     const param = useParams();
     const { category, error, isLoading } = useApi(param.category);
     console.log(category);
@@ -22,4 +22,4 @@ const Category = () => {
         </div>
     );
 };
-export default Category;
+export default Projects;
