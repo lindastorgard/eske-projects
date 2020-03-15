@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledH1 = styled.h1`
-    font-family: ${({ theme }) => theme.heading};
+    font-family: ${({ theme }) => theme.fonts.heading};
     font-weight: 500;
+    font-size: ${({ theme }) => theme.fontSizes[5]};
 `;
 
 export const StyledH3 = styled.h3`
