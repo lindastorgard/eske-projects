@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import { Fade } from 'react-slideshow-image';
 
 const SlideshowContainer = styled.div`
-    width: 500px;
+    height: 100vh;
+    background-color: ${({ theme }) => theme.brand}
+    ${({ theme }) => theme.md`
+    `}
     margin: auto;
 `;
 
 const ImageContainer = styled.div`
+    margin-left: 250px;
     div {
-        width: 500px;
-        height: 300px;
+        width: 100%;
+        height: 100vh;
         overflow: hidden;
         img {
             width: 100%;
@@ -21,8 +25,8 @@ const ImageContainer = styled.div`
 `;
 
 const fadeProperties = {
-    duration: 5000,
-    transitionDuration: 500,
+    duration: 3000,
+    transitionDuration: 300,
     infinite: false,
     indicators: false,
     arrows: false,

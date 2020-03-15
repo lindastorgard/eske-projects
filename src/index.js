@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
+import { createGlobalStyle } from 'styled-components';
 
 var WebFont = require('webfontloader');
 
@@ -12,10 +13,21 @@ WebFont.load({
     },
 });
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    border: box;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+    <>
+        <GlobalStyle />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </>,
     document.getElementById('root'),
 );
 serviceWorker.unregister();
