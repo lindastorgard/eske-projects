@@ -14,6 +14,6 @@ export const PORTFOLIO = {
     path: '/portfolio',
 };
 export const CATEGORY_WITH_ID = {
-    path: `/${PORTFOLIO.path}/:category`,
-    getPathWithId: category => `/${PORTFOLIO.path}/${category}`,
+    path: `${PORTFOLIO.path}/:category`,
+    getPathWithId: category => `${PORTFOLIO.path}/${category}`,
 };
