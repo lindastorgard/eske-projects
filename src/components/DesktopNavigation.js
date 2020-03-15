@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../urlRoutes';
+import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../utils/urlRoutes';
 
 const NavigationWrapper = styled.nav`
     width: 250px;

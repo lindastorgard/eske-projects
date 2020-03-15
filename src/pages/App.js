@@ -10,7 +10,7 @@ import Header from '../components/Header';
 import Video from './Video';
 import Projects from './Projects';
 import LandingPage from './LandingPage';
-import { LANDING_PAGE, VIDEO, ABOUT, SERVICES, PORTFOLIO, PROJECT_WITH_CATEGORY } from '../urlRoutes';
+import { LANDING_PAGE, VIDEO, ABOUT, SERVICES, PORTFOLIO, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
 const breakpoints = {
     small: 468,

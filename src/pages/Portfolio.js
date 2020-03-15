@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { StyledH1 } from '../styles/typography';
 import useLocalState from '../hooks/useLocalState';
 import { Link } from 'react-router-dom';
-import { CATEGORY_WITH_ID } from '../urlRoutes';
+import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
 const Container = styled.div`
     display: grid;
@@ -69,7 +69,7 @@ const Portfolio = () => {
                         console.log(acf.category_name);
                         return (
                             <CategorySection key={acf.image.id} image={acf.image.url}>
-                                <Link to={`${CATEGORY_WITH_ID.getPathWithId(acf.slug)}`}>
+                                <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
                                     <ButtonWrapper onClick={() => setCategoryFilter(acf.slug)}>
                                         <Title>{acf.category_name}</Title>
                                     </ButtonWrapper>
