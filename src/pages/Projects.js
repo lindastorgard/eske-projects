@@ -12,12 +12,19 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    ${({ theme }) => theme.xs`
-        flex-direction: row;
+    // display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: ${({ theme }) => theme.space[1]};
+    ${({ theme }) => theme.sm`
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    `};
+    ${({ theme }) => theme.md`
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     `};
 `;
 
@@ -31,9 +38,8 @@ const CategorySection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: ${({ theme }) => theme.space[0]};
     width: 100%;
-    height: 280px;
+    height: 350px;
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
         ${props => `url(${props.image}) no-repeat center`};
     a {
@@ -47,12 +53,6 @@ const CategorySection = styled.div`
             background: rgba(0, 0, 0, 0.4);
         }
     }
-    ${({ theme }) => theme.sm`
-        width: 45%;
-    `};
-    ${({ theme }) => theme.md`
-        width: 30%;
-    `};
 `;
 
 const Projects = () => {
