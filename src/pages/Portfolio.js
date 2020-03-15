@@ -1,8 +1,8 @@
 import React from 'react';
-import useApi from '../../hooks/useApi';
+import useApi from '../hooks/useApi';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../styles/theme';
-import { StyledH3 } from '../../styles/typography';
+import theme from '../styles/theme';
+import { StyledH3 } from '../styles/typography';
 import { BreakpointsProvider } from 'react-with-breakpoints';
 // import { HideAt } from 'react-with-breakpoints';
 
