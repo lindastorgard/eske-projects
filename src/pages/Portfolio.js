@@ -2,7 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { StyledH1 } from '../styles/typography';
-import useLocalState from '../hooks/useLocalState';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
@@ -55,7 +55,7 @@ const ButtonWrapper = styled.button`
 
 const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
-    const [categoryFilter, setCategoryFilter] = useLocalState('category');
+    const [categoryFilter, setCategoryFilter] = useLocalStorage('category');
 
     return (
         <div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useLocalState(localItem) {
+function useLocalStorage(localItem) {
     const [loc, setState] = useState(localStorage.getItem(localItem));
     function setLoc(newItem) {
         localStorage.setItem(localItem, newItem);
@@ -9,4 +9,4 @@ function useLocalState(localItem) {
     return [loc, setLoc];
 }
 
-export default useLocalState;
+export default useLocalStorage;
