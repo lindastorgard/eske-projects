@@ -1,7 +1,7 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { StyledH1 } from '../styles/typography';
+import { StyledLargeH2 } from '../styles/typography';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
@@ -19,7 +19,7 @@ const Container = styled.div`
 		`};
 `;
 
-const Title = styled(StyledH1)`
+const Title = styled(StyledLargeH2)`
     text-transform: uppercase;
     color: ${({ theme }) => theme.primary};
     text-align: center;
@@ -40,14 +40,22 @@ const CategorySection = styled.div`
     }
     a {
         text-decoration: none;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+        &:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
     }
     ${({ theme }) => theme.sm`
-		  &:first-of-type {
-        grid-column: 1/2;
-    }
-    &:nth-of-type(2) {
-        grid-column: 2/3;
-    }
+		&:first-of-type {
+            grid-column: 1/2;
+        }
+        &:nth-of-type(2) {
+            grid-column: 2/3;
+        }
 	`};
 `;
 

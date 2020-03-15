@@ -2,7 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import { StyledH1 } from '../styles/typography';
+import { StyledLargeH2 } from '../styles/typography';
 
 const Container = styled.div`
     margin-left: 0;
@@ -21,7 +21,7 @@ const StyledSection = styled.section`
     `};
 `;
 
-const Title = styled(StyledH1)`
+const Title = styled(StyledLargeH2)`
     text-transform: uppercase;
     text-align: center;
     color: ${({ theme }) => theme.primary};
