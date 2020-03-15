@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../urlRoutes';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -24,23 +25,20 @@ const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
             <nav>
-                <a href="/">Eskelogo</a>
+                <Link to={LANDING_PAGE.path}>Eskelogo</Link>
                 <div>
                     <ul>
                         <StyledLinks>
-                            <Link to={'/portfolio'}>Portfolio</Link>
+                            <Link to={PORTFOLIO.path}>Portfolio</Link>
                         </StyledLinks>
                         <StyledLinks>
-                            <Link to={'/tjenster'}>Tjenster</Link>
+                            <Link to={SERVICES.path}>Tjenster</Link>
                         </StyledLinks>
                         <StyledLinks>
-                            <Link to={'/omoss'}>Om Oss</Link>
+                            <Link to={ABOUT.path}>Om Oss</Link>
                         </StyledLinks>
                         <StyledLinks>
-                            <Link to={'/video'}>Video</Link>
-                        </StyledLinks>
-                        <StyledLinks>
-                            <Link to={'/maincategories'}>Main Categries</Link>
+                            <Link to={VIDEO.path}>Video</Link>
                         </StyledLinks>
                     </ul>
                 </div>
