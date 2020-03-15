@@ -13,10 +13,7 @@ export const SERVICES = {
 export const PORTFOLIO = {
     path: '/portfolio',
 };
-export const CATEGORY = {
-    path: '/category',
-};
 export const CATEGORY_WITH_ID = {
-    path: `/${CATEGORY.path}/:category`,
-    getPathWithId: category => `/${CATEGORY.path}/${category}`,
+    path: `/${PORTFOLIO.path}/:category`,
+    getPathWithId: category => `/${PORTFOLIO.path}/${category}`,
 };

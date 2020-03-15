@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO, CATEGORY } from '../urlRoutes';
+import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE, } from '../urlRoutes';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -25,7 +25,7 @@ const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
             <nav>
-                <a href="/">Eskelogo</a>
+                <Link to={LANDING_PAGE.path}>Eskelogo</Link>
                 <div>
                     <ul>
                         <StyledLinks>
@@ -39,9 +39,6 @@ const DesktopNavigation = () => {
                         </StyledLinks>
                         <StyledLinks>
                             <Link to={VIDEO.path}>Video</Link>
-                        </StyledLinks>
-                        <StyledLinks>
-                            <Link to={CATEGORY.path}>Main Categories</Link>
                         </StyledLinks>
                     </ul>
                 </div>

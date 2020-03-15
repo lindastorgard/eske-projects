@@ -8,10 +8,9 @@ import Services from './Services';
 import About from './About';
 import Header from '../components/Header';
 import Video from './Video';
-import MainCategory from './MainCategory';
 import Category from './Category';
 import LandingPage from './LandingPage';
-import { LANDING_PAGE, VIDEO, ABOUT, SERVICES, PORTFOLIO, CATEGORY, CATEGORY_WITH_ID } from '../urlRoutes';
+import { LANDING_PAGE, VIDEO, ABOUT, SERVICES, PORTFOLIO, CATEGORY_WITH_ID } from '../urlRoutes';
 
 const breakpoints = {
     small: 468,
@@ -33,7 +32,6 @@ function App() {
                                 <Route exact path={ABOUT.path} component={About} />
                                 <Route exact path={SERVICES.path} component={Services} />
                                 <Route exact path={PORTFOLIO.path} component={Portfolio} />
-                                <Route exact path={CATEGORY.path} component={MainCategory} />
                                 <Route exact path={CATEGORY_WITH_ID.path} component={Category} />
                                 <Route exact path={LANDING_PAGE.path} component={LandingPage} />
                             </Switch>
