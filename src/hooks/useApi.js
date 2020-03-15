@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const useAPI = param => {
-    // ---- Local Storage
-    const categoryFilter = localStorage.getItem('category');
     // ---- State
-    // const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [categories, setCategories] = useState(null);
@@ -82,7 +79,7 @@ const useAPI = param => {
         //     fetchProductWIthId();
         // }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryFilter, param]);
+    }, [param]);
 
     return {
         category,

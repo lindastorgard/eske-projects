@@ -1,12 +1,12 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { StyledH1 } from '../styles/typography';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { StyledLargeH2 } from '../styles/typography';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
 const Container = styled.div`
+    margin-left: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 50vh);
@@ -14,15 +14,15 @@ const Container = styled.div`
     ${({ theme }) => theme.sm`
 		  grid-template-columns: repeat(2, 1fr);
 		  grid-template-rows: 100vh;
-		  grid-gap: ${({ theme }) => theme.space[2]};
+          grid-gap: ${({ theme }) => theme.space[2]};
+          margin-left: 250px;
 		`};
 `;
 
-const Title = styled(StyledH1)`
-    font-family: ${({ theme }) => theme.fonts.heading};
-    font-weight: 500;
+const Title = styled(StyledLargeH2)`
     text-transform: uppercase;
     color: ${({ theme }) => theme.primary};
+    text-align: center;
 `;
 
 const CategorySection = styled.div`
@@ -38,24 +38,29 @@ const CategorySection = styled.div`
     &:nth-of-type(2) {
         grid-column: 1/2;
     }
+    a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+        &:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+    }
     ${({ theme }) => theme.sm`
-		  &:first-of-type {
-        grid-column: 1/2;
-    }
-    &:nth-of-type(2) {
-        grid-column: 2/3;
-    }
-		`};
-`;
-
-const ButtonWrapper = styled.button`
-    background: transparent;
-    border: none;
+		&:first-of-type {
+            grid-column: 1/2;
+        }
+        &:nth-of-type(2) {
+            grid-column: 2/3;
+        }
+	`};
 `;
 
 const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
-    const [categoryFilter, setCategoryFilter] = useLocalStorage('category');
 
     return (
         <div>
@@ -70,9 +75,7 @@ const Portfolio = () => {
                         return (
                             <CategorySection key={acf.image.id} image={acf.image.url}>
                                 <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
-                                    <ButtonWrapper onClick={() => setCategoryFilter(acf.slug)}>
-                                        <Title>{acf.category_name}</Title>
-                                    </ButtonWrapper>
+                                    <Title>{acf.category_name}</Title>
                                 </Link>
                             </CategorySection>
                         );
