@@ -5,7 +5,7 @@ const useAPI = param => {
     // ---- Local Storage
     const categoryFilter = localStorage.getItem('category');
     // ---- State
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [categories, setCategories] = useState(null);
@@ -43,17 +43,17 @@ const useAPI = param => {
         }
     };
     const fetchLandingpage = async () => {
-      setError(null);
-      try {
-          setIsLoading(true);
-          const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/landing_page');
-          setLandingpage(result.data);
-      } catch (e) {
-          setError(e.toString());
-      } finally {
-          setIsLoading(false);
-      }
-};
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/landing_page');
+            setLandingpage(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     // const fetchProductWIthId = async () => {
     //     setError(null);

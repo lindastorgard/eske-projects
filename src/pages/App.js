@@ -6,11 +6,11 @@ import { BreakpointsProvider } from 'react-with-breakpoints';
 import Portfolio from './Portfolio';
 import Services from './Services';
 import About from './About';
-import Home from './Home';
-import Nav from '../components/Nav/Nav';
+import Header from '../components/Header';
 import Video from './Video';
 import MainCategory from './MainCategory';
 import Category from './Category';
+import LandingPage from './LandingPage';
 
 const breakpoints = {
     small: 468,
@@ -25,7 +25,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <Router>
                     <>
-                        <Nav />
+                        <Header />
                         <main>
                             <Switch>
                                 <Route exact path="/video" component={Video} />
@@ -34,7 +34,7 @@ function App() {
                                 <Route exact path="/portfolio" component={Portfolio} />
                                 <Route exact path="/maincategories" component={MainCategory} />
                                 <Route exact path="/category/:category" component={Category} />
-                                <Route exact path="/" component={Home} />
+                                <Route exact path="/" component={LandingPage} />
                             </Switch>
                         </main>
                     </>
