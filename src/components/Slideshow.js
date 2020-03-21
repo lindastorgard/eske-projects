@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Fade } from 'react-slideshow-image';
 
@@ -27,7 +28,7 @@ const ImageContainer = styled.div`
 const fadeProperties = {
     duration: 3000,
     transitionDuration: 300,
-    infinite: false,
+    infinite: true,
     indicators: false,
     arrows: false,
     onChange: (oldIndex, newIndex) => {
@@ -54,3 +55,7 @@ const Slideshow = ({ landingpage }) => {
 };
 
 export default Slideshow;
+
+Slideshow.propTypes = {
+    landingpage: PropTypes.array.isRequired,
+};
