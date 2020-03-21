@@ -26,12 +26,12 @@ const LinkCointainer = styled.ul`
     top: 15%;
 `;
 
-const MobileMenu = ({ open }) => {
+const MobileMenu = ({ open, setOpen }) => {
     return (
         <NavigationWrapper open={open}>
             <nav>
                 <div>
-                    <LinkCointainer open={open}>
+                    <LinkCointainer open={open} onClick={() => setOpen(!open)}>
                         <NavLink url={PORTFOLIO.path} link="Portfolio" />
                         <NavLink url={SERVICES.path} link="Tjenster" />
                         <NavLink url={ABOUT.path} link="Om Oss" />

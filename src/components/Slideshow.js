@@ -44,7 +44,7 @@ const ImageContainer = styled.div`
 const fadeProperties = {
     duration: 3000,
     transitionDuration: 300,
-    infinite: false,
+    infinite: true,
     indicators: false,
     arrows: false,
     onChange: (oldIndex, newIndex) => {

@@ -35,7 +35,7 @@ const MobileNavigation = () => {
                 <Hamburger open={open} setOpen={setOpen} />
             </div>
             <Navigation open={open}>
-                <MobileMenu open={open} />
+                <MobileMenu open={open} setOpen={setOpen} />
             </Navigation>
         </>
     );
