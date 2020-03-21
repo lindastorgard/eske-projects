@@ -11,18 +11,37 @@ const SlideshowContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
+    margin-left: 0;
+    margin-top: 80px;
+    ${({ theme }) => theme.sm`
     margin-left: 250px;
+    margin-top: 0;
+  `};
     div {
         width: 100%;
         height: 100vh;
         overflow: hidden;
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
         }
     }
 `;
+
+// const Container = styled.div`
+//     margin-left: 0;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: repeat(2, 50vh);
+//     grid-gap: ${({ theme }) => theme.space[1]};
+//     ${({ theme }) => theme.sm`
+// 		  grid-template-columns: repeat(2, 1fr);
+// 		  grid-template-rows: 100vh;
+//           grid-gap: ${({ theme }) => theme.space[2]};
+//           margin-left: 250px;
+// 		`};
+// `;
 
 const fadeProperties = {
     duration: 3000,

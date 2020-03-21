@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import DesktopNavigation from './DesktopNavigation';
-import { HideAt } from 'react-with-breakpoints';
+import MobileNavigation from './MobileNavigation/MobileNavigation';
+import { ShowAt } from 'react-with-breakpoints';
 
 const StyledHeader = styled.header``;
 
@@ -9,12 +10,12 @@ const Header = () => {
     return (
         <div>
             <StyledHeader>
-                <HideAt breakpoint="small">
+                <ShowAt breakpoint="mediumAndAbove">
                     <DesktopNavigation />
-                </HideAt>
-                {/* <ShowAt breakpoint="small">
-                <MobileNavigation />
-                </ShowAt> */}
+                </ShowAt>
+                <ShowAt breakpoint="small">
+                    <MobileNavigation />
+                </ShowAt>
             </StyledHeader>
         </div>
     );

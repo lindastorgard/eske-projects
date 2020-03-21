@@ -20,6 +20,8 @@ const LinkCointainer = styled.ul`
     & > * {
         padding: ${({ theme }) => theme.space[0]};
     }
+    position: absolute;
+    bottom: 10%;
 `;
 const DesktopNavigation = () => {
     return (
