@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
 import NavLink from './navigation/NavILink';
+import Logo from './Logo';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -23,11 +24,22 @@ const LinkCointainer = styled.ul`
     position: absolute;
     bottom: 10%;
 `;
+
+const StyledIcon = styled.div`
+    position: absolute;
+    top: ${({ theme }) => theme.space[4]};
+    padding-left: ${({ theme }) => theme.space[4]};
+`;
+
 const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
             <nav>
-                <Link to={LANDING_PAGE.path}>Eskelogo</Link>
+                <StyledIcon>
+                    <Link to={LANDING_PAGE.path}>
+                        <Logo />
+                    </Link>
+                </StyledIcon>
                 <div>
                     <LinkCointainer>
                         <NavLink url={PORTFOLIO.path} link="Portfolio" />
@@ -37,18 +49,6 @@ const DesktopNavigation = () => {
                     </LinkCointainer>
                 </div>
             </nav>
-            {/* <ul>
-                {categories && categories.length > 0
-                    ? categories.map(category => {
-                          const title = category.acf.title;
-                          return (
-                              <CatetoryLink key={category.id} props={title}>
-                                  {title}
-                              </CatetoryLink>
-                          );
-                      })
-                    : null}
-            </ul> */}
         </NavigationWrapper>
     );
 };

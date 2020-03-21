@@ -12,11 +12,9 @@ const SlideshowContainer = styled.div`
 
 const ImageContainer = styled.div`
     margin-left: 0;
-    margin-top: 80px;
     ${({ theme }) => theme.sm`
-    margin-left: 250px;
-    margin-top: 0;
-  `};
+        margin-left: 250px;
+    `};
     div {
         width: 100%;
         height: 100vh;

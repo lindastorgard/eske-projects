@@ -7,7 +7,7 @@ const NavigationWrapper = styled.nav`
     display: flex;
     flex-direction: column;
     background: ${({ theme }) => theme.primary};
-    height: 100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -26,12 +26,12 @@ const LinkCointainer = styled.ul`
     top: 15%;
 `;
 
-const MobileMenu = ({ open, children }) => {
+const MobileMenu = ({ open }) => {
     return (
         <NavigationWrapper open={open}>
             <nav>
                 <div>
-                    <LinkCointainer>
+                    <LinkCointainer open={open}>
                         <NavLink url={PORTFOLIO.path} link="Portfolio" />
                         <NavLink url={SERVICES.path} link="Tjenster" />
                         <NavLink url={ABOUT.path} link="Om Oss" />
