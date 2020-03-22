@@ -8,6 +8,7 @@ const useAPI = param => {
     const [categories, setCategories] = useState(null);
     const [category, setCategory] = useState(null);
     const [landingpage, setLandingpage] = useState(null);
+    const [aboutpage, setAboutpage] = useState(null);
 
     // ---- API
 
@@ -25,7 +26,6 @@ const useAPI = param => {
     };
 
     const fetchCategory = async () => {
-        console.log('im running');
         setError(null);
         try {
             setIsLoading(true);
@@ -45,6 +45,18 @@ const useAPI = param => {
             setIsLoading(true);
             const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/landing_page');
             setLandingpage(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    const fetchAboutPage = async () => {
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/about_page');
+            setAboutpage(result.data);
         } catch (e) {
             setError(e.toString());
         } finally {
@@ -75,6 +87,7 @@ const useAPI = param => {
             fetchCategory();
         }
         fetchLandingpage();
+        fetchAboutPage();
         // if (productId) {
         //     fetchProductWIthId();
         // }
@@ -85,6 +98,7 @@ const useAPI = param => {
         category,
         categories,
         landingpage,
+        aboutpage,
         // data,
         // product,
         isLoading,

@@ -65,13 +65,13 @@ const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
 
     return (
-        <div>
+        <Container>
             {isLoading ? (
                 <p>Loading...</p>
             ) : error ? (
                 <p>{error}...</p>
             ) : categories ? (
-                <Container>
+                <>
                     {categories.map(({ acf }) => {
                         console.log(acf.category_name);
                         return (
@@ -82,9 +82,9 @@ const Portfolio = () => {
                             </CategorySection>
                         );
                     })}
-                </Container>
+                </>
             ) : null}
-        </div>
+        </Container>
     );
 };
 export default Portfolio;
