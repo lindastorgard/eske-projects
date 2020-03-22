@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { Fade } from 'react-slideshow-image';
 
 const SlideshowContainer = styled.div`
-    height: 100vh;
-    background-color: ${({ theme }) => theme.brand}
-    ${({ theme }) => theme.md`
-    `}
-    margin: auto;
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    background-color: ${({ theme }) => theme.primary};
+    ${({ theme }) => theme.sm`
+        margin-top: 0px;
+        height: 100vh;
+    `};
 `;
 
 const ImageContainer = styled.div`

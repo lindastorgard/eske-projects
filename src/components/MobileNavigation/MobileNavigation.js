@@ -20,6 +20,7 @@ const StyledLogo = styled.div`
     top: 0;
     left: calc(50% - 64px / 2);
     padding: ${({ theme }) => theme.space[0]};
+    z-index: 6;
 `;
 
 const MobileNavigation = () => {

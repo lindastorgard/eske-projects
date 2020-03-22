@@ -7,9 +7,8 @@ const NavigationWrapper = styled.nav`
     display: flex;
     flex-direction: column;
     background: ${({ theme }) => theme.primary};
-    height: calc(100vh - 80px);
+    height: 100vh;
     position: absolute;
-    top: 80px;
     left: 0;
     transition: transform 0.3s ease-in-out;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(200%)')};
