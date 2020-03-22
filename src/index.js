@@ -15,7 +15,7 @@ WebFont.load({
 
 const GlobalStyle = createGlobalStyle`
   body {
-    border: box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
   }

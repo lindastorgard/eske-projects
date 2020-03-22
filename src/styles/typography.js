@@ -21,3 +21,7 @@ export const StyledLink = styled.a`
     font-family: ${({ theme }) => theme.body};
     text-decoration: none;
 `;
+
+export const StyledParagraph = styled.p`
+    font-family: ${({ theme }) => theme.body};
+`;
