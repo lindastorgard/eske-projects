@@ -21,7 +21,6 @@ const Wrapper = styled.div`
             transition: 1s;
             left: 0;
         }
-    }
 `;
 
 const NavItem = styled(Link)`

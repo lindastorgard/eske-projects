@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
 import NavLink from './navigation/NavILink';
 import Logo from './Logo';
-import instagramIcon from '../assets/instagram.svg';
-import facebookIcon from '../assets/facebook.svg';
+import InstagramIcon from './icons/InstagramIcon';
+import FacebookIcon from './icons/FacebookIcon';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -20,31 +20,26 @@ const NavigationWrapper = styled.nav`
 const LinkCointainer = styled.ul`
     display: flex;
     flex-direction: column;
-    padding-left: ${({ theme }) => theme.space[3]};
+    padding-left: ${({ theme }) => theme.space[2]};
     & > * {
         padding: ${({ theme }) => theme.space[0]};
     }
     position: absolute;
-    bottom: ${({ theme }) => theme.space[7]};
+    bottom: ${({ theme }) => theme.space[6]};
 `;
 
 const StyledLogo = styled.div`
     position: absolute;
-    top: ${({ theme }) => theme.space[4]};
-    padding-left: ${({ theme }) => theme.space[4]};
+    top: ${({ theme }) => theme.space[2]};
+    padding-left: ${({ theme }) => theme.space[3]};
 `;
 
 const IconContainer = styled.div`
     display: flex;
     flex-direction: row;
     position: absolute;
-    bottom: ${({ theme }) => theme.space[4]};
-    padding-left: ${({ theme }) => theme.space[4]};
-`;
-
-const StyledIcon = styled.img`
-    height: ${({ theme }) => theme.space[1]};
-    padding-right: ${({ theme }) => theme.space[1]};
+    bottom: ${({ theme }) => theme.space[2]};
+    padding-left: ${({ theme }) => theme.space[2]};
 `;
 
 const DesktopNavigation = () => {
@@ -65,10 +60,10 @@ const DesktopNavigation = () => {
                     </LinkCointainer>
                     <IconContainer>
                         <a href="/">
-                            <StyledIcon src={facebookIcon} alt="instagram" />
+                            <FacebookIcon />
                         </a>
                         <a href="/">
-                            <StyledIcon src={instagramIcon} alt="instagram" />
+                            <InstagramIcon />
                         </a>
                     </IconContainer>
                 </div>
