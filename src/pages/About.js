@@ -10,22 +10,28 @@ const HeaderImage = styled.img`
 `;
 
 const FlexParent = styled.div`
-    display: flex;
+    ${({ theme }) => theme.sm`
+        display: flex;
+    `};
 `;
 
 const TextContent = styled.div`
-    background: white;
-    margin-top: -80px;
-    position: absolute;
-    z-index: 2;
-    width: 50%;
     padding: ${({ theme }) => theme.space[1]} ${({ theme }) => theme.space[1]} ${({ theme }) => theme.space[1]} 0;
     box-sizing: border-box;
+    ${({ theme }) => theme.sm`
+        background: white;
+        margin-top: -80px;
+        position: absolute;
+        z-index: 2;
+        width: 50%;
+    `};
 `;
 
 const Column = styled.div`
-    width: 50%;
-    display: flex;
+    ${({ theme }) => theme.sm`
+        width: 50%;
+        display: flex;
+    `};
 `;
 
 const StyledImage = styled.img`
