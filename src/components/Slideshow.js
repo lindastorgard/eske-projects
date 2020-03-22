@@ -27,20 +27,6 @@ const ImageContainer = styled.div`
     }
 `;
 
-// const Container = styled.div`
-//     margin-left: 0;
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     grid-template-rows: repeat(2, 50vh);
-//     grid-gap: ${({ theme }) => theme.space[1]};
-//     ${({ theme }) => theme.sm`
-// 		  grid-template-columns: repeat(2, 1fr);
-// 		  grid-template-rows: 100vh;
-//           grid-gap: ${({ theme }) => theme.space[2]};
-//           margin-left: 250px;
-// 		`};
-// `;
-
 const fadeProperties = {
     duration: 3000,
     transitionDuration: 300,
