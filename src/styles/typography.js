@@ -18,10 +18,11 @@ export const StyledH3 = styled.h3`
 `;
 
 export const StyledLink = styled.a`
-    font-family: ${({ theme }) => theme.body};
+    font-family: ${({ theme }) => theme.fonts.body};
     text-decoration: none;
 `;
 
 export const StyledParagraph = styled.p`
-    font-family: ${({ theme }) => theme.body};
+    font-family: ${({ theme }) => theme.fonts.body};
+    font-weight: 300;
 `;
