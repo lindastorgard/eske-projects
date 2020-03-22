@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
-import { StyledH3, StyledParagraph } from '../styles/typography';
+import { StyledH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 
 const HeaderImage = styled.img`
@@ -63,7 +63,7 @@ const About = () => {
                     <FlexParent>
                         <Column>
                             <TextContent>
-                                <StyledH3>{aboutContent.page_title}</StyledH3>
+                                <StyledH2>{aboutContent.page_title}</StyledH2>
                                 <StyledParagraph>{aboutContent.page_content.section1}</StyledParagraph>
                                 <StyledParagraph>{aboutContent.page_content.section2}</StyledParagraph>
                                 <StyledParagraph>{aboutContent.page_content.section3}</StyledParagraph>
