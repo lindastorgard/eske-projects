@@ -12,10 +12,10 @@ const Header = () => {
     return (
         <div>
             <StyledHeader>
-                <HideAt breakpoint="small">
+                <HideAt breakpoint="mediumAndBelow">
                     <DesktopNavigation />
                 </HideAt>
-                <ShowAt breakpoint="small">
+                <ShowAt breakpoint="mediumAndBelow">
                     <MobileNavigation />
                 </ShowAt>
             </StyledHeader>
