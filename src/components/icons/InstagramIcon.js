@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledIcon = styled.svg`
     display: block;
-    height: ${({ theme }) => theme.space[1]};
+    height: 20px;
     padding-right: ${({ theme }) => theme.space[0]};
     fill: ${({ theme }) => theme.brand};
     &:hover {
