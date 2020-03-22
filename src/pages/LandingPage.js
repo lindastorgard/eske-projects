@@ -13,9 +13,7 @@ const LandingPage = () => {
             ) : error ? (
                 <p>{error}</p>
             ) : landingpage ? (
-                <div>
-                    <Slideshow landingpage={landingpage} />
-                </div>
+                <Slideshow landingpage={landingpage} />
             ) : null}
         </div>
     );

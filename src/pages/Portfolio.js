@@ -7,15 +7,17 @@ import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
 const Container = styled.div`
     margin-left: 0;
+    margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 50vh);
+    grid-template-rows: repeat(2, calc(50vh - 40px));
     grid-gap: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.sm`
 		  grid-template-columns: repeat(2, 1fr);
 		  grid-template-rows: 100vh;
           grid-gap: ${({ theme }) => theme.space[2]};
           margin-left: 250px;
+          margin-top: 0;
 		`};
 `;
 
