@@ -39,8 +39,11 @@ const StyledImage = styled.img`
 `;
 
 const AboutWrapper = styled.div`
-    margin-left: 250px;
+    margin-left: 0;
     position: relative;
+    ${({ theme }) => theme.sm`
+        margin-left: 250px;
+    `};
 `;
 
 const About = () => {
