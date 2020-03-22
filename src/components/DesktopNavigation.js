@@ -45,29 +45,27 @@ const IconContainer = styled.div`
 const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
-            <nav>
-                <StyledLogo>
-                    <Link to={LANDING_PAGE.path}>
-                        <Logo />
-                    </Link>
-                </StyledLogo>
-                <div>
-                    <LinkCointainer>
-                        <NavLink url={PORTFOLIO.path} link="Portfolio" />
-                        <NavLink url={SERVICES.path} link="Tjenster" />
-                        <NavLink url={ABOUT.path} link="Om Oss" />
-                        <NavLink url={VIDEO.path} link="Video" />
-                    </LinkCointainer>
-                    <IconContainer>
-                        <a href="/">
-                            <FacebookIcon />
-                        </a>
-                        <a href="/">
-                            <InstagramIcon />
-                        </a>
-                    </IconContainer>
-                </div>
-            </nav>
+            <StyledLogo>
+                <Link to={LANDING_PAGE.path}>
+                    <Logo />
+                </Link>
+            </StyledLogo>
+            <div>
+                <LinkCointainer>
+                    <NavLink url={PORTFOLIO.path} link="Portfolio" />
+                    <NavLink url={SERVICES.path} link="Tjenster" />
+                    <NavLink url={ABOUT.path} link="Om Oss" />
+                    <NavLink url={VIDEO.path} link="Video" />
+                </LinkCointainer>
+                <IconContainer>
+                    <a href="/">
+                        <FacebookIcon />
+                    </a>
+                    <a href="/">
+                        <InstagramIcon />
+                    </a>
+                </IconContainer>
+            </div>
         </NavigationWrapper>
     );
 };

@@ -5,21 +5,20 @@ import MobileNavigation from './MobileNavigation/MobileNavigation';
 import { ShowAt, HideAt } from 'react-with-breakpoints';
 
 const StyledHeader = styled.header`
-    position: relative;
+    // position: fixed;
+    // z-index: 200;
 `;
 
 const Header = () => {
     return (
-        <div>
-            <StyledHeader>
-                <HideAt breakpoint="mediumAndBelow">
-                    <DesktopNavigation />
-                </HideAt>
-                <ShowAt breakpoint="mediumAndBelow">
-                    <MobileNavigation />
-                </ShowAt>
-            </StyledHeader>
-        </div>
+        <StyledHeader>
+            <HideAt breakpoint="mediumAndBelow">
+                <DesktopNavigation />
+            </HideAt>
+            <ShowAt breakpoint="mediumAndBelow">
+                <MobileNavigation />
+            </ShowAt>
+        </StyledHeader>
     );
 };
 export default Header;

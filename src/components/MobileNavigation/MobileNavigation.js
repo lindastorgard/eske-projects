@@ -6,38 +6,34 @@ import { Link } from 'react-router-dom';
 import { LANDING_PAGE } from '../../utils/urlRoutes';
 import Logo from '../Logo';
 
-const Navigation = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+const NavigationWrapper = styled.div`
+    position: fixed;
     top: 0;
-    left: 0;
-    transition: transform 0.3s ease-in-out;
     width: 100%;
-    z-index: ${({ open }) => (open ? '5' : '1')};
+    height: 80px;
+    background-color: ${({ theme }) => theme.primary};
+    z-index: 6;
 `;
 
 const StyledLogo = styled.div`
+    position: absolute;
+    top: 0;
+    left: calc(50% - 64px / 2);
     padding: ${({ theme }) => theme.space[0]};
 `;
 
 const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
     return (
-        <>
-            <div>
-                <StyledLogo>
-                    <Link to={LANDING_PAGE.path}>
-                        <Logo />
-                    </Link>
-                </StyledLogo>
-
-                <Hamburger open={open} setOpen={setOpen} />
-            </div>
-            <Navigation open={open}>
-                <MobileMenu open={open} setOpen={setOpen} />
-            </Navigation>
-        </>
+        <NavigationWrapper>
+            <StyledLogo>
+                <Link to={LANDING_PAGE.path} open={open} onClick={() => setOpen(false)}>
+                    <Logo />
+                </Link>
+            </StyledLogo>
+            <Hamburger open={open} setOpen={setOpen} />
+            <MobileMenu open={open} setOpen={setOpen} />
+        </NavigationWrapper>
     );
 };
 
