@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
 import NavLink from './navigation/NavILink';
+import Logo from './Logo';
+import InstagramIcon from './icons/InstagramIcon';
+import FacebookIcon from './icons/FacebookIcon';
 
 const NavigationWrapper = styled.nav`
     width: 250px;
@@ -17,36 +20,52 @@ const NavigationWrapper = styled.nav`
 const LinkCointainer = styled.ul`
     display: flex;
     flex-direction: column;
+    padding-left: ${({ theme }) => theme.space[2]};
     & > * {
         padding: ${({ theme }) => theme.space[0]};
     }
+    position: absolute;
+    bottom: ${({ theme }) => theme.space[6]};
 `;
+
+const StyledLogo = styled.div`
+    position: absolute;
+    top: ${({ theme }) => theme.space[2]};
+    padding-left: ${({ theme }) => theme.space[3]};
+`;
+
+const IconContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: ${({ theme }) => theme.space[2]};
+    padding-left: ${({ theme }) => theme.space[2]};
+`;
+
 const DesktopNavigation = () => {
     return (
         <NavigationWrapper>
-            <nav>
-                <Link to={LANDING_PAGE.path}>Eskelogo</Link>
-                <div>
-                    <LinkCointainer>
-                        <NavLink url={PORTFOLIO.path} link="Portfolio" />
-                        <NavLink url={SERVICES.path} link="Tjenster" />
-                        <NavLink url={ABOUT.pat} link="Om Oss" />
-                        <NavLink url={VIDEO.path} link="Video" />
-                    </LinkCointainer>
-                </div>
-            </nav>
-            {/* <ul>
-                {categories && categories.length > 0
-                    ? categories.map(category => {
-                          const title = category.acf.title;
-                          return (
-                              <CatetoryLink key={category.id} props={title}>
-                                  {title}
-                              </CatetoryLink>
-                          );
-                      })
-                    : null}
-            </ul> */}
+            <StyledLogo>
+                <Link to={LANDING_PAGE.path}>
+                    <Logo />
+                </Link>
+            </StyledLogo>
+            <div>
+                <LinkCointainer>
+                    <NavLink url={PORTFOLIO.path} link="Portfolio" />
+                    <NavLink url={SERVICES.path} link="Tjenster" />
+                    <NavLink url={ABOUT.path} link="Om Oss" />
+                    <NavLink url={VIDEO.path} link="Video" />
+                </LinkCointainer>
+                <IconContainer>
+                    <a href="/">
+                        <FacebookIcon />
+                    </a>
+                    <a href="/">
+                        <InstagramIcon />
+                    </a>
+                </IconContainer>
+            </div>
         </NavigationWrapper>
     );
 };
