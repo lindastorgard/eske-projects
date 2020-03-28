@@ -4,6 +4,26 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
+import BackButton from '../components/BackButton';
+import { StyledH1, StyledParagraph } from '../styles/typography';
+
+const SectionContainer = styled.section`
+    ${({ theme }) => theme.sm`
+    display: flex;
+    & > * {
+        flex: 1;
+    }
+    article {
+        margin-top: 100px;
+    }
+    margin-bottom: ${({ theme }) => theme.space[5]};
+        
+    `};
+`;
+
+const Header = styled(StyledH1)`
+    margin-top: ${({ theme }) => theme.space[6]};
+`;
 
 const GalleryWrapper = styled.div`
     display: grid;
@@ -35,9 +55,17 @@ const Image = styled.img`
     height: 100%;
 `;
 
+const Dash = styled.span`
+    display: inline-block;
+    width: ${({ theme }) => theme.space[2]};
+    height: 1px;
+    background-color: ${({ theme }) => theme.secondary};
+    margin: 4px ${({ theme }) => theme.space[1]};
+`;
+
 const ProjectsDetails = () => {
-    const { id } = useParams();
-    const { project, error, isLoading } = useApi('', id);
+    const { id, category } = useParams();
+    const { project, error, isLoading, categories } = useApi('', id);
 
     return (
         <Layout>
@@ -45,13 +73,31 @@ const ProjectsDetails = () => {
                 <CircleLoader />
             ) : error ? (
                 <p>{error}...</p>
-            ) : project ? (
+            ) : project && categories ? (
                 <>
-                    <h3>{project[0].acf.title}</h3>
+                    <SectionContainer>
+                        <div>
+                            <BackButton>
+                                {category === 'residential'
+                                    ? categories[1].acf.category_name
+                                    : categories[0].acf.category_name}
+                            </BackButton>
+                            <Header>{project[0].acf.title}</Header>
+                        </div>
+                        <article>
+                            <StyledParagraph>
+                                {project[0].acf.customer}
+                                <Dash />
+                                {project[0].acf.location}
+                            </StyledParagraph>
+                            <StyledParagraph>{project[0].acf.description}</StyledParagraph>
+                        </article>
+                    </SectionContainer>
+
                     <GalleryWrapper>
                         {project[0].acf.image.map(({ url, id, title }) => (
-                            <ImageWrapper>
-                                <Image src={url} key={id} alt={title} />
+                            <ImageWrapper key={id}>
+                                <Image src={url} alt={title} />
                             </ImageWrapper>
                         ))}
                     </GalleryWrapper>

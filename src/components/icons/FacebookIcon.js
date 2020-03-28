@@ -8,6 +8,7 @@ const StyledIcon = styled.svg`
     fill: ${({ theme }) => theme.darkbrand};
     &:hover {
         fill: ${({ theme }) => theme.brand};
+    }
 `;
 
 const FacebookIcon = () => {
