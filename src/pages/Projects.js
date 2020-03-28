@@ -31,8 +31,9 @@ const CategorySection = styled.div`
     justify-content: center;
     width: 100%;
     height: 350px;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-        ${props => `url(${props.image}) no-repeat center`};
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
     a {
         text-decoration: none;
         display: flex;
@@ -40,9 +41,6 @@ const CategorySection = styled.div`
         height: 100%;
         justify-content: center;
         width: 100%;
-        &:hover {
-            background: rgba(0, 0, 0, 0.4);
-        }
     }
 `;
 
