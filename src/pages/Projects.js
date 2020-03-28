@@ -2,7 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import { StyledLargeH2 } from '../styles/typography';
+import { StyledLargeH3 } from '../styles/typography';
 import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
 
@@ -19,10 +19,11 @@ const StyledSection = styled.section`
     `};
 `;
 
-const Title = styled(StyledLargeH2)`
+const Title = styled(StyledLargeH3)`
     text-transform: uppercase;
     text-align: center;
     color: ${({ theme }) => theme.primary};
+    margin: ${({ theme }) => theme.space[1]};
 `;
 
 const CategorySection = styled.div`
