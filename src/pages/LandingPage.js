@@ -4,7 +4,6 @@ import Slideshow from '../components/Slideshow';
 
 const LandingPage = () => {
     const { landingpage, error, isLoading } = useApi();
-    // console.log(landingpage);
 
     return (
         <div>
