@@ -17,24 +17,31 @@ const HeaderImage = styled.img`
 const HeroGrid = styled.section`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, minmax(0, 150px));
-    grid-gap: ${({ theme }) => theme.space[1]};
-    padding-bottom: ${({ theme }) => theme.space[1]};
+    grid-template-rows: repeat(3, minmax(0, 170px));
+    padding-bottom: ${({ theme }) => theme.space[0]};
     ${({ theme }) => theme.sm`
         grid-template-columns: repeat(4, minmax(0, 1fr));
     `};
     ${StyledH1} {
         color: white;
         margin: 0;
+        line-height: 1.5;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: ${({ theme }) => theme.space[1]};
     }
 `;
 
 const OverlayContainer = styled.div`
-    grid-row: 2/4;
-    grid-column: 3/5;
-    margin: ${({ theme }) => theme.space[1]};
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: ${({ theme }) => theme.space[1]};
+    grid-row: 3/4;
+    grid-column: 2/5;
+    margin-right: ${({ theme }) => theme.space[2]};
+    margin-bottom: ${({ theme }) => theme.space[2]};
+    margin-top: auto;
+`;
+
+const PageTitle = styled(StyledH2)`
+    margin-top: 0;
 `;
 
 const FlexParent = styled.div`
@@ -45,25 +52,24 @@ const FlexParent = styled.div`
 
 const Flex1 = styled.div`
     flex: 1;
-    padding: 8px;
+    padding: 8px 0 8px 16px;
 `;
 
 const EmployeeGrid = styled.div`
     display: grid;
     height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 100px);
+    grid-template-rows: repeat(5, 1fr);
     grid-gap: ${({ theme }) => theme.space[1]};
-    padding-bottom: ${({ theme }) => theme.space[1]};
 `;
 
 const Flex2 = styled.div`
-    padding: 8px;
+    padding: 8px 0;
     flex: 2;
 `;
 
 const EmployeeInfo = styled.div`
-    grid-row: 3/4;
+    grid-row: 6/7;
     grid-column: 1/2;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
@@ -80,11 +86,12 @@ const StyledImage = styled.img`
     height: 450px;
     object-fit: cover;
 `;
+
 const EmployeeImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    grid-row: 1/4;
+    grid-row: 1/7;
     grid-column: 1/2;
 `;
 
@@ -96,7 +103,6 @@ const About = () => {
             setAboutContent(aboutpage[0].acf);
         }
     }, [aboutpage]);
-    console.log(aboutContent);
     return (
         <Layout>
             {isLoading ? (
@@ -108,7 +114,7 @@ const About = () => {
                     <HeroGrid>
                         <HeaderImage src={aboutContent.images[0]} alt="top background" />
                         {
-                            <ShowAt breakpoint="largeAndAbove">
+                            <ShowAt breakpoint="mediumAndAbove">
                                 <OverlayContainer>
                                     <StyledH1>{aboutContent.page_header_text}</StyledH1>
                                 </OverlayContainer>
@@ -117,7 +123,7 @@ const About = () => {
                     </HeroGrid>
                     <FlexParent>
                         <Flex2>
-                            <StyledH2>{aboutContent.page_title}</StyledH2>
+                            <PageTitle>{aboutContent.page_title}</PageTitle>
                             {Object.keys(aboutContent.page_content).map(section => (
                                 <div>
                                     <StyledParagraph>{aboutContent.page_content[section]}</StyledParagraph>
