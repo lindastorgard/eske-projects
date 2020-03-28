@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { StyledH2 } from '../styles/typography';
 import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
+import CircleLoader from '../components/CircleLoader';
 
 const StyledSection = styled.section`
     display: grid;
@@ -48,11 +49,10 @@ const CategorySection = styled.div`
 const Projects = () => {
     const param = useParams();
     const { category, error, isLoading } = useApi(param.category);
-    console.log(param.category);
     return (
         <Layout>
             {isLoading ? (
-                <p>Loading...</p>
+                <CircleLoader />
             ) : error ? (
                 <p>{error}...</p>
             ) : category ? (
