@@ -2,6 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import Slideshow from '../components/Slideshow';
+import CircleLoader from '../components/CircleLoader';
 
 const Container = styled.div`
     margin-top: 80px;
@@ -17,7 +18,7 @@ const LandingPage = () => {
     return (
         <div>
             {isLoading ? (
-                <p>Loading</p>
+                <CircleLoader />
             ) : error ? (
                 <p>{error}</p>
             ) : landingpage ? (
