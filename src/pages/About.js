@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
-import { StyledH2, StyledParagraph, StyledH3 } from '../styles/typography';
+import { StyledH1, StyledH2, StyledParagraph, StyledH3 } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
@@ -10,32 +10,31 @@ const HeaderImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    grid-row: 1/3;
+    grid-row: 1/4;
     grid-column: 1/5;
 `;
 
 const HeroGrid = styled.section`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 200px 200px;
+    grid-template-rows: repeat(3, minmax(0, 150px));
     grid-gap: ${({ theme }) => theme.space[1]};
     padding-bottom: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.sm`
         grid-template-columns: repeat(4, minmax(0, 1fr));
     `};
-    ${StyledH2} {
+    ${StyledH1} {
         color: white;
         margin: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: ${({ theme }) => theme.space[1]};
     }
 `;
 
 const OverlayContainer = styled.div`
-    grid-row: 2/3;
+    grid-row: 2/4;
     grid-column: 3/5;
-    margin-right: ${({ theme }) => theme.space[1]};
-    margin-bottom: ${({ theme }) => theme.space[1]};
+    margin: ${({ theme }) => theme.space[1]};
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: ${({ theme }) => theme.space[1]};
 `;
 
 const FlexParent = styled.div`
@@ -111,7 +110,7 @@ const About = () => {
                         {
                             <ShowAt breakpoint="largeAndAbove">
                                 <OverlayContainer>
-                                    <StyledH2>{aboutContent.page_header_text}</StyledH2>
+                                    <StyledH1>{aboutContent.page_header_text}</StyledH1>
                                 </OverlayContainer>
                             </ShowAt>
                         }
