@@ -7,7 +7,7 @@ const SlideshowContainer = styled.div`
     margin-top: 80px;
     height: calc(100vh - 80px);
     background-color: ${({ theme }) => theme.primary};
-    ${({ theme }) => theme.sm`
+    ${({ theme }) => theme.lg`
         margin-top: 0px;
         height: 100vh;
     `};
@@ -15,8 +15,8 @@ const SlideshowContainer = styled.div`
 
 const ImageContainer = styled.div`
     margin-left: 0;
-    ${({ theme }) => theme.sm`
-        margin-left: 250px;
+    ${({ theme }) => theme.lg`
+        margin-left: 200px;
     `};
     div {
         width: 100%;
