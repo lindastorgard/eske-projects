@@ -1,6 +1,7 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
 import Slideshow from '../components/Slideshow';
+import CircleLoader from '../components/CircleLoader';
 
 const LandingPage = () => {
     const { landingpage, error, isLoading } = useApi();
@@ -8,7 +9,7 @@ const LandingPage = () => {
     return (
         <div>
             {isLoading ? (
-                <p>Loading</p>
+                <CircleLoader />
             ) : error ? (
                 <p>{error}</p>
             ) : landingpage ? (
