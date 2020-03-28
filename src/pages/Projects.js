@@ -60,7 +60,7 @@ const Projects = () => {
                     {category.map(project => {
                         const { acf } = project;
                         return (
-                            <CategorySection key={project.id} image={acf.image[0].url}>
+                            <CategorySection key={project.id} image={acf.featured_image}>
                                 <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
                                     <Title>{acf.title}</Title>
                                 </Link>
