@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
-import { StyledH2, StyledParagraph } from '../styles/typography';
+import { StyledH2, StyledParagraph, StyledH3 } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
-import { HideAt, ShowAt } from 'react-with-breakpoints';
+import { ShowAt } from 'react-with-breakpoints';
 
 const HeaderImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    grid-row: 1/4;
+    grid-row: 1/3;
     grid-column: 1/5;
 `;
 
 const HeroGrid = styled.section`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 200px 200px 40px;
+    grid-template-rows: 200px 200px;
     grid-gap: ${({ theme }) => theme.space[1]};
     padding-bottom: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.sm`
@@ -25,14 +25,17 @@ const HeroGrid = styled.section`
     `};
     ${StyledH2} {
         color: white;
+        margin: 0;
         background-color: rgba(0, 0, 0, 0.5);
-        padding: ${({ theme }) => theme.space[2]};
+        padding: ${({ theme }) => theme.space[1]};
     }
 `;
 
 const OverlayContainer = styled.div`
     grid-row: 2/3;
     grid-column: 3/5;
+    margin-right: ${({ theme }) => theme.space[1]};
+    margin-bottom: ${({ theme }) => theme.space[1]};
 `;
 
 const FlexParent = styled.div`
@@ -50,8 +53,8 @@ const EmployeeGrid = styled.div`
     display: grid;
     height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: ${({ theme }) => theme.space[4]};
+    grid-template-rows: repeat(3, 100px);
+    grid-gap: ${({ theme }) => theme.space[1]};
     padding-bottom: ${({ theme }) => theme.space[1]};
 `;
 
@@ -61,11 +64,16 @@ const Flex2 = styled.div`
 `;
 
 const EmployeeInfo = styled.div`
-    grid-row: 2/3;
+    grid-row: 3/4;
     grid-column: 1/2;
     bottom: 0;
-    background: black;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    text-align: center;
+    p,
+    h3 {
+        margin: 6px;
+    }
 `;
 
 const StyledImage = styled.img`
@@ -77,7 +85,7 @@ const EmployeeImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    grid-row: 1/3;
+    grid-row: 1/4;
     grid-column: 1/2;
 `;
 
@@ -101,7 +109,7 @@ const About = () => {
                     <HeroGrid>
                         <HeaderImage src={aboutContent.images[0]} alt="top background" />
                         {
-                            <ShowAt breakpoint="mediumAndAbove">
+                            <ShowAt breakpoint="largeAndAbove">
                                 <OverlayContainer>
                                     <StyledH2>{aboutContent.page_header_text}</StyledH2>
                                 </OverlayContainer>
@@ -122,9 +130,9 @@ const About = () => {
                                 <EmployeeGrid>
                                     <EmployeeImage src={employee.image} alt="employee" />
                                     <EmployeeInfo>
-                                        <p>{employee.name}</p>
-                                        <p>{employee.role}</p>
-                                        <p>{employee.email}</p>
+                                        <StyledH3>{employee.name}</StyledH3>
+                                        <StyledParagraph>{employee.role}</StyledParagraph>
+                                        <StyledParagraph>{employee.email}</StyledParagraph>
                                     </EmployeeInfo>
                                 </EmployeeGrid>
                             </Flex1>
