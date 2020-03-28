@@ -17,12 +17,6 @@ export const StyledH2 = styled.h2`
     font-weight: 500;
 `;
 
-export const StyledLargeH3 = styled.h2`
-    font-family: ${({ theme }) => theme.fonts.heading};
-    font-weight: 500;
-    font-size: ${({ theme }) => theme.fontSizes[4]};
-`;
-
 export const StyledH3 = styled.h3`
     font-weight: 300;
     font-family: ${({ theme }) => theme.fonts.heading};
