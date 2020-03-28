@@ -6,6 +6,9 @@ import CircleLoader from '../components/CircleLoader';
 
 const Container = styled.div`
     margin-top: 80px;
+    ${({ theme }) => theme.sm`
+        margin-top: 88px;
+    `};
     ${({ theme }) => theme.lg`
         margin-top: 0px;
         margin-left: 200px;

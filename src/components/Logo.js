@@ -5,9 +5,11 @@ import logo from '../assets/logo.png';
 const StyledLogo = styled.img`
     height: ${({ theme }) => theme.space[6]};
     display: block;
-    margin: 0 auto;
-    position; absolute;
+    position: absolute;
     z-index: 98;
+    ${({ theme }) => theme.sm`
+        height: 72px;
+    `};
     ${({ theme }) => theme.lg`
         height: ${({ theme }) => theme.space[7]};
     `};

@@ -12,6 +12,9 @@ const ImageContainer = styled.div`
         width: 100%;
         height: calc(100vh - 80px);
         overflow: hidden;
+        ${({ theme }) => theme.sm`
+            height: calc(100vh - 88px);
+        `};
         ${({ theme }) => theme.lg`
             height: 100vh
         `};
