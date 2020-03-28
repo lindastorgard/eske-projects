@@ -27,8 +27,9 @@ const CategorySection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-        ${props => `url(${props.image}) no-repeat center`};
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
     &:first-of-type {
         grid-column: 1/2;
         grid-row: 1/2;
