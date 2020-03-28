@@ -21,6 +21,7 @@ const Wrapper = styled.div`
             transition: 1s;
             left: 0;
         }
+    }
 `;
 
 const NavItem = styled(Link)`
@@ -49,6 +50,6 @@ const NavLink = ({ url, link }) => {
 export default NavLink;
 
 NavLink.propTypes = {
-    url: PropTypes.string,
-    link: PropTypes.string,
+    url: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
 };

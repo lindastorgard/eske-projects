@@ -4,13 +4,7 @@ import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import { StyledLargeH2 } from '../styles/typography';
 import { PROJECT_WITH_ID } from '../utils/urlRoutes';
-
-const Container = styled.div`
-    margin-left: 0;
-    ${({ theme }) => theme.xs`
-        margin-left: 250px;
-	`};
-`;
+import Layout from '../components/Layout';
 
 const StyledSection = styled.section`
     display: grid;
@@ -57,7 +51,7 @@ const Projects = () => {
     const { category, error, isLoading } = useApi(param.category);
     console.log(param.category);
     return (
-        <Container>
+        <Layout>
             {isLoading ? (
                 <p>Loading...</p>
             ) : error ? (
@@ -76,7 +70,7 @@ const Projects = () => {
                     })}
                 </StyledSection>
             ) : null}
-        </Container>
+        </Layout>
     );
 };
 export default Projects;
