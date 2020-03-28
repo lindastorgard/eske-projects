@@ -6,10 +6,10 @@ import { ShowAt, HideAt } from 'react-with-breakpoints';
 const Header = () => {
     return (
         <>
-            <HideAt breakpoint="mediumAndBelow">
+            <HideAt breakpoint="largeAndBelow">
                 <DesktopNavigation />
             </HideAt>
-            <ShowAt breakpoint="mediumAndBelow">
+            <ShowAt breakpoint="largeAndBelow">
                 <MobileNavigation />
             </ShowAt>
         </>
