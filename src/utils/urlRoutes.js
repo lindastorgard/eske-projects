@@ -17,3 +17,8 @@ export const PROJECT_WITH_CATEGORY = {
     path: `${PORTFOLIO.path}/:category`,
     getPathWithId: category => `${PORTFOLIO.path}/${category}`,
 };
+
+export const PROJECT_WITH_ID = {
+    path: `${PORTFOLIO.path}/:category/:id`,
+    getPathWithId: (category, id) => `${PORTFOLIO.path}/${category}/${id}`,
+};

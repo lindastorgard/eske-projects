@@ -3,6 +3,7 @@ import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import { StyledLargeH2 } from '../styles/typography';
+import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 
 const Container = styled.div`
     margin-left: 0;
@@ -54,8 +55,7 @@ const CategorySection = styled.div`
 const Projects = () => {
     const param = useParams();
     const { category, error, isLoading } = useApi(param.category);
-    console.log(category);
-
+    console.log(param.category);
     return (
         <Container>
             {isLoading ? (
@@ -68,7 +68,7 @@ const Projects = () => {
                         const { acf } = project;
                         return (
                             <CategorySection key={project.id} image={acf.image[0].url}>
-                                <Link to={`/`}>
+                                <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
                                     <Title>{acf.title}</Title>
                                 </Link>
                             </CategorySection>

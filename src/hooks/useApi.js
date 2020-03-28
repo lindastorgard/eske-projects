@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useAPI = param => {
+const useAPI = (param, projectId = '') => {
     // ---- State
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -9,6 +9,7 @@ const useAPI = param => {
     const [category, setCategory] = useState(null);
     const [landingpage, setLandingpage] = useState(null);
     const [aboutpage, setAboutpage] = useState(null);
+    const [project, setProject] = useState(null);
 
     // ---- API
 
@@ -63,22 +64,18 @@ const useAPI = param => {
             setIsLoading(false);
         }
     };
-
-    // const fetchProductWIthId = async () => {
-    //     setError(null);
-    //     try {
-    //         setIsLoading(true);
-    //         const result = await axios(
-    //             `http://eskeprosjekt.no/wp-json/wp/v2/products?include[]=470&include[]=${productId.productId}`,
-    //         );
-    //         setProduct(result.data);
-    //     } catch (e) {
-    //         setError(e.toString());
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
-    // };
+    const fetchProductWIthId = async () => {
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios(`https://eskeprosjekt.no/wp-json/wp/v2/projects?include[]=${projectId}`);
+            setProject(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
         fetchCategories();
@@ -88,9 +85,9 @@ const useAPI = param => {
         }
         fetchLandingpage();
         fetchAboutPage();
-        // if (productId) {
-        //     fetchProductWIthId();
-        // }
+        if (projectId) {
+            fetchProductWIthId();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [param]);
 
@@ -99,8 +96,7 @@ const useAPI = param => {
         categories,
         landingpage,
         aboutpage,
-        // data,
-        // product,
+        project,
         isLoading,
         error,
     };
