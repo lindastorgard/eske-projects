@@ -11,6 +11,9 @@ const NavigationWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 80px;
+    ${({ theme }) => theme.sm`
+        height: 88px;
+    `};
     background-color: ${({ theme }) => theme.primary};
     z-index: 6;
 `;
@@ -19,7 +22,10 @@ const StyledLogo = styled.div`
     position: absolute;
     top: 0;
     left: calc(50% - 64px / 2);
-    padding: ${({ theme }) => theme.space[0]};
+    ${({ theme }) => theme.sm`
+        left: calc(50% - 74px / 2);
+    `};
+    padding: ${({ theme }) => theme.space[0]} 0;
     z-index: 6;
 `;
 
