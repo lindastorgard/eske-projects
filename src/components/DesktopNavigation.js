@@ -38,7 +38,7 @@ const IconContainer = styled.div`
     display: flex;
     flex-direction: row;
     position: absolute;
-    bottom: ${({ theme }) => theme.space[2]};
+    bottom: ${({ theme }) => theme.space[4]};
     padding-left: ${({ theme }) => theme.space[2]};
 `;
 

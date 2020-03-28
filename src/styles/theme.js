@@ -22,6 +22,7 @@ const theme = {
     primary: '#fff',
     secondary: '#000',
     brand: '#EBE0E0',
+    darkbrand: '#C199A6',
     highlight: '#E5E5E5',
     text: '#212121',
     background: '#fff',
