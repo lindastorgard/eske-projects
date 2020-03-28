@@ -6,9 +6,13 @@ import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph } from '../styles/typography';
+import { HideAt } from 'react-with-breakpoints';
 
 const SectionContainer = styled.section`
-    ${({ theme }) => theme.sm`
+    ${({ theme }) => theme.sm`  
+        margin-bottom: ${({ theme }) => theme.space[5]}   
+    `};
+    ${({ theme }) => theme.lg`
     display: flex;
     & > * {
         flex: 1;
@@ -16,13 +20,15 @@ const SectionContainer = styled.section`
     article {
         margin-top: 100px;
     }
-    margin-bottom: ${({ theme }) => theme.space[5]};
-        
+    margin-bottom: ${({ theme }) => theme.space[5]}     
     `};
 `;
 
 const Header = styled(StyledH1)`
-    margin-top: ${({ theme }) => theme.space[6]};
+    margin-top: 120px;
+    ${({ theme }) => theme.lg` 
+     margin-top: ${({ theme }) => theme.space[6]};
+    `};
 `;
 
 const GalleryWrapper = styled.div`
@@ -77,11 +83,13 @@ const ProjectsDetails = () => {
                 <>
                     <SectionContainer>
                         <div>
-                            <BackButton>
-                                {category === 'residential'
-                                    ? categories[1].acf.category_name
-                                    : categories[0].acf.category_name}
-                            </BackButton>
+                            <HideAt breakpoint="largeAndBelow">
+                                <BackButton>
+                                    {category === 'residential'
+                                        ? categories[1].acf.category_name
+                                        : categories[0].acf.category_name}
+                                </BackButton>
+                            </HideAt>
                             <Header>{project[0].acf.title}</Header>
                         </div>
                         <article>
