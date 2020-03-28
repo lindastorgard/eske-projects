@@ -3,6 +3,7 @@ import useApi from '../hooks/useApi';
 import { StyledH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
+import CircleLoader from '../components/CircleLoader';
 
 const HeaderImage = styled.img`
     width: 100%;
@@ -50,7 +51,7 @@ const About = () => {
     return (
         <Layout>
             {isLoading ? (
-                <p>Loading...</p>
+                <CircleLoader />
             ) : error ? (
                 <p>error</p>
             ) : aboutContent ? (

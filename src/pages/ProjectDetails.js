@@ -3,6 +3,7 @@ import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
+import CircleLoader from '../components/CircleLoader';
 
 const GalleryWrapper = styled.div`
     display: grid;
@@ -37,14 +38,11 @@ const Image = styled.img`
 const ProjectsDetails = () => {
     const { id } = useParams();
     const { project, error, isLoading } = useApi('', id);
-    if (project) {
-        console.log(project[0].acf.image);
-    }
 
     return (
         <Layout>
             {isLoading ? (
-                <p>Loading...</p>
+                <CircleLoader />
             ) : error ? (
                 <p>{error}...</p>
             ) : project ? (

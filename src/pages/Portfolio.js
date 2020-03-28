@@ -5,6 +5,7 @@ import { StyledLargeH2 } from '../styles/typography';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
+import CircleLoader from '../components/CircleLoader';
 
 const Container = styled.div`
     display: grid;
@@ -59,26 +60,21 @@ const Portfolio = () => {
 
     return (
         <Layout>
-            <Container>
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : error ? (
-                    <p>{error}...</p>
-                ) : categories ? (
-                    <>
-                        {categories.map(({ acf }) => {
-                            console.log(acf.category_name);
-                            return (
-                                <CategorySection key={acf.image.id} image={acf.image.url}>
-                                    <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
-                                        <Title>{acf.category_name}</Title>
-                                    </Link>
-                                </CategorySection>
-                            );
-                        })}
-                    </>
-                ) : null}
-            </Container>
+            {isLoading ? (
+                <CircleLoader />
+            ) : error ? (
+                <p>{error}...</p>
+            ) : categories ? (
+                <Container>
+                    {categories.map(({ acf }) => (
+                        <CategorySection key={acf.image.id} image={acf.image.url}>
+                            <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
+                                <Title>{acf.category_name}</Title>
+                            </Link>
+                        </CategorySection>
+                    ))}
+                </Container>
+            ) : null}
         </Layout>
     );
 };
