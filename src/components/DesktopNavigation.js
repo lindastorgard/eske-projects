@@ -8,7 +8,7 @@ import InstagramIcon from './icons/InstagramIcon';
 import FacebookIcon from './icons/FacebookIcon';
 
 const NavigationWrapper = styled.nav`
-    width: 250px;
+    width: 200px;
     height: 100%;
     position: fixed;
     z-index: 99;
