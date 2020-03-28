@@ -30,4 +30,5 @@ export const StyledLink = styled.a`
 export const StyledParagraph = styled.p`
     font-family: ${({ theme }) => theme.fonts.body};
     font-weight: 300;
+    line-height: 1.5;
 `;
