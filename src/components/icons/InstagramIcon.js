@@ -5,9 +5,9 @@ const StyledIcon = styled.svg`
     display: block;
     height: 20px;
     padding-right: ${({ theme }) => theme.space[0]};
-    fill: ${({ theme }) => theme.brand};
+    fill: ${({ theme }) => theme.darkbrand};
     &:hover {
-        fill: ${({ theme }) => theme.text};
+        fill: ${({ theme }) => theme.brand};
 `;
 
 const InstagramIcon = () => {

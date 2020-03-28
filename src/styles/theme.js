@@ -4,7 +4,8 @@ export const breakpoints = {
     xs: '480px',
     sm: '768px',
     md: '992px',
-    lg: '1200px',
+    lg: '1024px',
+    xlarge: 'Infinity',
 };
 
 export const media = Object.keys(breakpoints).reduce((accumulator, label) => {
@@ -21,6 +22,7 @@ const theme = {
     primary: '#fff',
     secondary: '#000',
     brand: '#EBE0E0',
+    darkbrand: '#C199A6',
     highlight: '#E5E5E5',
     text: '#212121',
     background: '#fff',
