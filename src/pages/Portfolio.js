@@ -4,20 +4,16 @@ import styled from 'styled-components';
 import { StyledLargeH2 } from '../styles/typography';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
+import Layout from '../components/Layout';
 
 const Container = styled.div`
-    margin-left: 0;
-    margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, calc(50vh - 40px));
+    grid-template-rows: repeat(2, calc(50vh - 56px));
     grid-gap: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.sm`
 		  grid-template-columns: repeat(2, 1fr);
-		  grid-template-rows: 100vh;
-          grid-gap: ${({ theme }) => theme.space[2]};
-          margin-left: 250px;
-          margin-top: 0;
+		  grid-template-rows: calc(100vh - 32px);
 		`};
 `;
 
@@ -47,9 +43,6 @@ const CategorySection = styled.div`
         height: 100%;
         justify-content: center;
         width: 100%;
-        &:hover {
-            background: rgba(0, 0, 0, 0.4);
-        }
     }
     ${({ theme }) => theme.sm`
 		&:first-of-type {
@@ -65,26 +58,28 @@ const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
 
     return (
-        <Container>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : error ? (
-                <p>{error}...</p>
-            ) : categories ? (
-                <>
-                    {categories.map(({ acf }) => {
-                        console.log(acf.category_name);
-                        return (
-                            <CategorySection key={acf.image.id} image={acf.image.url}>
-                                <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
-                                    <Title>{acf.category_name}</Title>
-                                </Link>
-                            </CategorySection>
-                        );
-                    })}
-                </>
-            ) : null}
-        </Container>
+        <Layout>
+            <Container>
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p>{error}...</p>
+                ) : categories ? (
+                    <>
+                        {categories.map(({ acf }) => {
+                            console.log(acf.category_name);
+                            return (
+                                <CategorySection key={acf.image.id} image={acf.image.url}>
+                                    <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
+                                        <Title>{acf.category_name}</Title>
+                                    </Link>
+                                </CategorySection>
+                            );
+                        })}
+                    </>
+                ) : null}
+            </Container>
+        </Layout>
     );
 };
 export default Portfolio;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import { StyledH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 const HeaderImage = styled.img`
     width: 100%;
@@ -38,14 +39,6 @@ const StyledImage = styled.img`
     width: 50%;
 `;
 
-const AboutWrapper = styled.div`
-    margin-left: 0;
-    position: relative;
-    ${({ theme }) => theme.sm`
-        margin-left: 250px;
-    `};
-`;
-
 const About = () => {
     const { isLoading, error, aboutpage } = useApi();
     const [aboutContent, setAboutContent] = useState(null);
@@ -55,7 +48,7 @@ const About = () => {
         }
     }, [aboutpage]);
     return (
-        <AboutWrapper>
+        <Layout>
             {isLoading ? (
                 <p>Loading...</p>
             ) : error ? (
@@ -79,7 +72,7 @@ const About = () => {
                     </FlexParent>
                 </>
             ) : null}
-        </AboutWrapper>
+        </Layout>
     );
 };
 

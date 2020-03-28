@@ -2,16 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-
-const Container = styled.div`
-    margin-right: ${({ theme }) => theme.space[1]};
-    margin-left: ${({ theme }) => theme.space[1]};
-    margin-top: 80px;
-    ${({ theme }) => theme.sm`
-        margin-left: 200px;
-        margin-top: 0;
-	`};
-`;
+import Layout from '../components/Layout';
 
 const GalleryWrapper = styled.div`
     display: grid;
@@ -51,7 +42,7 @@ const ProjectsDetails = () => {
     }
 
     return (
-        <Container>
+        <Layout>
             {isLoading ? (
                 <p>Loading...</p>
             ) : error ? (
@@ -68,7 +59,7 @@ const ProjectsDetails = () => {
                     </GalleryWrapper>
                 </>
             ) : null}
-        </Container>
+        </Layout>
     );
 };
 export default ProjectsDetails;

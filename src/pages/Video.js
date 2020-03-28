@@ -1,19 +1,16 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
 import { StyledH3 } from '../styles/typography';
+import Layout from '../components/Layout';
 
 function Video() {
     const { data } = useApi();
     if (data) {
-        // console.log(data);
     }
     return (
-        <div>
-            {/* <HideAt breakpoint="small">
-                        <div>Hello World!</div>
-                    </HideAt> */}
+        <Layout>
             <StyledH3>I'm Video</StyledH3>
-        </div>
+        </Layout>
     );
 }
 
