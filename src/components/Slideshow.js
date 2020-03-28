@@ -4,24 +4,17 @@ import styled from 'styled-components';
 import { Fade } from 'react-slideshow-image';
 
 const SlideshowContainer = styled.div`
-    margin-top: 80px;
-    height: calc(100vh - 80px);
     background-color: ${({ theme }) => theme.primary};
-    ${({ theme }) => theme.lg`
-        margin-top: 0px;
-        height: 100vh;
-    `};
 `;
 
 const ImageContainer = styled.div`
-    margin-left: 0;
-    ${({ theme }) => theme.lg`
-        margin-left: 200px;
-    `};
     div {
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 80px);
         overflow: hidden;
+        ${({ theme }) => theme.lg`
+            height: 100vh
+        `};
         img {
             width: 100%;
             height: 100%;

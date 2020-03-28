@@ -22,8 +22,9 @@ import {
 } from '../utils/urlRoutes';
 
 const breakpoints = {
-    small: 468,
-    medium: 768,
+    xsmall: 468,
+    small: 768,
+    medium: 992,
     large: 1024,
     xlarge: Infinity,
 };

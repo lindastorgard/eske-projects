@@ -12,7 +12,7 @@ const Container = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, calc(50vh - 56px));
     grid-gap: ${({ theme }) => theme.space[1]};
-    ${({ theme }) => theme.sm`
+    ${({ theme }) => theme.lg`
 		  grid-template-columns: repeat(2, 1fr);
 		  grid-template-rows: calc(100vh - 32px);
 		`};
@@ -46,7 +46,7 @@ const CategorySection = styled.div`
         justify-content: center;
         width: 100%;
     }
-    ${({ theme }) => theme.sm`
+    ${({ theme }) => theme.lg`
 		&:first-of-type {
             grid-column: 1/2;
         }
