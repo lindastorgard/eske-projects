@@ -8,6 +8,9 @@ const StyledLogo = styled.img`
     margin: 0 auto;
     position; absolute;
     z-index: 98;
+    ${({ theme }) => theme.lg`
+        height: ${({ theme }) => theme.space[7]};
+    `};
 `;
 
 const Logo = () => {
