@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
+import { PORTFOLIO, CONTACT, ABOUT, VIDEO, LANDING_PAGE } from '../utils/urlRoutes';
 import NavLink from './navigation/NavILink';
 import Logo from './Logo';
 import InstagramIcon from './icons/InstagramIcon';
@@ -53,7 +53,7 @@ const DesktopNavigation = () => {
             <div>
                 <LinkCointainer>
                     <NavLink url={PORTFOLIO.path} link="Portfolio" />
-                    <NavLink url={SERVICES.path} link="Tjenster" />
+                    <NavLink url={CONTACT.path} link="Kontakt" />
                     <NavLink url={ABOUT.path} link="Om Oss" />
                     <NavLink url={VIDEO.path} link="Video" />
                 </LinkCointainer>
