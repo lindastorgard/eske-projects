@@ -51,7 +51,7 @@ const NavLink = ({ url, link }) => {
             <Background />
             <NavItem
                 to={url}
-                isActive={(match, location) => {
+                isActive={match => {
                     if (match) {
                         setActive(true);
                     } else setActive(false);
