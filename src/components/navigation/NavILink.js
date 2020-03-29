@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { NavLink as Link } from 'react-router-dom';
 
 const Background = styled.div`
     position: absolute;
@@ -22,6 +22,14 @@ const Wrapper = styled.div`
             left: 0;
         }
     }
+    ${props =>
+        props.active &&
+        css`
+            ${Background} {
+                transition: 1s;
+                left: 0;
+            }
+        `}
 `;
 
 const NavItem = styled(Link)`
@@ -34,16 +42,23 @@ const NavItem = styled(Link)`
     font-weight: ${({ theme }) => theme.fontWeights[0]};
     text-transform: uppercase;
     color: ${({ theme }) => theme.text};
-    /* &:hover {
-        background-image: linear-gradient(to right, #ebe0e0, #fff);
-    } */
 `;
 
 const NavLink = ({ url, link }) => {
+    const [active, setActive] = useState(false);
     return (
-        <Wrapper>
+        <Wrapper active={active ? true : false}>
             <Background />
-            <NavItem to={url}>{link}</NavItem>
+            <NavItem
+                to={url}
+                isActive={(match, location) => {
+                    if (match) {
+                        setActive(true);
+                    } else setActive(false);
+                }}
+            >
+                {link}
+            </NavItem>
         </Wrapper>
     );
 };

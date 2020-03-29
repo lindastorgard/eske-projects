@@ -13,6 +13,7 @@ const Container = styled.div`
         margin-left: 200px;
         margin-top: ${({ theme }) => theme.space[1]};
         margin-bottom: ${({ theme }) => theme.space[1]};
+        margin-right: ${({ theme }) => theme.space[3]};
 	`};
 `;
 

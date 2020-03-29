@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
+import { HideAt, ShowAt } from 'react-with-breakpoints';
 
 const Container = styled.div`
     display: grid;
@@ -58,7 +59,6 @@ const CategorySection = styled.div`
 
 const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
-
     return (
         <Layout>
             {isLoading ? (
@@ -67,13 +67,24 @@ const Portfolio = () => {
                 <p>{error}...</p>
             ) : categories ? (
                 <Container>
-                    {categories.map(({ acf }) => (
-                        <CategorySection key={acf.image.id} image={acf.image.url}>
-                            <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
-                                <Title>{acf.category_name}</Title>
-                            </Link>
-                        </CategorySection>
-                    ))}
+                    <HideAt breakpoint="largeAndAbove">
+                        {categories.map(({ acf }) => (
+                            <CategorySection key={acf.image.id} image={acf.image_mobile}>
+                                <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
+                                    <Title>{acf.category_name}</Title>
+                                </Link>
+                            </CategorySection>
+                        ))}
+                    </HideAt>
+                    <ShowAt breakpoint="largeAndAbove">
+                        {categories.map(({ acf }) => (
+                            <CategorySection key={acf.image.id} image={acf.image}>
+                                <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
+                                    <Title>{acf.category_name}</Title>
+                                </Link>
+                            </CategorySection>
+                        ))}
+                    </ShowAt>
                 </Container>
             ) : null}
         </Layout>

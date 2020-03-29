@@ -34,8 +34,8 @@ const Header = styled(StyledH1)`
 const GalleryWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: ${({ theme }) => theme.space[1]};
+    grid-auto-rows: minmax(250px, auto);
+    grid-gap: 4px;
     ${({ theme }) => theme.sm`
          grid-template-columns: repeat(3, 1fr);
 	`};
@@ -48,17 +48,18 @@ const ImageWrapper = styled.div`
     }
     ${({ theme }) => theme.sm`
         grid-column: span 1;
-        min-height: 300px;
+        min-height: 350px;
         &:nth-of-type(5n + 5) {
           grid-column: 2 / 4;
         }
 	`};
-`;
+    ${({ theme }) => theme.lg`
+        min-height: 600px; 
+	`};
 
-const Image = styled.img`
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+    background: ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
 const Dash = styled.span`
@@ -104,9 +105,7 @@ const ProjectsDetails = () => {
 
                     <GalleryWrapper>
                         {project[0].acf.image.map(({ url, id, title }) => (
-                            <ImageWrapper key={id}>
-                                <Image src={url} alt={title} />
-                            </ImageWrapper>
+                            <ImageWrapper key={id} image={url} />
                         ))}
                     </GalleryWrapper>
                 </>
