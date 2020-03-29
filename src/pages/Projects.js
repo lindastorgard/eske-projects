@@ -11,7 +11,7 @@ const StyledSection = styled.section`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    grid-gap: ${({ theme }) => theme.space[1]};
+    grid-gap: 4px;
     ${({ theme }) => theme.sm`
         grid-template-columns: repeat(2, minmax(0, 1fr));
     `};
