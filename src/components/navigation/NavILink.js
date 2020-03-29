@@ -40,6 +40,7 @@ const NavItem = styled(Link)`
     font-size: ${({ theme }) => theme.fontSizes[2]};
     font-family: ${({ theme }) => theme.fonts.body};
     font-weight: ${({ theme }) => theme.fontWeights[0]};
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: ${({ theme }) => theme.text};
 `;
