@@ -29,11 +29,11 @@ const ImageContainer = styled.div`
     ${({ theme }) => theme.sm`
         flex: 1;
         height: 300px;
-        margin: 40px 40px 0 40px;
+        margin: 36px 40px 0 40px;
     `};
     ${({ theme }) => theme.lg`
         flex: 1;
-        height: auto;
+        height: 450px;
     `};
 `;
 
@@ -41,6 +41,7 @@ const StyledImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 `;
 
 const TextContainer = styled.div`
@@ -77,7 +78,9 @@ const About = () => {
                         </ImageContainer>
                         <TextContainer>
                             <StyledLargeH2>{aboutContent.section1.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section1.text}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section1.paragraph}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section1.paragraph2}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section1.paragraph3}</StyledParagraph>
                         </TextContainer>
                     </FlexParent>
                     <FlexParent>
@@ -86,7 +89,9 @@ const About = () => {
                         </ImageContainer>
                         <TextContainer>
                             <StyledLargeH2>{aboutContent.section2.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section2.text}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section2.paragraph}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section2.paragraph2}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section2.paragraph3}</StyledParagraph>
                         </TextContainer>
                     </FlexParent>
                     <FlexParent>
@@ -95,7 +100,9 @@ const About = () => {
                         </ImageContainer>
                         <TextContainer>
                             <StyledLargeH2>{aboutContent.section3.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section3.text}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section3.paragraph}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section3.paragraph2}</StyledParagraph>
+                            <StyledParagraph>{aboutContent.section3.paragraph3}</StyledParagraph>
                         </TextContainer>
                     </FlexParent>
                 </>
