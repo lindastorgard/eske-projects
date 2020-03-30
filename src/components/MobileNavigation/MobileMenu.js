@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PORTFOLIO, SERVICES, ABOUT, VIDEO } from '../../utils/urlRoutes';
+import { PORTFOLIO, CONTACT, ABOUT, VIDEO } from '../../utils/urlRoutes';
 import NavLink from '../navigation/NavILink';
 
 const NavigationWrapper = styled.nav`
@@ -32,7 +32,7 @@ const MobileMenu = ({ open, setOpen }) => {
                 <div>
                     <LinkCointainer open={open} onClick={() => setOpen(!open)}>
                         <NavLink url={PORTFOLIO.path} link="Portfolio" />
-                        <NavLink url={SERVICES.path} link="Tjenster" />
+                        <NavLink url={CONTACT.path} link="Kontakt" />
                         <NavLink url={ABOUT.path} link="Om Oss" />
                         <NavLink url={VIDEO.path} link="Video" />
                     </LinkCointainer>

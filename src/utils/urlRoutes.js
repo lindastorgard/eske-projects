@@ -7,8 +7,8 @@ export const VIDEO = {
 export const ABOUT = {
     path: '/omoss',
 };
-export const SERVICES = {
-    path: '/tjenster',
+export const CONTACT = {
+    path: '/kontakt',
 };
 export const PORTFOLIO = {
     path: '/portfolio',

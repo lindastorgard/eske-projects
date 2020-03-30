@@ -25,6 +25,7 @@ const StyledButton = styled.button`
         font-size: ${({ theme }) => theme.fontSizes[2]};
         text-transform: uppercase;
         margin-left: ${({ theme }) => theme.space[0]};
+        letter-spacing: 2px;
     }
 `;
 

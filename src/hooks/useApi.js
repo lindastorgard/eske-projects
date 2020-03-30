@@ -9,6 +9,7 @@ const useAPI = (param, projectId = '') => {
     const [category, setCategory] = useState(null);
     const [landingpage, setLandingpage] = useState(null);
     const [aboutpage, setAboutpage] = useState(null);
+    const [contactpage, setContactpage] = useState(null);
     const [project, setProject] = useState(null);
 
     // ---- API
@@ -64,6 +65,20 @@ const useAPI = (param, projectId = '') => {
             setIsLoading(false);
         }
     };
+
+    const fetchContactPage = async () => {
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/contact_page');
+            setContactpage(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const fetchProductWIthId = async () => {
         setError(null);
         try {
@@ -85,6 +100,7 @@ const useAPI = (param, projectId = '') => {
         }
         fetchLandingpage();
         fetchAboutPage();
+        fetchContactPage();
         if (projectId) {
             fetchProductWIthId();
         }
@@ -96,6 +112,7 @@ const useAPI = (param, projectId = '') => {
         categories,
         landingpage,
         aboutpage,
+        contactpage,
         project,
         isLoading,
         error,

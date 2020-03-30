@@ -26,6 +26,7 @@ const SectionContainer = styled.section`
 
 const Header = styled(StyledH1)`
     margin-top: 120px;
+    text-transform: uppercase;
     ${({ theme }) => theme.lg` 
      margin-top: ${({ theme }) => theme.space[6]};
     `};

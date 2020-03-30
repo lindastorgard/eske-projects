@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import { BreakpointsProvider } from 'react-with-breakpoints';
 import Portfolio from './Portfolio';
-import Services from './Services';
+import Contact from './Contact';
 import About from './About';
 import Header from '../components/Header';
 import Video from './Video';
@@ -15,7 +15,7 @@ import {
     LANDING_PAGE,
     VIDEO,
     ABOUT,
-    SERVICES,
+    CONTACT,
     PORTFOLIO,
     PROJECT_WITH_CATEGORY,
     PROJECT_WITH_ID,
@@ -40,7 +40,7 @@ function App() {
                             <Switch>
                                 <Route exact path={VIDEO.path} component={Video} />
                                 <Route exact path={ABOUT.path} component={About} />
-                                <Route exact path={SERVICES.path} component={Services} />
+                                <Route exact path={CONTACT.path} component={Contact} />
                                 <Route exact path={PORTFOLIO.path} component={Portfolio} />
                                 <Route exact path={PROJECT_WITH_ID.path} component={ProjectDetails} />
                                 <Route exact path={PROJECT_WITH_CATEGORY.path} component={Projects} />

@@ -9,7 +9,7 @@ var WebFont = require('webfontloader');
 
 WebFont.load({
     google: {
-        families: ['Playfair Display:400, 500, 600, 700', 'Roboto Condensed:300, 400, 700'],
+        families: ['Playfair Display:400, 500, 600, 700', 'Roboto Condensed:300, 400, 700', 'Darker Grotesque:400'],
     },
 });
 
