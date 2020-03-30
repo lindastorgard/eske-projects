@@ -21,19 +21,20 @@ const FlexParent = styled.div`
 
 const ImageContainer = styled.div`
     width: 100%;
-    height: 350px;
-    overflow: hidden;
+    height: auto;
+    // height: 350px;
+    // overflow: hidden;
     ${({ theme }) => theme.xs`
-        height: 500px;
+        // height: 500px;
     `};
     ${({ theme }) => theme.sm`
         flex: 1;
-        height: 300px;
+        // height: 300px;
         margin: 36px 40px 0 40px;
     `};
     ${({ theme }) => theme.lg`
         flex: 1;
-        height: 450px;
+        // height: 450px;
     `};
 `;
 
