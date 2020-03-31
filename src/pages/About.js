@@ -70,7 +70,7 @@ const About = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>{error}</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : aboutContent ? (
                 <div>
                     {Object.keys(aboutContent).map(section =>(

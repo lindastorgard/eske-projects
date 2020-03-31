@@ -70,13 +70,13 @@ function Services() {
         }
     }, [contactpage]);
     return (
-        <>
+        <Layout>
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>error</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : contactPageContent ? (
-                <Layout>
+                <>
                     <Container>
                         <Wrapper>
                             <Header>{contactPageContent.title}</Header>
@@ -111,7 +111,6 @@ function Services() {
                         </Wrapper>
                         <Wrapper image={contactPageContent.image.url}></Wrapper>
                     </Container>
-
                     <StyledSection>
                         <iframe
                             title="eske_as"
@@ -124,9 +123,9 @@ function Services() {
                             tabIndex="0"
                         ></iframe>
                     </StyledSection>
-                </Layout>
+                </>
             ) : null}
-        </>
+        </Layout>
     );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { StyledLargeH2 } from '../styles/typography';
+import { StyledLargeH2, StyledParagraph } from '../styles/typography';
 import { Link } from 'react-router-dom';
 import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
@@ -64,7 +64,7 @@ const Portfolio = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>{error}...</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : categories ? (
                 <Container>
                     <HideAt breakpoint="largeAndAbove">

@@ -3,6 +3,7 @@ import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import Slideshow from '../components/Slideshow';
 import CircleLoader from '../components/CircleLoader';
+import { StyledParagraph } from '../styles/typography';
 
 const Container = styled.div`
     margin-top: 80px;
@@ -23,7 +24,7 @@ const LandingPage = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>{error}</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : landingpage ? (
                 <Container>
                     <Slideshow landingpage={landingpage} />

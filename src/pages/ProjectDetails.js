@@ -80,7 +80,7 @@ const ProjectsDetails = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>{error}...</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : project && categories ? (
                 <>
                     <SectionContainer>

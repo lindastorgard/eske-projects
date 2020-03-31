@@ -2,7 +2,7 @@ import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import { StyledH2 } from '../styles/typography';
+import { StyledH2, StyledParagraph } from '../styles/typography';
 import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
@@ -54,7 +54,7 @@ const Projects = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>{error}...</p>
+                <StyledParagraph>{error}</StyledParagraph>
             ) : category ? (
                 <StyledSection>
                     {category.map(project => {
