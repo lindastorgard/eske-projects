@@ -32,9 +32,7 @@ const fadeProperties = {
     infinite: true,
     indicators: false,
     arrows: false,
-    onChange: (oldIndex, newIndex) => {
-        console.log(`fade transition from ${oldIndex} to ${newIndex}`);
-    },
+    onChange: (oldIndex, newIndex) => {},
 };
 
 const Slideshow = ({ landingpage }) => {

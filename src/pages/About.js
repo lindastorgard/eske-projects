@@ -41,6 +41,7 @@ const ImageContainer = styled.div`
 const StyledImage = styled.img`
     width: 100%;
     height: 100%;
+    max-height: 450px;
     object-fit: cover;
     object-position: center;
 `;
@@ -62,7 +63,6 @@ const About = () => {
     useEffect(() => {
         if (aboutpage) {
             setAboutContent(aboutpage[0].acf);
-            console.log(aboutpage[0].acf);
         }
     }, [aboutpage]);
     return (
@@ -70,43 +70,23 @@ const About = () => {
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
-                <p>error</p>
+                <p>{error}</p>
             ) : aboutContent ? (
-                <>
-                    <FlexParent>
-                        <ImageContainer>
-                            <StyledImage src={aboutContent.section1.image} alt="interior" />
-                        </ImageContainer>
-                        <TextContainer>
-                            <StyledLargeH2>{aboutContent.section1.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section1.paragraph}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section1.paragraph2}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section1.paragraph3}</StyledParagraph>
-                        </TextContainer>
-                    </FlexParent>
-                    <FlexParent>
-                        <ImageContainer>
-                            <StyledImage src={aboutContent.section2.image} alt="interior" />
-                        </ImageContainer>
-                        <TextContainer>
-                            <StyledLargeH2>{aboutContent.section2.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section2.paragraph}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section2.paragraph2}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section2.paragraph3}</StyledParagraph>
-                        </TextContainer>
-                    </FlexParent>
-                    <FlexParent>
-                        <ImageContainer>
-                            <StyledImage src={aboutContent.section3.image} alt="interior" />
-                        </ImageContainer>
-                        <TextContainer>
-                            <StyledLargeH2>{aboutContent.section3.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.section3.paragraph}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section3.paragraph2}</StyledParagraph>
-                            <StyledParagraph>{aboutContent.section3.paragraph3}</StyledParagraph>
-                        </TextContainer>
-                    </FlexParent>
-                </>
+                <div>
+                    {Object.keys(aboutContent).map(section =>(
+                        <FlexParent>
+                            <ImageContainer>
+                                <StyledImage src={aboutContent[section].image} alt="interior" />
+                            </ImageContainer>
+                            <TextContainer>
+                                <StyledLargeH2>{aboutContent[section].title}</StyledLargeH2>
+                                <StyledParagraph>{aboutContent[section].paragraph}</StyledParagraph>
+                                <StyledParagraph>{aboutContent[section].paragraph2}</StyledParagraph>
+                                <StyledParagraph>{aboutContent[section].paragraph3}</StyledParagraph>
+                            </TextContainer>
+                        </FlexParent>
+                    ))}
+                </div>
             ) : null}
         </Layout>
     );

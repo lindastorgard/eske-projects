@@ -9,6 +9,7 @@ const useAPI = (param, projectId = '') => {
     const [category, setCategory] = useState(null);
     const [landingpage, setLandingpage] = useState(null);
     const [aboutpage, setAboutpage] = useState(null);
+    const [servicespage, setServicespage] = useState(null);
     const [contactpage, setContactpage] = useState(null);
     const [project, setProject] = useState(null);
 
@@ -66,6 +67,19 @@ const useAPI = (param, projectId = '') => {
         }
     };
 
+    const fetchServicesPage = async () => {
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios('http://eskeprosjekt.no/wp-json/wp/v2/tjenster_page');
+            setServicespage(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const fetchContactPage = async () => {
         setError(null);
         try {
@@ -101,6 +115,7 @@ const useAPI = (param, projectId = '') => {
         fetchLandingpage();
         fetchAboutPage();
         fetchContactPage();
+        fetchServicesPage();
         if (projectId) {
             fetchProductWIthId();
         }
@@ -113,6 +128,7 @@ const useAPI = (param, projectId = '') => {
         landingpage,
         aboutpage,
         contactpage,
+        servicespage,
         project,
         isLoading,
         error,

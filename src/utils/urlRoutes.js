@@ -13,6 +13,9 @@ export const CONTACT = {
 export const PORTFOLIO = {
     path: '/portfolio',
 };
+export const SERVICES = {
+    path: '/tjenster',
+};
 export const PROJECT_WITH_CATEGORY = {
     path: `${PORTFOLIO.path}/:category`,
     getPathWithId: category => `${PORTFOLIO.path}/${category}`,

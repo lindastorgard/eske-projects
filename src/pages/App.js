@@ -17,9 +17,11 @@ import {
     ABOUT,
     CONTACT,
     PORTFOLIO,
+    SERVICES,
     PROJECT_WITH_CATEGORY,
     PROJECT_WITH_ID,
 } from '../utils/urlRoutes';
+import Services from './Services';
 
 const breakpoints = {
     xsmall: 468,
@@ -42,6 +44,7 @@ function App() {
                                 <Route exact path={ABOUT.path} component={About} />
                                 <Route exact path={CONTACT.path} component={Contact} />
                                 <Route exact path={PORTFOLIO.path} component={Portfolio} />
+                                <Route exact path={SERVICES.path} component={Services} />
                                 <Route exact path={PROJECT_WITH_ID.path} component={ProjectDetails} />
                                 <Route exact path={PROJECT_WITH_CATEGORY.path} component={Projects} />
                                 <Route exact path={LANDING_PAGE.path} component={LandingPage} />

@@ -69,7 +69,7 @@ const Portfolio = () => {
                 <Container>
                     <HideAt breakpoint="largeAndAbove">
                         {categories.map(({ acf }) => (
-                            <CategorySection key={acf.image.id} image={acf.image_mobile}>
+                            <CategorySection key={acf.image} image={acf.image_mobile}>
                                 <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
                                     <Title>{acf.category_name}</Title>
                                 </Link>
@@ -78,7 +78,7 @@ const Portfolio = () => {
                     </HideAt>
                     <ShowAt breakpoint="largeAndAbove">
                         {categories.map(({ acf }) => (
-                            <CategorySection key={acf.image.id} image={acf.image}>
+                            <CategorySection key={`unique${acf.image}`} image={acf.image}>
                                 <Link to={`${PROJECT_WITH_CATEGORY.getPathWithId(acf.slug)}`}>
                                     <Title>{acf.category_name}</Title>
                                 </Link>

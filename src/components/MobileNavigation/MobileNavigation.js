@@ -10,9 +10,9 @@ const NavigationWrapper = styled.div`
     position: fixed;
     top: 0;
     width: 100%;
-    height: 80px;
+    height: 90px;
     ${({ theme }) => theme.sm`
-        height: 88px;
+        height: ${({ theme }) => theme.space[8]};
     `};
     background-color: ${({ theme }) => theme.primary};
     z-index: 6;
