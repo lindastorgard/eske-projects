@@ -45,7 +45,6 @@ function Services() {
                 <div>
                     {Object.keys(servicespage[0].acf).map(section => {
                         const { acf } = servicespage[0];
-                        console.log(acf[section].image);
                         return (
                             <FlexParent>
                                 <Column>
