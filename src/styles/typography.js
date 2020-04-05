@@ -4,7 +4,6 @@ export const StyledH1 = styled.h1`
     font-family: ${({ theme }) => theme.fonts.heading};
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes[5]};
-    letter-spacing: 2px;
 `;
 
 export const StyledLargeH2 = styled.h2`
