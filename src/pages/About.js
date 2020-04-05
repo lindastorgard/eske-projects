@@ -4,16 +4,6 @@ import { StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
-import FsLightbox from 'fslightbox-react';
-
-const GridContainer = styled.div`
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
-    ${({ theme }) => theme.sm`
-    grid-template-rows: repeat(5, auto);
-     `};
-`;
 
 const FlexParent = styled.section`
     display: flex;
@@ -119,7 +109,7 @@ const About = () => {
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
             ) : aboutContent ? (
-                <GridContainer>
+                <>
                     <HeroImage src={aboutContent.hero_image} />
                     <StyledSection>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
@@ -163,7 +153,7 @@ const About = () => {
                             </article>
                         </Column>
                     </FlexParent>
-                </GridContainer>
+                </>
             ) : null}
         </Layout>
     );
