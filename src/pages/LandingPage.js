@@ -1,5 +1,6 @@
 import React from 'react';
 import useApi from '../hooks/useApi';
+import setScroll from '../hooks/setScroll';
 import styled from 'styled-components';
 import Slideshow from '../components/Slideshow';
 import CircleLoader from '../components/CircleLoader';
@@ -21,6 +22,7 @@ const Container = styled.div`
 
 const LandingPage = () => {
     const { landingpage, error, isLoading } = useApi();
+    setScroll();
 
     return (
         <Container>
