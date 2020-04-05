@@ -12,9 +12,11 @@ const PageWrapper = styled.div`
 `;
 
 const AlignCenter = styled.div`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    ${({ theme }) => theme.sm`
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    `};
 `;
 
 const FlexParent = styled.section`
