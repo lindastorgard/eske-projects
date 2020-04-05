@@ -94,7 +94,7 @@ const IframeWrapper = styled.div`
 const HeroImage = styled.div`
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 450px;
     background: ${props => `url(${props.src})`};
     background-repeat: no-repeat;
     background-size: cover;
