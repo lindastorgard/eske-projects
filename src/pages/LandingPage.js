@@ -23,17 +23,15 @@ const LandingPage = () => {
     const { landingpage, error, isLoading } = useApi();
 
     return (
-        <div>
+        <Container>
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
             ) : landingpage ? (
-                <Container>
-                    <Slideshow landingpage={landingpage} />
-                </Container>
+                <Slideshow landingpage={landingpage} />
             ) : null}
-        </div>
+        </Container>
     );
 };
 export default LandingPage;
