@@ -59,7 +59,6 @@ const Projects = () => {
                 <StyledSection>
                     {category.map(project => {
                         const { acf } = project;
-                        console.log(project.acf.title);
                         return (
                             <CategorySection key={project.id} image={acf.featured_image}>
                                 <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>

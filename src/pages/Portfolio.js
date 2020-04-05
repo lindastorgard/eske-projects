@@ -16,7 +16,7 @@ const Container = styled.div`
     overflow: hidden;
     ${({ theme }) => theme.lg`
 		  grid-template-columns: repeat(2, 1fr);
-		  grid-template-rows: calc(100vh - 16px);
+		  grid-template-rows: calc(100vh - 32px);
 		`};
 `;
 

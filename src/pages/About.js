@@ -61,7 +61,6 @@ const About = () => {
     const { isLoading, error, aboutpage } = useApi();
     const [aboutContent, setAboutContent] = useState(null);
 
-    console.log(aboutContent);
     useEffect(() => {
         if (aboutpage) {
             setAboutContent(aboutpage[0].acf);
@@ -73,8 +72,6 @@ const About = () => {
             __html: param,
         };
     }
-
-    console.log();
     return (
         <Layout>
             {isLoading ? (
@@ -93,7 +90,6 @@ const About = () => {
                         allowfullscreen
                     ></iframe>
                     <div>
-                        {/* <div dangerouslySetInnerHTML={createIFrame(aboutContent?.video)} /> */}
                         {Object.keys(aboutContent).map(section => (
                             <FlexParent>
                                 <ImageContainer>

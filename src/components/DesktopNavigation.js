@@ -54,7 +54,7 @@ const DesktopNavigation = () => {
                 <LinkCointainer>
                     <NavLink url={PORTFOLIO.path} link="Portfolio" />
                     <NavLink url={ABOUT.path} link="Om Oss" />
-                    <NavLink url={SERVICES.path} link="Tjenster" />
+                    <NavLink url={SERVICES.path} link="Tjenester" />
                     <NavLink url={CONTACT.path} link="Kontakt" />
                 </LinkCointainer>
                 <IconContainer>
