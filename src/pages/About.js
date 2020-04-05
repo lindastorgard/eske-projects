@@ -49,7 +49,7 @@ const SectionHeader = styled(StyledLargeH2)`
     display: inline-block;
     border-bottom: 1px solid black;
     margin-top: 0;
-    padding: ${({ theme }) => theme.space[1]};
+    padding: ${({ theme }) => theme.space[1]} 0;
 `;
 
 const IframeWrapper = styled.div`
