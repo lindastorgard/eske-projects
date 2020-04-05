@@ -43,24 +43,26 @@ const GalleryWrapper = styled.div`
 `;
 const ImageWrapper = styled.div`
     grid-column: span 1;
-    min-height: 80px;
+    overflow: hidden;
+    max-height: 250px;
     &:nth-of-type(5n + 5) {
         grid-column: 1 / 3;
     }
     ${({ theme }) => theme.sm`
         grid-column: span 1;
-        min-height: 400px;
+        max-height: 360px;
         &:nth-of-type(5n + 5) {
           grid-column: 2 / 4;
         }
 	`};
     ${({ theme }) => theme.lg`
-        min-height: 550px; 
+        max-height: 480px;
 	`};
+`;
 
-    background: ${props => `url(${props.image})`};
-    background-repeat: no-repeat;
-    background-size: cover;
+const Image = styled.img`
+    width: 100%;
+    height: 100%;
 `;
 
 const Dash = styled.span`
@@ -106,7 +108,9 @@ const ProjectsDetails = () => {
 
                     <GalleryWrapper>
                         {project[0].acf.image.map(({ url, id, title }) => (
-                            <ImageWrapper key={id} image={url} />
+                            <ImageWrapper key={id}>
+                                <Image src={url} alt={title} />
+                            </ImageWrapper>
                         ))}
                     </GalleryWrapper>
                 </>
