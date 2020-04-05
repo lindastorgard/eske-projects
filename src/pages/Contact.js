@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { StyledH1, StyledH2, StyledParagraph, StyledLink } from '../styles/typography';
+import { StyledH1, StyledLargeH2, StyledParagraph, StyledLink } from '../styles/typography';
 import CircleLoader from '../components/CircleLoader';
 import LocationIcon from '../components/icons/LocationIcon';
 import Layout from '../components/Layout';
@@ -107,8 +107,7 @@ const HeaderContainer = styled.div`
     `};
 `;
 
-const HeaderAdress = styled(StyledH2)`
-    text-transform: uppercase;
+const HeaderAdress = styled(StyledLargeH2)`
     display: inline-block;
     margin-top: ${({ theme }) => theme.space[7]};
     margin-bottom: 0;
