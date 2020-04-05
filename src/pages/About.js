@@ -4,74 +4,128 @@ import { StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
+import FsLightbox from 'fslightbox-react';
+import PlayButton from '../components/icons/PlayButton';
 
-const FlexParent = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding-bottom: ${({ theme }) => theme.space[6]};
+const PageWrapper = styled.div`
+    text-align: center;
+`;
+
+const AlignCenter = styled.div`
     ${({ theme }) => theme.sm`
-        padding-bottom: ${({ theme }) => theme.space[4]};
-        padding-top ${({ theme }) => theme.space[4]};
-        flex-direction: row;
-        &:nth-child(odd) {
-          flex-direction: row-reverse;
-        }
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     `};
 `;
 
-const ImageContainer = styled.div`
-    width: 100%;
-    height: auto;
-    // height: 350px;
-    // overflow: hidden;
-    ${({ theme }) => theme.xs`
-        // height: 500px;
-    `};
+const FlexParent = styled.section`
+    display: flex;
+    flex-direction: column;
+    padding-bottom: ${({ theme }) => theme.space[3]};
     ${({ theme }) => theme.sm`
-        flex: 1;
-        // height: 300px;
-        margin: 36px 40px 0 40px;
+        flex-direction: row;
     `};
-    ${({ theme }) => theme.lg`
-        flex: 1;
-        // height: 450px;
+`;
+
+const ReverseRow = styled(FlexParent)`
+    flex-direction: column-reverse;
+    ${({ theme }) => theme.sm`
+        flex-direction: row;
+    `};
+`;
+
+const StyledSection = styled.section`
+    max-width: 750px;
+    margin: 0 auto;
+    padding-bottom: ${({ theme }) => theme.space[3]};
+`;
+
+const Column = styled.div`
+    flex: 1;
+    padding: ${({ theme }) => theme.space[1]};
+    position: relative;
+`;
+
+const SectionHeader = styled(StyledLargeH2)`
+    display: inline-block;
+    border-bottom: 1px solid black;
+    margin-top: 0;
+    padding: ${({ theme }) => theme.space[1]} 0;
+`;
+
+const IframeWrapper = styled.div`
+    overflow: hidden;
+    // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+    padding-top: 56.25%;
+    position: relative;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        padding: ${({ theme }) => theme.space[1]};
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+`;
+
+// const Overlay = styled.div`
+//     &:hover {
+//         width: 100%;
+//         height: 100%;
+//         position: absolute;
+//         background-color: #000;
+//         opacity: 0.5;
+//         z-index: 1;
+//     }
+// `;
+
+// const StyledPlayIcon = styled.div`
+//     position: absolute;
+//     z-index: 2;
+//     top: 50%;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     transform: translateY(-50%);
+//     margin: 0 auto;
+// `;
+
+const HeroImage = styled.div`
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: ${props => `url(${props.src})`};
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    margin: ${({ theme }) => theme.space[3]} 0;
+    ${({ theme }) => theme.md`
+        margin: ${({ theme }) => theme.space[1]} 0;
     `};
 `;
 
 const StyledImage = styled.img`
-    width: 100%;
-    height: 100%;
     max-height: 450px;
+    width: 100%;
     object-fit: cover;
-    object-position: center;
 `;
 
-const TextContainer = styled.div`
-    ${({ theme }) => theme.sm`
-    flex: 1;
-    margin: 0 40px 0 40px;
-    `};
-    ${({ theme }) => theme.lg`
-    flex: 1;
-    margin: 0 40px 0 40px;
-    `};
+const Iframe = styled.iframe`
+    width: 100vw;
 `;
 
 const About = () => {
     const { isLoading, error, aboutpage } = useApi();
     const [aboutContent, setAboutContent] = useState(null);
-
+    const [toggler, setToggler] = useState(false);
+    console.log(aboutContent);
     useEffect(() => {
         if (aboutpage) {
             setAboutContent(aboutpage[0].acf);
         }
     }, [aboutpage]);
 
-    function createIFrame(param) {
-        return {
-            __html: param,
-        };
-    }
     return (
         <Layout>
             {isLoading ? (
@@ -79,32 +133,70 @@ const About = () => {
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
             ) : aboutContent ? (
-                <>
-                    <iframe
-                        title="eskeinterior"
-                        height="600px"
-                        width="1200px"
-                        src="https://www.youtube.com/embed/FQT3FzxNaio?rel=0&amp;autoplay=1&mute=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
-                    <div>
-                        {Object.keys(aboutContent).map(section => (
-                            <FlexParent>
-                                <ImageContainer>
-                                    <StyledImage src={aboutContent[section].image} alt="interior" />
-                                </ImageContainer>
-                                <TextContainer>
-                                    <StyledLargeH2>{aboutContent[section].title}</StyledLargeH2>
-                                    <StyledParagraph>{aboutContent[section].paragraph}</StyledParagraph>
-                                    <StyledParagraph>{aboutContent[section].paragraph2}</StyledParagraph>
-                                    <StyledParagraph>{aboutContent[section].paragraph3}</StyledParagraph>
-                                </TextContainer>
-                            </FlexParent>
+                <PageWrapper>
+                    <HeroImage onClick={() => setToggler(!toggler)} src={aboutContent.hero_image}>
+                        {/* <Overlay></Overlay>
+                        <StyledPlayIcon>
+                            <PlayButton />
+                        </StyledPlayIcon> */}
+                    </HeroImage>
+                    <StyledSection>
+                        <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
+                        {aboutContent.om_oss.text.map(text => (
+                            <StyledParagraph>{text.textrow}</StyledParagraph>
                         ))}
-                    </div>
-                </>
+                    </StyledSection>
+                    <ReverseRow>
+                        <Column>
+                            <AlignCenter>
+                                <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
+                                {aboutContent.var_filosofi.text.map(text => (
+                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                ))}
+                            </AlignCenter>
+                        </Column>
+                        <Column>
+                            <StyledImage src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
+                        </Column>
+                    </ReverseRow>
+                    <FlexParent>
+                        <Column>
+                            {Object.keys(aboutContent.inspiration.videos).map(url => (
+                                <IframeWrapper key={url}>
+                                    <iframe
+                                        title="eskeinterior"
+                                        src={aboutContent.inspiration.videos[url]}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </IframeWrapper>
+                            ))}
+                        </Column>
+                        <Column>
+                            <AlignCenter>
+                                <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
+                                {aboutContent.inspiration.text.map(text => (
+                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                ))}
+                            </AlignCenter>
+                        </Column>
+                    </FlexParent>
+                    <FsLightbox
+                        toggler={toggler}
+                        customSources={[
+                            <Iframe
+                                title="eskeinterior"
+                                height="600px"
+                                width="100vw"
+                                src="https://www.youtube.com/embed/FQT3FzxNaio?rel=0&amp;autoplay=1&mute=1"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></Iframe>,
+                        ]}
+                    />
+                </PageWrapper>
             ) : null}
         </Layout>
     );
