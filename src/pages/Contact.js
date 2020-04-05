@@ -96,7 +96,7 @@ const StyledSection = styled.section`
 const Header = styled(StyledH1)`
     text-align: center;
     ${({ theme }) => theme.xl`
-        margin-top: 50px;
+        margin-top: ${({ theme }) => theme.space[4]};
     `};
 `;
 
@@ -134,7 +134,7 @@ const StyledHr = styled.hr`
 const StyledText = styled(StyledParagraph)`
     text-align: center;
     ${({ theme }) => theme.lg`
-        margin: 0 50px;
+        margin: 0 ${({ theme }) => theme.space[4]};
     `};
     ${({ theme }) => theme.xl`
         margin: 0 200px 50px 200px;
