@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    max-width: 1300px;
+    max-width: 1600px;
     margin: 0 auto;
   }
 `;
