@@ -11,19 +11,45 @@ const PageWrapper = styled.div`
     text-align: center;
 `;
 
-const FlexParent = styled.div`
+const AlignCenter = styled.div`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+`;
+
+const FlexParent = styled.section`
     display: flex;
     flex-direction: column;
-    padding-bottom: ${({ theme }) => theme.space[6]};
+    padding-bottom: ${({ theme }) => theme.space[3]};
     ${({ theme }) => theme.sm`
-        padding-bottom: ${({ theme }) => theme.space[4]};
-        padding-top ${({ theme }) => theme.space[3]};
         flex-direction: row;
     `};
 `;
 
+const ReverseRow = styled(FlexParent)`
+    flex-direction: column-reverse;
+    ${({ theme }) => theme.sm`
+        flex-direction: row;
+    `};
+`;
+
+const StyledSection = styled.section`
+    max-width: 750px;
+    margin: 0 auto;
+    padding-bottom: ${({ theme }) => theme.space[3]};
+`;
+
 const Column = styled.div`
     flex: 1;
+    padding: ${({ theme }) => theme.space[1]};
+    position: relative;
+`;
+
+const SectionHeader = styled(StyledLargeH2)`
+    display: inline-block;
+    border-bottom: 1px solid black;
+    margin-top: 0;
+    padding: ${({ theme }) => theme.space[1]};
 `;
 
 const IframeWrapper = styled.div`
@@ -35,32 +61,33 @@ const IframeWrapper = styled.div`
         border: 0;
         height: 100%;
         left: 0;
+        padding: ${({ theme }) => theme.space[1]};
         position: absolute;
         top: 0;
         width: 100%;
     }
 `;
 
-const Overlay = styled.div`
-    &:hover {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: #000;
-        opacity: 0.5;
-        z-index: 1;
-    }
-`;
+// const Overlay = styled.div`
+//     &:hover {
+//         width: 100%;
+//         height: 100%;
+//         position: absolute;
+//         background-color: #000;
+//         opacity: 0.5;
+//         z-index: 1;
+//     }
+// `;
 
-const StyledPlayIcon = styled.div`
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
-    margin: 0 auto;
-`;
+// const StyledPlayIcon = styled.div`
+//     position: absolute;
+//     z-index: 2;
+//     top: 50%;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     transform: translateY(-50%);
+//     margin: 0 auto;
+// `;
 
 const HeroImage = styled.div`
     position: relative;
@@ -111,23 +138,25 @@ const About = () => {
                             <PlayButton />
                         </StyledPlayIcon> */}
                     </HeroImage>
-                    <div>
+                    <StyledSection>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
                         {aboutContent.om_oss.text.map(text => (
                             <StyledParagraph>{text.textrow}</StyledParagraph>
                         ))}
-                    </div>
-                    <FlexParent>
+                    </StyledSection>
+                    <ReverseRow>
                         <Column>
-                            <StyledLargeH2>{aboutContent.var_filosofi.title}</StyledLargeH2>
-                            {aboutContent.var_filosofi.text.map(text => (
-                                <StyledParagraph>{text.textrow}</StyledParagraph>
-                            ))}
+                            <AlignCenter>
+                                <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
+                                {aboutContent.var_filosofi.text.map(text => (
+                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                ))}
+                            </AlignCenter>
                         </Column>
                         <Column>
                             <StyledImage src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
                         </Column>
-                    </FlexParent>
+                    </ReverseRow>
                     <FlexParent>
                         <Column>
                             {Object.keys(aboutContent.inspiration.videos).map(url => (
@@ -143,10 +172,12 @@ const About = () => {
                             ))}
                         </Column>
                         <Column>
-                            <StyledLargeH2>{aboutContent.inspiration.title}</StyledLargeH2>
-                            {aboutContent.inspiration.text.map(text => (
-                                <StyledParagraph>{text.textrow}</StyledParagraph>
-                            ))}
+                            <AlignCenter>
+                                <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
+                                {aboutContent.inspiration.text.map(text => (
+                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                ))}
+                            </AlignCenter>
                         </Column>
                     </FlexParent>
                     <FsLightbox
