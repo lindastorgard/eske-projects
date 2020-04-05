@@ -106,10 +106,10 @@ const About = () => {
             ) : aboutContent ? (
                 <PageWrapper>
                     <HeroImage onClick={() => setToggler(!toggler)} src={aboutContent.hero_image}>
-                        <Overlay></Overlay>
+                        {/* <Overlay></Overlay>
                         <StyledPlayIcon>
                             <PlayButton />
-                        </StyledPlayIcon>
+                        </StyledPlayIcon> */}
                     </HeroImage>
                     <div>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
