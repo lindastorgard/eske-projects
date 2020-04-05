@@ -35,7 +35,7 @@ const Header = styled(StyledH1)`
 const GalleryWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(250px, auto);
+    grid-auto-rows: auto;
     grid-gap: 4px;
     ${({ theme }) => theme.sm`
          grid-template-columns: repeat(3, 1fr);
@@ -43,19 +43,19 @@ const GalleryWrapper = styled.div`
 `;
 const ImageWrapper = styled.div`
     grid-column: span 1;
-    min-height: 100px;
+    min-height: 80px;
     &:nth-of-type(5n + 5) {
         grid-column: 1 / 3;
     }
     ${({ theme }) => theme.sm`
         grid-column: span 1;
-        min-height: 350px;
+        min-height: 400px;
         &:nth-of-type(5n + 5) {
           grid-column: 2 / 4;
         }
 	`};
     ${({ theme }) => theme.lg`
-        min-height: 600px; 
+        min-height: 550px; 
 	`};
 
     background: ${props => `url(${props.image})`};

@@ -21,11 +21,13 @@ const StyledButton = styled.button`
         color: ${({ theme }) => theme.brand};
     }
     span {
-        font-family: ${({ theme }) => theme.fonts.body};
-        font-size: ${({ theme }) => theme.fontSizes[2]};
-        text-transform: uppercase;
         margin-left: ${({ theme }) => theme.space[0]};
-        letter-spacing: 2px;
+        text-decoration: none;
+        font-size: ${({ theme }) => theme.fontSizes[2]};
+        font-family: ${({ theme }) => theme.fonts.body};
+        font-weight: ${({ theme }) => theme.fontWeights[0]};
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 `;
 
