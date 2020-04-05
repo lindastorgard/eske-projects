@@ -50,24 +50,14 @@ const Wrapper = styled.section`
     `};
 `;
 
-const ImageWrapperTop = styled.div`
-    width: 100%;
+const HeroImage = styled.div`
+    background: ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 300px;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+    grid-column: 1/2;
     ${({ theme }) => theme.sm`
-        margin: ${({ theme }) => theme.space[1]} 0 0 0;
-    `};
-    ${({ theme }) => theme.lg`
-        height: 500px;
-        margin: ${({ theme }) => theme.space[1]} 0 0 0;
-    `};
-    ${({ theme }) => theme.xl`
-        height: 400px;
-        margin: ${({ theme }) => theme.space[1]} 0 0 0;
+      height: 450px;
     `};
 `;
 
@@ -163,6 +153,7 @@ function Services() {
     useEffect(() => {
         if (contactpage) {
             setContactPage(contactpage[0].acf);
+            console.log(contactpage[0].acf);
         }
     }, [contactpage]);
     return (
@@ -175,9 +166,7 @@ function Services() {
                 <>
                     <Container>
                         <Wrapper>
-                            <ImageWrapperTop>
-                                <img src={contactPageContent.image.url} alt={contactPageContent.image.title} />
-                            </ImageWrapperTop>
+                            <HeroImage image={contactPageContent.image.url} />
                         </Wrapper>
                         <Wrapper>
                             <Header>{contactPageContent.title}</Header>
