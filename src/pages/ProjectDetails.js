@@ -46,6 +46,7 @@ const ImageWrapper = styled.div`
     grid-column: span 1;
     overflow: hidden;
     max-height: 250px;
+    cursor: pointer;
     &:nth-of-type(5n + 5) {
         grid-column: 1 / 3;
     }
