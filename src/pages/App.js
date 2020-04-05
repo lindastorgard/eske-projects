@@ -22,7 +22,6 @@ import {
     PROJECT_WITH_ID,
 } from '../utils/urlRoutes';
 import Services from './Services';
-// import { Helmet } from 'react-helmet';
 
 const breakpoints = {
     xsmall: 468,
@@ -38,23 +37,6 @@ function App() {
             <ThemeProvider theme={theme}>
                 <Router>
                     <>
-                        {/* <Helmet titleTemplate="%s - Eske Prosjekt" defaultTitle="Eske Prosjekt">
-                            supports norwegian alphabet
-                            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-10" />
-                            <meta name="viewport" content="width=device-width, initial-scale=1" />
-                            <meta property="og:title" content="Eske Prosjekt" />
-                            <meta
-                                name="description"
-                                content="Eske Prosjekt er forlengelsen av designuniverset Eske Interiør. Begge drives av Karina Holmen og fokuserer på internasjonal design innen møbler, belysning og tilbehør."
-                            />
-                            <meta property="og:type" content="website" />
-                            <meta property="og:url" content="https://eskeprosjekt.no/" />
-                            <meta property="og:site_name" content="Eske Prosjekt" />
-                            <meta property="og:image" content={logo} />
-                            <meta property="og:image:secure_url" content={logo} />
-                            <meta property="og:image:width" content="1280" />
-                            <meta property="og:image:height" content="720" />
-                        </Helmet> */}
                         <Header />
                         <main>
                             <Switch>
