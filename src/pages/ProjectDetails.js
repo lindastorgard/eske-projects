@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph } from '../styles/typography';
 import { HideAt } from 'react-with-breakpoints';
+import FsLightbox from 'fslightbox-react';
 
 const SectionContainer = styled.section`
     ${({ theme }) => theme.sm`  
@@ -76,6 +77,22 @@ const Dash = styled.span`
 const ProjectsDetails = () => {
     const { id, category } = useParams();
     const { project, error, isLoading, categories } = useApi('', id);
+    const [toggler, setToggler] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const urlList = [];
+
+    useEffect(() => {
+        if (project) {
+            project[0].acf.image.forEach(({ url }) => {
+                urlList.push(url);
+            });
+        }
+    }, [project]);
+
+    const toggleLightbox = index => {
+        setLightboxIndex(index);
+        setToggler(!toggler);
+    };
 
     return (
         <Layout>
@@ -107,12 +124,19 @@ const ProjectsDetails = () => {
                     </SectionContainer>
 
                     <GalleryWrapper>
-                        {project[0].acf.image.map(({ url, id, title }) => (
+                        {project[0].acf.image.map(({ url, id, title }, index) => (
                             <ImageWrapper key={id}>
-                                <Image src={url} alt={title} />
+                                <Image onClick={() => toggleLightbox(index)} src={url} alt={title} />
                             </ImageWrapper>
                         ))}
                     </GalleryWrapper>
+                    <FsLightbox
+                        toggler={toggler}
+                        sourceIndex={lightboxIndex}
+                        customSources={project[0].acf.image.map(({ url, id, title }) => (
+                            <Image src={url} alt={title} />
+                        ))}
+                    />
                 </>
             ) : null}
         </Layout>
