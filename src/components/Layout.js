@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
+    max-width: 1300px;
     margin-right: ${({ theme }) => theme.space[1]};
     margin-left: ${({ theme }) => theme.space[1]};
     margin-top: 80px;
