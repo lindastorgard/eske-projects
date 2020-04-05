@@ -113,12 +113,16 @@ const About = () => {
                     </HeroImage>
                     <div>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
-                        <StyledParagraph>{aboutContent.om_oss.text}</StyledParagraph>
+                        {aboutContent.om_oss.text.map(text => (
+                            <StyledParagraph>{text.textrow}</StyledParagraph>
+                        ))}
                     </div>
                     <FlexParent>
                         <Column>
                             <StyledLargeH2>{aboutContent.var_filosofi.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.var_filosofi.text}</StyledParagraph>
+                            {aboutContent.var_filosofi.text.map(text => (
+                                <StyledParagraph>{text.textrow}</StyledParagraph>
+                            ))}
                         </Column>
                         <Column>
                             <StyledImage src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
@@ -140,7 +144,9 @@ const About = () => {
                         </Column>
                         <Column>
                             <StyledLargeH2>{aboutContent.inspiration.title}</StyledLargeH2>
-                            <StyledParagraph>{aboutContent.inspiration.text}</StyledParagraph>
+                            {aboutContent.inspiration.text.map(text => (
+                                <StyledParagraph>{text.textrow}</StyledParagraph>
+                            ))}
                         </Column>
                     </FlexParent>
                     <FsLightbox
