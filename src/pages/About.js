@@ -8,7 +8,6 @@ import CircleLoader from '../components/CircleLoader';
 const FlexParent = styled.section`
     display: flex;
     flex-direction: column;
-
     ${({ theme }) => theme.sm`
         flex-direction: row;
     `};
@@ -45,8 +44,9 @@ const IframeWrapper = styled.div`
 
 const Column = styled.div`
     flex: 1;
-    align-self: center;
-    position: relative;
+    ${({ theme }) => theme.sm`
+        align-self: center;
+    `};
     img {
         width: 100%;
         height: 100%;
@@ -81,14 +81,6 @@ const HeroImage = styled.div`
     grid-column: 1/2;
     ${({ theme }) => theme.sm`
       height: 450px;
-    `};
-`;
-
-const AlignCenter = styled.div`
-    ${({ theme }) => theme.sm`
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
     `};
 `;
 
