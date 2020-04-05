@@ -7,6 +7,7 @@ import LocationIcon from '../components/icons/LocationIcon';
 import Layout from '../components/Layout';
 import PhoneIcon from '../components/icons/PhoneIcon';
 import MailIcon from '../components/icons/MailIcon';
+import Mapbox from '../components/Mapbox';
 
 const Container = styled.div`
     display: grid;
@@ -163,7 +164,6 @@ function Services() {
     useEffect(() => {
         if (contactpage) {
             setContactPage(contactpage[0].acf);
-            console.log(contactpage[0].acf);
         }
     }, [contactpage]);
     return (
@@ -219,16 +219,7 @@ function Services() {
                         </Wrapper>
                         <Wrapper>
                             <StyledSection>
-                                <iframe
-                                    title="eske_as"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.550204345716!2d10.733024915882911!3d59.92301197032143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e79905529d3%3A0x9471c196272b8931!2sEske%20interi%C3%B8r%20og%20design!5e0!3m2!1ssv!2sse!4v1585493882710!5m2!1ssv!2sse"
-                                    width="100%"
-                                    height="100%"
-                                    frameBorder="0"
-                                    allowFullScreen=""
-                                    aria-hidden="false"
-                                    tabIndex="0"
-                                ></iframe>
+                                <Mapbox />
                             </StyledSection>
                         </Wrapper>
                         <Wrapper>

@@ -1,21 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
 const Map = ReactMapboxGl({
-    accessToken: 'you need to create your own',
+    accessToken: 'pk.eyJ1IjoibGluZGFzdG9yZ2FyZCIsImEiOiJjazczZnNjN2swYm96M2RtaXhpcmFnd2Q4In0.0EWzA-z-UE0VGMsxoR_7Ug',
 });
 
-<Map
-    className="map"
-    style="mapbox://styles/mapbox/light-v10"
-    zoom={[12]}
-    center={[18.05852, 59.34603]}
-    containerStyle={{
-        height: '100%',
-        width: '100%',
-    }}
->
-    <Layer type="symbol" id="points1" anchor="bottom" layout={{ 'icon-image': 'harbor-15' }}>
-        <Feature coordinates={[18.05852, 59.34603]} />
-    </Layer>
-</Map>;
+const Mapbox = () => {
+    return (
+        <>
+            <Map
+                // eslint-disable-next-line react/style-prop-object
+                style="mapbox://styles/lindastorgard/ck8n1v2rh0r131iouqic4o1eo"
+                zoom={[15]}
+                center={[10.73516, 59.923117]}
+                containerStyle={{
+                    height: '100%',
+                    width: '100%',
+                    overflow: 'hidden',
+                }}
+            >
+                <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
+                    <Feature coordinates={[10.73516, 59.923117]} />
+                </Layer>
+            </Map>
+        </>
+    );
+};
+export default Mapbox;
