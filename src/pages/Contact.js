@@ -153,7 +153,6 @@ function Services() {
     useEffect(() => {
         if (contactpage) {
             setContactPage(contactpage[0].acf);
-            console.log(contactpage[0].acf);
         }
     }, [contactpage]);
     return (
