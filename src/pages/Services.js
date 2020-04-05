@@ -21,16 +21,21 @@ const FlexParent = styled.div`
 
 const Column = styled.div`
     flex: 1;
-    padding: ${({ theme }) => theme.space[1]};
     img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
         max-height: 450px;
     }
+    ${({ theme }) => theme.sm`
+        padding: ${({ theme }) => theme.space[1]};
+    `};
 `;
 
 const StyledListItem = styled.li`
     font-family: ${({ theme }) => theme.fonts.body};
+    font-weight: 300;
+    line-height: 1.5;
 `;
 
 function Services() {
