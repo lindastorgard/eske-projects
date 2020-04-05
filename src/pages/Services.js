@@ -38,7 +38,7 @@ const Quote = styled.div`
         margin: 0;
         margin-top: ${({ theme }) => theme.space[0]};
         ${({ theme }) => theme.sm`
-        font-size: ${({ theme }) => theme.fontSizes[7]};
+        font-size: ${({ theme }) => theme.fontSizes[6]};
     `};
     }
 `;
@@ -48,9 +48,8 @@ const QuoteMark = styled.img`
     margin-right: -60px;
     height: 100%;
     ${({ theme }) => theme.sm`
-     width: ${({ theme }) => theme.fontSizes[7]};
-     margin-right: -30px;
-     `};
+      margin-right: -20px;
+      `};
 `;
 
 const FlexParent = styled.div`
