@@ -7,7 +7,7 @@ import LocationIcon from '../components/icons/LocationIcon';
 import Layout from '../components/Layout';
 import PhoneIcon from '../components/icons/PhoneIcon';
 import MailIcon from '../components/icons/MailIcon';
-import Mapbox from '../components/MapboxMapMap';
+import Mapbox from '../components/MapboxMap';
 
 const Container = styled.div`
     display: grid;
