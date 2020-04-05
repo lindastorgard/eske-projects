@@ -12,10 +12,11 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, calc(50vh - 56px));
-    grid-gap: ${({ theme }) => theme.space[1]};
+    grid-gap: ${({ theme }) => theme.space[0]};
+    overflow: hidden;
     ${({ theme }) => theme.lg`
 		  grid-template-columns: repeat(2, 1fr);
-		  grid-template-rows: calc(100vh - 32px);
+		  grid-template-rows: calc(100vh - 16px);
 		`};
 `;
 
