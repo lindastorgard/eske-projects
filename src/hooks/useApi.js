@@ -19,7 +19,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp-json/wp/v2/main_categories');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/main_categories');
             setCategories(result.data);
         } catch (e) {
             setError(e.toString());
@@ -33,7 +33,7 @@ const useAPI = (param, projectId = '') => {
         try {
             setIsLoading(true);
             const result = await axios(
-                `https://eskeprosjekt.no/wp-json/wp/v2/projects?filter[meta_key]=project_type&filter[meta_compare]=LIKE&filter[meta_value]=${param}`,
+                `https://eskeprosjekt.no/wp/wp-json/wp/v2/projects?filter[meta_key]=project_type&filter[meta_compare]=LIKE&filter[meta_value]=${param}&filter[orderby]=modified&per_page=100`,
             );
             setCategory(result.data);
         } catch (e) {
@@ -46,7 +46,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp-json/wp/v2/landing_page');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/landing_page');
             setLandingpage(result.data);
         } catch (e) {
             setError(e.toString());
@@ -58,7 +58,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp-json/wp/v2/about_page');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/about_page');
             setAboutpage(result.data);
         } catch (e) {
             setError(e.toString());
@@ -71,7 +71,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp-json/wp/v2/tjenster_page');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/tjenster_page');
             setServicespage(result.data);
         } catch (e) {
             setError(e.toString());
@@ -84,7 +84,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp-json/wp/v2/contact_page');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/contact_page');
             setContactpage(result.data);
         } catch (e) {
             setError(e.toString());
@@ -97,7 +97,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios(`https://eskeprosjekt.no/wp-json/wp/v2/projects?include[]=${projectId}`);
+            const result = await axios(`https://eskeprosjekt.no/wp/wp-json/wp/v2/projects?include[]=${projectId}`);
             setProject(result.data);
         } catch (e) {
             setError(e.toString());
