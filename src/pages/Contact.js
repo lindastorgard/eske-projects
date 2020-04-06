@@ -146,6 +146,10 @@ const StyledText = styled(StyledParagraph)`
     `};
 `;
 
+const StyledContactText = styled(StyledParagraph)`
+    margin: 0;
+`;
+
 const IconWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -202,12 +206,24 @@ function Services() {
                             </HeaderContainer>
                             <IconWrapper>
                                 <PhoneIcon />
-                                <Paragraph>{contactPageContent.contact_details.phone_}</Paragraph>
+                                <StyledContactText>
+                                    <span>
+                                        <StyledLink href={`tel:${contactPageContent.contact_details.phone_}`}>
+                                            {contactPageContent.contact_details.phone_}
+                                        </StyledLink>
+                                    </span>
+                                </StyledContactText>
                             </IconWrapper>
 
                             <IconWrapper>
                                 <MailIcon />
-                                <Paragraph>{contactPageContent.contact_details.email}</Paragraph>
+                                <StyledContactText>
+                                    <span>
+                                        <StyledLink href={`mailto:${contactPageContent.contact_details.email}`}>
+                                            {contactPageContent.contact_details.email}
+                                        </StyledLink>
+                                    </span>
+                                </StyledContactText>
                             </IconWrapper>
 
                             <IconWrapper>
