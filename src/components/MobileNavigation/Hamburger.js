@@ -37,6 +37,9 @@ const StyledBurger = styled.button`
             transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
         }
     }
+    ${({ theme }) => theme.sm`
+        top: ${({ theme }) => theme.space[4]};
+    `};
 `;
 
 const Hamburger = ({ open, setOpen }) => {
