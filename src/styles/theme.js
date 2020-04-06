@@ -5,6 +5,7 @@ export const breakpoints = {
     sm: '768px',
     md: '992px',
     lg: '1024px',
+    xl: '1100px',
     xlarge: 'Infinity',
 };
 

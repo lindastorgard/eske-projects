@@ -4,25 +4,10 @@ import { StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
-import FsLightbox from 'fslightbox-react';
-import PlayButton from '../components/icons/PlayButton';
-
-const PageWrapper = styled.div`
-    text-align: center;
-`;
-
-const AlignCenter = styled.div`
-    ${({ theme }) => theme.sm`
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    `};
-`;
 
 const FlexParent = styled.section`
     display: flex;
     flex-direction: column;
-    padding-bottom: ${({ theme }) => theme.space[3]};
     ${({ theme }) => theme.sm`
         flex-direction: row;
     `};
@@ -30,21 +15,55 @@ const FlexParent = styled.section`
 
 const ReverseRow = styled(FlexParent)`
     flex-direction: column-reverse;
+    padding: 0;
     ${({ theme }) => theme.sm`
         flex-direction: row;
     `};
 `;
 
 const StyledSection = styled.section`
+    text-align: center;
     max-width: 750px;
-    margin: 0 auto;
-    padding-bottom: ${({ theme }) => theme.space[3]};
+    margin: ${({ theme }) => theme.space[4]} auto;
+`;
+
+const IframeWrapper = styled.div`
+    overflow: hidden;
+    /* Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625) */
+    padding-top: 56.25%;
+    position: relative;
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 `;
 
 const Column = styled.div`
     flex: 1;
-    padding: ${({ theme }) => theme.space[1]};
-    position: relative;
+    ${({ theme }) => theme.sm`
+        align-self: center;
+    `};
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    article {
+        text-align: center;
+        padding: ${({ theme }) => theme.space[4]};
+        ul {
+            text-align: left;
+        }
+    }
+    ${IframeWrapper} {
+        &:nth-of-type(2) {
+            margin-top: ${({ theme }) => theme.space[1]};
+        }
+    }
 `;
 
 const SectionHeader = styled(StyledLargeH2)`
@@ -54,72 +73,21 @@ const SectionHeader = styled(StyledLargeH2)`
     padding: ${({ theme }) => theme.space[1]} 0;
 `;
 
-const IframeWrapper = styled.div`
-    overflow: hidden;
-    // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
-    padding-top: 56.25%;
-    position: relative;
-    iframe {
-        border: 0;
-        height: 100%;
-        left: 0;
-        padding: ${({ theme }) => theme.space[1]};
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-`;
-
-// const Overlay = styled.div`
-//     &:hover {
-//         width: 100%;
-//         height: 100%;
-//         position: absolute;
-//         background-color: #000;
-//         opacity: 0.5;
-//         z-index: 1;
-//     }
-// `;
-
-// const StyledPlayIcon = styled.div`
-//     position: absolute;
-//     z-index: 2;
-//     top: 50%;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     transform: translateY(-50%);
-//     margin: 0 auto;
-// `;
-
 const HeroImage = styled.div`
-    position: relative;
-    width: 100%;
-    height: 500px;
     background: ${props => `url(${props.src})`};
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: pointer;
-    margin: ${({ theme }) => theme.space[3]} 0;
-    ${({ theme }) => theme.md`
-        margin: ${({ theme }) => theme.space[1]} 0;
+    height: 300px;
+    grid-column: 1/2;
+    ${({ theme }) => theme.sm`
+      height: 450px;
     `};
-`;
-
-const StyledImage = styled.img`
-    max-height: 450px;
-    width: 100%;
-    object-fit: cover;
-`;
-
-const Iframe = styled.iframe`
-    width: 100vw;
 `;
 
 const About = () => {
     const { isLoading, error, aboutpage } = useApi();
     const [aboutContent, setAboutContent] = useState(null);
-    const [toggler, setToggler] = useState(false);
-    console.log(aboutContent);
+
     useEffect(() => {
         if (aboutpage) {
             setAboutContent(aboutpage[0].acf);
@@ -133,13 +101,8 @@ const About = () => {
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
             ) : aboutContent ? (
-                <PageWrapper>
-                    <HeroImage onClick={() => setToggler(!toggler)} src={aboutContent.hero_image}>
-                        {/* <Overlay></Overlay>
-                        <StyledPlayIcon>
-                            <PlayButton />
-                        </StyledPlayIcon> */}
-                    </HeroImage>
+                <>
+                    <HeroImage src={aboutContent.hero_image} />
                     <StyledSection>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
                         {aboutContent.om_oss.text.map(text => (
@@ -148,15 +111,15 @@ const About = () => {
                     </StyledSection>
                     <ReverseRow>
                         <Column>
-                            <AlignCenter>
+                            <article>
                                 <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
                                 {aboutContent.var_filosofi.text.map(text => (
                                     <StyledParagraph>{text.textrow}</StyledParagraph>
                                 ))}
-                            </AlignCenter>
+                            </article>
                         </Column>
                         <Column>
-                            <StyledImage src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
+                            <img src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
                         </Column>
                     </ReverseRow>
                     <FlexParent>
@@ -169,34 +132,20 @@ const About = () => {
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
-                                    ></iframe>
+                                    />
                                 </IframeWrapper>
                             ))}
                         </Column>
                         <Column>
-                            <AlignCenter>
+                            <article>
                                 <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
                                 {aboutContent.inspiration.text.map(text => (
                                     <StyledParagraph>{text.textrow}</StyledParagraph>
                                 ))}
-                            </AlignCenter>
+                            </article>
                         </Column>
                     </FlexParent>
-                    <FsLightbox
-                        toggler={toggler}
-                        customSources={[
-                            <Iframe
-                                title="eskeinterior"
-                                height="600px"
-                                width="100vw"
-                                src="https://www.youtube.com/embed/FQT3FzxNaio?rel=0&amp;autoplay=1&mute=1"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></Iframe>,
-                        ]}
-                    />
-                </PageWrapper>
+                </>
             ) : null}
         </Layout>
     );

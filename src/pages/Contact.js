@@ -1,59 +1,145 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { StyledH1, StyledParagraph, StyledLink } from '../styles/typography';
+import { StyledH1, StyledLargeH2, StyledParagraph, StyledLink } from '../styles/typography';
 import CircleLoader from '../components/CircleLoader';
 import LocationIcon from '../components/icons/LocationIcon';
 import Layout from '../components/Layout';
 import PhoneIcon from '../components/icons/PhoneIcon';
 import MailIcon from '../components/icons/MailIcon';
+import Mapbox from '../components/MapboxMap';
 
 const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    background-color: ${({ theme }) => theme.brand};
     margin-bottom: ${({ theme }) => theme.space[3]};
 
     ${({ theme }) => theme.sm`
-       max-height: 400px;
        grid-template-rows: auto;
        grid-template-columns: repeat(2, 1fr);
-       grid-gap: ${({ theme }) => theme.space[3]};  
+       grid-gap: ${({ theme }) => theme.space[1]};
+       margin-top: 0; 
+    `};
+
+    ${({ theme }) => theme.xl`
+       grid-template-rows: auto;
+       grid-template-columns: repeat(3, 1fr);
        margin-top: 0; 
     `};
 `;
+
 const Wrapper = styled.section`
-    margin: ${({ theme }) => theme.space[3]};
-    &:nth-of-type(2) {
-        background: ${props => `url(${props.image})`};
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin-top: 0;
-    }
     ${({ theme }) => theme.sm`
-       margin: ${({ theme }) => theme.space[3]} 0 ${({ theme }) => theme.space[3]} ${({ theme }) => theme.space[3]};
-       &:nth-of-type(2) {
-        background: ${props => `url(${props.image})`};
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin: ${({ theme }) => theme.space[3]} ${({ theme }) => theme.space[3]} ${({ theme }) => theme.space[3]} 0;
-    } 
+      grid-column: span 2;
+      &:nth-of-type(4) {
+       grid-column: span 1;
+      } 
+      &:nth-of-type(5) {
+     
+        grid-column: span 1;
+       } 
+    `};
+    ${({ theme }) => theme.xl`
+      grid-column: span 3;
+      &:nth-of-type(2) {
+       grid-column: span 3;
+      } 
+      &:nth-of-type(3) {
+        grid-column: span 1;
+       } 
     `};
 `;
 
-const StyledSection = styled.section`
-    margin-bottom: ${({ theme }) => theme.space[3]};
+const HeroImage = styled.div`
+    background: ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 300px;
+    grid-column: 1/2;
+    ${({ theme }) => theme.sm`
+      height: 450px;
+    `};
+`;
+
+const ImageWrapper = styled.div`
+    width: 100%;
+    height: 300px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    ${({ theme }) => theme.sm`
+        margin: ${({ theme }) => theme.space[1]} 0 0 0;
+ `};
+`;
+
+const StyledSection = styled.section`
+    margin: ${({ theme }) => theme.space[1]} 0;
+    width: 100%;
+    height: 300px;
+    ${({ theme }) => theme.sm`
+        margin: ${({ theme }) => theme.space[1]} 0 0 0;
+    `};
 `;
 
 const Header = styled(StyledH1)`
-    text-transform: uppercase;
-    margin-top: 0%;
+    text-align: center;
+    ${({ theme }) => theme.xl`
+        margin-top: ${({ theme }) => theme.space[4]};
+    `};
+`;
+
+const HeaderContainer = styled.div`
+    text-align: center;
+    ${({ theme }) => theme.lg`
+        text-align: left;
+    `};
+`;
+
+const HeaderAdress = styled(StyledLargeH2)`
+    display: inline-block;
+    margin-top: ${({ theme }) => theme.space[7]};
+    margin-bottom: 0;
+    ${({ theme }) => theme.sm`
+       margin-top: ${({ theme }) => theme.space[6]};
+    `};
+    ${({ theme }) => theme.lg`
+       margin-top: ${({ theme }) => theme.space[7]};
+    `};
+    ${({ theme }) => theme.xl`
+        margin-top: ${({ theme }) => theme.space[1]};
+    `};
+`;
+
+const StyledHr = styled.hr`
+    border: 0;
+    height: 1px;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.text};
+    margin: ${({ theme }) => theme.space[2]} 0;
+    width: 100%;
+`;
+
+const StyledText = styled(StyledParagraph)`
+    text-align: center;
+    ${({ theme }) => theme.lg`
+        margin: 0 ${({ theme }) => theme.space[4]};
+    `};
+    ${({ theme }) => theme.xl`
+        margin: 0 200px 50px 200px;
+    `};
 `;
 
 const IconWrapper = styled.div`
     display: flex;
+    justify-content: center;
     margin-bottom: ${({ theme }) => theme.space[0]};
+    text-align: center;
+    ${({ theme }) => theme.xl`
+        text-align: left;
+        justify-content: unset;
+    `};
 `;
 
 const Paragraph = styled(StyledParagraph)`
@@ -79,17 +165,26 @@ function Services() {
                 <>
                     <Container>
                         <Wrapper>
+                            <HeroImage image={contactPageContent.image.url} />
+                        </Wrapper>
+                        <Wrapper>
                             <Header>{contactPageContent.title}</Header>
-
-                            <StyledParagraph>
+                            <StyledText>
                                 {contactPageContent.text}
                                 <span>
                                     <StyledLink href={`mailto:${contactPageContent.contact_details.email}`}>
                                         {contactPageContent.contact_details.email}
                                     </StyledLink>
                                 </span>
-                            </StyledParagraph>
-
+                            </StyledText>
+                        </Wrapper>
+                        <Wrapper>
+                            <HeaderContainer>
+                                <HeaderAdress>
+                                    {contactPageContent.contact_details.contact_title}
+                                    <StyledHr></StyledHr>
+                                </HeaderAdress>
+                            </HeaderContainer>
                             <IconWrapper>
                                 <PhoneIcon />
                                 <Paragraph>{contactPageContent.contact_details.phone_}</Paragraph>
@@ -109,20 +204,17 @@ function Services() {
                                 </div>
                             </IconWrapper>
                         </Wrapper>
-                        <Wrapper image={contactPageContent.image.url}></Wrapper>
+                        <Wrapper>
+                            <StyledSection>
+                                <Mapbox />
+                            </StyledSection>
+                        </Wrapper>
+                        <Wrapper>
+                            <ImageWrapper>
+                                <img src={contactPageContent.image2.url} alt={contactPageContent.image2.title} />
+                            </ImageWrapper>
+                        </Wrapper>
                     </Container>
-                    <StyledSection>
-                        <iframe
-                            title="eske_as"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.550204345716!2d10.733024915882911!3d59.92301197032143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e79905529d3%3A0x9471c196272b8931!2sEske%20interi%C3%B8r%20og%20design!5e0!3m2!1ssv!2sse!4v1585493882710!5m2!1ssv!2sse"
-                            width="100%"
-                            height="100%"
-                            frameBorder="0"
-                            allowFullScreen=""
-                            aria-hidden="false"
-                            tabIndex="0"
-                        ></iframe>
-                    </StyledSection>
                 </>
             ) : null}
         </Layout>

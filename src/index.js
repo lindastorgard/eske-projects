@@ -9,7 +9,7 @@ var WebFont = require('webfontloader');
 
 WebFont.load({
     google: {
-        families: ['Playfair Display:400, 500, 600, 700', 'Roboto Condensed:300, 400, 700', 'Darker Grotesque:400'],
+        families: ['Playfair Display:400, 500, 600, 700', 'Roboto Condensed:300, 400, 700'],
     },
 });
 
@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 `;
 
