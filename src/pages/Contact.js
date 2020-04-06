@@ -70,16 +70,28 @@ const ImageWrapper = styled.div`
         object-fit: cover;
     }
     ${({ theme }) => theme.sm`
-        margin: ${({ theme }) => theme.space[1]} 0 0 0;
- `};
+        margin-top: ${({ theme }) => theme.space[1]};
+    `};
+    ${({ theme }) => theme.lg`
+        margin-top: ${({ theme }) => theme.space[6]};
+    `};
+    ${({ theme }) => theme.xl`
+        margin-top: ${({ theme }) => theme.space[1]};
+    `};
 `;
 
-const StyledSection = styled.section`
+const StyledMapSection = styled.section`
     margin: ${({ theme }) => theme.space[1]} 0;
     width: 100%;
     height: 300px;
     ${({ theme }) => theme.sm`
         margin: ${({ theme }) => theme.space[1]} 0 0 0;
+    `};
+    ${({ theme }) => theme.lg`
+        margin-top: ${({ theme }) => theme.space[6]} 0 0 0;
+    `};
+    ${({ theme }) => theme.xl`
+        margin-top: ${({ theme }) => theme.space[6]} 0 0 0;
     `};
 `;
 
@@ -92,20 +104,20 @@ const Header = styled(StyledH1)`
 
 const HeaderContainer = styled.div`
     text-align: center;
-    ${({ theme }) => theme.lg`
+    ${({ theme }) => theme.xl`
         text-align: left;
     `};
 `;
 
 const HeaderAdress = styled(StyledLargeH2)`
     display: inline-block;
-    margin-top: ${({ theme }) => theme.space[7]};
+    margin-top: ${({ theme }) => theme.space[4]};
     margin-bottom: 0;
     ${({ theme }) => theme.sm`
-       margin-top: ${({ theme }) => theme.space[6]};
+       margin-top: ${({ theme }) => theme.space[3]};
     `};
     ${({ theme }) => theme.lg`
-       margin-top: ${({ theme }) => theme.space[7]};
+       margin-top: ${({ theme }) => theme.space[6]};
     `};
     ${({ theme }) => theme.xl`
         margin-top: ${({ theme }) => theme.space[1]};
@@ -123,11 +135,14 @@ const StyledHr = styled.hr`
 
 const StyledText = styled(StyledParagraph)`
     text-align: center;
+    ${({ theme }) => theme.sm`
+        margin: 0 100px;
+    `};
     ${({ theme }) => theme.lg`
-        margin: 0 ${({ theme }) => theme.space[4]};
+        margin: 0 160px;
     `};
     ${({ theme }) => theme.xl`
-        margin: 0 200px 50px 200px;
+        margin: 0 200px ${({ theme }) => theme.space[4]} 200px;
     `};
 `;
 
@@ -205,9 +220,9 @@ function Services() {
                             </IconWrapper>
                         </Wrapper>
                         <Wrapper>
-                            <StyledSection>
+                            <StyledMapSection>
                                 <Mapbox />
-                            </StyledSection>
+                            </StyledMapSection>
                         </Wrapper>
                         <Wrapper>
                             <ImageWrapper>
