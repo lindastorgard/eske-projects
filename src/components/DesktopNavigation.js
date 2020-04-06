@@ -58,10 +58,10 @@ const DesktopNavigation = () => {
                     <NavLink url={CONTACT.path} link="Kontakt" />
                 </LinkCointainer>
                 <IconContainer>
-                    <a href="/">
+                    <a href="https://www.facebook.com/EskeInterior/">
                         <FacebookIcon />
                     </a>
-                    <a href="/">
+                    <a href="https://www.instagram.com/eskeinterior/">
                         <InstagramIcon />
                     </a>
                 </IconContainer>
