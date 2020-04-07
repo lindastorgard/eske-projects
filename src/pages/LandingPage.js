@@ -17,6 +17,9 @@ const Container = styled.div`
         min-height: 100%;
         position: relative;
         z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 `;
 
