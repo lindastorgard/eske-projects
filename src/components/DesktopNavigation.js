@@ -15,6 +15,10 @@ const NavigationWrapper = styled.nav`
     top: 0;
     left: 0;
     overflow-x: hidden;
+    display: none;
+    ${({ theme }) => theme.lg`
+    display: block;
+    `}
 `;
 
 const LinkCointainer = styled.ul`
