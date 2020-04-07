@@ -33,6 +33,10 @@ const IconContainer = styled.div`
     position: absolute;
     bottom: ${({ theme }) => theme.space[4]};
     padding-left: ${({ theme }) => theme.space[4]};
+    svg {
+        padding-right: 24px;
+        height: 24px;
+    }
 `;
 
 const MobileMenu = ({ open, setOpen }) => {
