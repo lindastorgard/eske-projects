@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
@@ -54,6 +54,20 @@ const CategorySection = styled.div`
 const Projects = () => {
     const param = useParams();
     const { category, error, isLoading } = useApi(param.category);
+    const setLocalStorage = useCallback((prev, next) => {
+        if (prev && prev >= 0 && next < category.length) {
+            localStorage.setItem('previousIndex', prev);
+            localStorage.setItem('nextIndex', next);
+        } else {
+            localStorage.setItem('previousIndex', 0);
+            localStorage.setItem('nextIndex', category.length - 1);
+        }
+    });
+    useEffect(() => {
+        if (category) {
+            setLocalStorage(0, 0);
+        }
+    }, [category, setLocalStorage]);
     return (
         <Layout>
             {isLoading ? (
@@ -62,12 +76,15 @@ const Projects = () => {
                 <StyledParagraph>{error}</StyledParagraph>
             ) : category ? (
                 <StyledSection>
-                    {category.map(project => {
+                    {category.map((project, index) => {
                         const { acf } = project;
                         return (
                             <>
                                 <CategorySection key={project.id} image={acf.featured_image}>
-                                    <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
+                                    <Link
+                                        to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}
+                                        onClick={() => setLocalStorage(index - 1, index + 1)}
+                                    >
                                         <Title>{acf.title}</Title>
                                     </Link>
                                 </CategorySection>
