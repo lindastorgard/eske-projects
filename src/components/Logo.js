@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo512.png';
 
 const StyledLogo = styled.img`
     height: ${({ theme }) => theme.space[6]};

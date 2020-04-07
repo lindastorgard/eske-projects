@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 const StyledBurger = styled.button`
     position: absolute;
@@ -19,21 +20,24 @@ const StyledBurger = styled.button`
         outline: none;
     }
     div {
-        width: ${({ theme }) => theme.space[3]};
         height: 2px;
-        background: ${({ theme }) => theme.secondary};
+        background: ${({ open }) => (open ? 'black' : props => props.color)};
         border-radius: 10px;
         transition: all 0.3s linear;
         position: relative;
         transform-origin: 1px;
         :first-child {
+            width: ${({ theme }) => theme.space[3]};
             transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
         }
         :nth-child(2) {
+            width: ${({ theme }) => theme.space[2]};
+            margin-left: auto;
             opacity: ${({ open }) => (open ? '0' : '1')};
             transform: ${({ open }) => (open ? 'translateX(20px)' : 'translateX(0)')};
         }
         :nth-child(3) {
+            width: ${({ theme }) => theme.space[3]};
             transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
         }
     }
@@ -43,8 +47,14 @@ const StyledBurger = styled.button`
 `;
 
 const Hamburger = ({ open, setOpen }) => {
+    const { pathname } = useLocation();
+
     return (
-        <StyledBurger open={open} onClick={() => setOpen(!open)}>
+        <StyledBurger
+            color={pathname === '/' ? ({ theme }) => theme.brand : ({ theme }) => theme.text}
+            open={open}
+            onClick={() => setOpen(!open)}
+        >
             <div />
             <div />
             <div />

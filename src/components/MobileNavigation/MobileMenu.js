@@ -12,8 +12,8 @@ const NavigationWrapper = styled.nav`
     height: 100vh;
     position: absolute;
     left: 0;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(200%)')};
+    transition: transform 0.5s ease-in-out;
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-200%)')};
     width: 100%;
 `;
 

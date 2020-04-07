@@ -7,13 +7,11 @@ import Portfolio from './Portfolio';
 import Contact from './Contact';
 import About from './About';
 import Header from '../components/Header';
-import Video from './Video';
 import Projects from './Projects';
 import LandingPage from './LandingPage';
 import ProjectDetails from './ProjectDetails';
 import {
     LANDING_PAGE,
-    VIDEO,
     ABOUT,
     CONTACT,
     PORTFOLIO,
@@ -38,18 +36,17 @@ function App() {
                 <Router>
                     <>
                         <Header />
-                        <main>
-                            <Switch>
-                                <Route exact path={VIDEO.path} component={Video} />
+                        <Switch>
+                            <main>
+                                <Route exact path={LANDING_PAGE.path} component={LandingPage} />
                                 <Route exact path={ABOUT.path} component={About} />
                                 <Route exact path={CONTACT.path} component={Contact} />
                                 <Route exact path={PORTFOLIO.path} component={Portfolio} />
                                 <Route exact path={SERVICES.path} component={Services} />
                                 <Route exact path={PROJECT_WITH_ID.path} component={ProjectDetails} />
                                 <Route exact path={PROJECT_WITH_CATEGORY.path} component={Projects} />
-                                <Route exact path={LANDING_PAGE.path} component={LandingPage} />
-                            </Switch>
-                        </main>
+                            </main>
+                        </Switch>
                     </>
                 </Router>
             </ThemeProvider>
