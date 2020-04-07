@@ -85,13 +85,13 @@ const StyledMapSection = styled.section`
     width: 100%;
     height: 300px;
     ${({ theme }) => theme.sm`
-        margin: ${({ theme }) => theme.space[1]} 0 0 0;
+        margin-top: ${({ theme }) => theme.space[1]};
     `};
     ${({ theme }) => theme.lg`
-        margin-top: ${({ theme }) => theme.space[6]} 0 0 0;
+        margin-top: ${({ theme }) => theme.space[6]};
     `};
     ${({ theme }) => theme.xl`
-        margin-top: ${({ theme }) => theme.space[6]} 0 0 0;
+        margin-top: ${({ theme }) => theme.space[1]};
     `};
 `;
 
