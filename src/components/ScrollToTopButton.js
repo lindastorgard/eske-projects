@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ArrowUpIcon from './icons/ArrowUpIcon';
 
@@ -23,6 +23,22 @@ const StyledButton = styled.button`
 `;
 
 const ScrollToTopButton = () => {
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener('scroll', pageScroll);
+        return () => window.removeEventListener('scroll', pageScroll);
+    }, []);
+
+    const pageScroll = function() {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    };
+
     const scrollToTop = () => {
         window.scroll({
             top: 0,
@@ -30,10 +46,15 @@ const ScrollToTopButton = () => {
             behavior: 'smooth',
         });
     };
+
     return (
-        <StyledButton onClick={scrollToTop}>
-            <ArrowUpIcon />
-        </StyledButton>
+        <>
+            {showButton && (
+                <StyledButton onClick={scrollToTop}>
+                    <ArrowUpIcon />
+                </StyledButton>
+            )}
+        </>
     );
 };
 
