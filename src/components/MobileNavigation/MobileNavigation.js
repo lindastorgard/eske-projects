@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { LANDING_PAGE } from '../../utils/urlRoutes';
 import Logo from '../Logo';
 
@@ -14,8 +14,10 @@ const NavigationWrapper = styled.div`
     ${({ theme }) => theme.sm`
         height: ${({ theme }) => theme.space[8]};
     `};
-    background-color: ${({ theme }) => theme.primary};
+    background-color: ${props => props.color};
     z-index: 6;
+    ${({ theme }) => theme.lg`
+    display: none`}
 `;
 
 const StyledLogo = styled.div`
@@ -30,9 +32,12 @@ const StyledLogo = styled.div`
 `;
 
 const MobileNavigation = () => {
+    const { pathname } = useLocation();
+
     const [open, setOpen] = useState(false);
+
     return (
-        <NavigationWrapper>
+        <NavigationWrapper color={pathname === '/' ? 'transparent' : ({ theme }) => theme.primary}>
             <StyledLogo>
                 <Link to={LANDING_PAGE.path} open={open} onClick={() => setOpen(false)}>
                     <Logo />

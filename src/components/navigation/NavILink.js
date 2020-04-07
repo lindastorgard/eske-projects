@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
+import { NavLink as Link, useLocation } from 'react-router-dom';
 
 const Background = styled.div`
     position: absolute;
@@ -10,6 +10,9 @@ const Background = styled.div`
     height: 100%;
     background-image: linear-gradient(to right, #ebe0e0, #fff);
     transition: 1s;
+    ${({ theme }) => theme.lg`
+      background-image: ${props => props.gradient};
+    `}
 `;
 const Wrapper = styled.div`
     position: relative;
@@ -43,14 +46,26 @@ const NavItem = styled(Link)`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: ${({ theme }) => theme.text};
+    ${({ theme }) => theme.lg`
+       color: ${props => props.color};
+       &:hover{
+	   color: ${props => props.hover};
+
+     }
+    `}
 `;
 
 const NavLink = ({ url, link }) => {
+    const { pathname } = useLocation();
+
     const [active, setActive] = useState(false);
+
     return (
         <Wrapper active={active ? true : false}>
-            <Background />
+            <Background gradient={pathname === '/' ? 'none' : 'linear-gradient(to right, #ebe0e0, #fff)'} />
             <NavItem
+                color={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.text}
+                hover={pathname === '/' ? ({ theme }) => theme.brand : ({ theme }) => theme.text}
                 to={url}
                 isActive={match => {
                     if (match) {
