@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 const StyledIcon = styled.svg`
     display: block;
@@ -9,11 +10,20 @@ const StyledIcon = styled.svg`
     &:hover {
         fill: ${({ theme }) => theme.brand};
     }
+    ${({ theme }) => theme.lg`
+    fill: ${props => props.fill};
+    &:hover{
+        fill: ${props => props.hover};
+    }
+`}
 `;
 
 const FacebookIcon = () => {
+    const { pathname } = useLocation();
     return (
         <StyledIcon
+            fill={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.darkbrand}
+            hover={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.brand}
             aria-hidden="true"
             focusable="false"
             data-prefix="fab"
