@@ -7,6 +7,7 @@ import { PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import { HideAt, ShowAt } from 'react-with-breakpoints';
+import ScrollMemory from 'react-router-scroll-memory';
 
 const Container = styled.div`
     display: grid;
@@ -62,6 +63,7 @@ const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
     return (
         <Layout>
+            <ScrollMemory />
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
