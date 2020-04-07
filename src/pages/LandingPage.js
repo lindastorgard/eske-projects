@@ -82,7 +82,7 @@ const LandingPage = () => {
             </Link>
             <Overlay />
             <video autoPlay loop muted playsInline poster={kitchen}>
-                <source src="https://eskeprosjekt.no/video/tapet.mp4" type="video/mp4" />
+                <source src="https://eskeprosjekt.no/video/eskeny.mp4" type="video/mp4" />
             </video>
         </Container>
     );
