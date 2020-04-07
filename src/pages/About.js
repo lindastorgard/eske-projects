@@ -25,6 +25,7 @@ const StyledSection = styled.section`
     text-align: center;
     max-width: 750px;
     margin: ${({ theme }) => theme.space[4]} auto;
+    padding: 0 ${({ theme }) => theme.space[4]};
 `;
 
 const IframeWrapper = styled.div`
