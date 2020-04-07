@@ -8,6 +8,7 @@ import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph } from '../styles/typography';
 import { HideAt } from 'react-with-breakpoints';
 import FsLightbox from 'fslightbox-react';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const SectionContainer = styled.section`
     ${({ theme }) => theme.sm`  
@@ -103,6 +104,7 @@ const ProjectsDetails = () => {
                 <StyledParagraph>{error}</StyledParagraph>
             ) : project && categories ? (
                 <>
+                    <ScrollToTopButton />
                     <SectionContainer>
                         <div>
                             <HideAt breakpoint="largeAndBelow">
