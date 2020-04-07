@@ -99,7 +99,7 @@ const ProjectsDetails = () => {
     let nextIndex = localStorage.getItem('nextIndex');
 
     useEffect(() => {
-        if (project) {
+        if (id) {
             setProjectContent(project);
         }
     }, [project]);
