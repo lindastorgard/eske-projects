@@ -4,6 +4,7 @@ import kitchen from '../assets/kitchen.png';
 import { PORTFOLIO } from '../utils/urlRoutes';
 import { Link } from 'react-router-dom';
 import { StyledH2 } from '../styles/typography';
+import setScroll from '../hooks/setScroll';
 
 const Container = styled.div`
     position: relative;
@@ -75,6 +76,7 @@ const StyledButton = styled.button`
 `;
 
 const LandingPage = () => {
+    setScroll();
     return (
         <Container>
             <Link to={PORTFOLIO.path} link="Portfolio">
