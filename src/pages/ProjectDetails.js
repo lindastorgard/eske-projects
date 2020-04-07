@@ -9,6 +9,7 @@ import { StyledH1, StyledParagraph } from '../styles/typography';
 import { HideAt } from 'react-with-breakpoints';
 import FsLightbox from 'fslightbox-react';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import ScrollMemory from 'react-router-scroll-memory';
 
 const SectionContainer = styled.section`
     ${({ theme }) => theme.sm`  
@@ -89,7 +90,7 @@ const ProjectsDetails = () => {
                 urlList.push(url);
             });
         }
-    }, [project]);
+    }, [project, urlList]);
 
     const toggleLightbox = index => {
         setLightboxIndex(index);
@@ -98,6 +99,7 @@ const ProjectsDetails = () => {
 
     return (
         <Layout>
+            <ScrollMemory />
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (
