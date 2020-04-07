@@ -64,8 +64,8 @@ const NavLink = ({ url, link }) => {
         <Wrapper active={active ? true : false}>
             <Background gradient={pathname === '/' ? 'none' : 'linear-gradient(to right, #ebe0e0, #fff)'} />
             <NavItem
-                color={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.text}
-                hover={pathname === '/' ? ({ theme }) => theme.brand : ({ theme }) => theme.text}
+                color={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.text}
+                hover={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.text}
                 to={url}
                 isActive={match => {
                     if (match) {
