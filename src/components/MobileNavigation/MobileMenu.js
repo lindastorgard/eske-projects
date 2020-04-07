@@ -32,7 +32,7 @@ const IconContainer = styled.div`
     flex-direction: row;
     position: absolute;
     bottom: ${({ theme }) => theme.space[4]};
-    padding-left: ${({ theme }) => theme.space[2]};
+    padding-left: ${({ theme }) => theme.space[4]};
 `;
 
 const MobileMenu = ({ open, setOpen }) => {
