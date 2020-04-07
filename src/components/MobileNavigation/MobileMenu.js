@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { PORTFOLIO, CONTACT, ABOUT, SERVICES } from '../../utils/urlRoutes';
 import NavLink from '../navigation/NavILink';
+import InstagramIcon from '../icons/InstagramIcon';
+import FacebookIcon from '../icons/FacebookIcon';
 
 const NavigationWrapper = styled.nav`
     display: flex;
@@ -25,6 +27,18 @@ const LinkCointainer = styled.ul`
     top: 15%;
 `;
 
+const IconContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: ${({ theme }) => theme.space[4]};
+    padding-left: ${({ theme }) => theme.space[4]};
+    svg {
+        padding-right: 24px;
+        height: 24px;
+    }
+`;
+
 const MobileMenu = ({ open, setOpen }) => {
     return (
         <NavigationWrapper open={open}>
@@ -38,6 +52,14 @@ const MobileMenu = ({ open, setOpen }) => {
                     </LinkCointainer>
                 </div>
             </nav>
+            <IconContainer>
+                <a href="/">
+                    <FacebookIcon />
+                </a>
+                <a href="/">
+                    <InstagramIcon />
+                </a>
+            </IconContainer>
         </NavigationWrapper>
     );
 };

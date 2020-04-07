@@ -25,6 +25,7 @@ const StyledSection = styled.section`
     text-align: center;
     max-width: 750px;
     margin: ${({ theme }) => theme.space[4]} auto;
+    padding: 0 ${({ theme }) => theme.space[4]};
 `;
 
 const IframeWrapper = styled.div`
@@ -55,6 +56,12 @@ const Column = styled.div`
     article {
         text-align: center;
         padding: ${({ theme }) => theme.space[4]};
+        ${({ theme }) => theme.sm`
+            padding: 0 ${({ theme }) => theme.space[4]};
+        `};
+        ${({ theme }) => theme.md`
+            padding: ${({ theme }) => theme.space[4]};
+        `};
         ul {
             text-align: left;
         }
