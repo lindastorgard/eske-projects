@@ -13,9 +13,7 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 
 const SectionContainer = styled.section`
-    ${({ theme }) => theme.sm`  
-        margin-bottom: ${({ theme }) => theme.space[5]}   
-    `};
+    margin-bottom: ${({ theme }) => theme.space[2]};
     ${({ theme }) => theme.lg`
      margin-top: ${({ theme }) => theme.space[1]};
      margin-right: ${({ theme }) => theme.space[5]};
@@ -25,8 +23,7 @@ const SectionContainer = styled.section`
     }
     article {
         margin-top: 100px;
-    }
-    margin-bottom: ${({ theme }) => theme.space[5]}     
+    }   
     `};
 `;
 
@@ -83,9 +80,40 @@ const Dash = styled.span`
 
 const FlexParent = styled.div`
     display: flex;
+    padding-top: ${({ theme }) => theme.space[3]};
+    width: 100%;
+    ${({ theme }) => theme.md`
+        width: 70%;
+    `};
+    ${({ theme }) => theme.lg`
+        width: 85%;
+	`};
 `;
 
 const Column = styled.div`
+    width: 90px;
+    padding: ${({ theme }) => theme.space[0]};
+    ${StyledParagraph} {
+        text-align: center;
+    }
+    &:first-of-type {
+        padding-left: 0;
+    }
+`;
+
+const ColorCircle = styled.div`
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: ${props => props.color};
+    ${({ theme }) => theme.lg`
+        width: 80px;
+        height: 80px;
+    `};
+`;
+
+const FlexColumn = styled.div`
     flex: 1;
 `;
 
@@ -154,6 +182,20 @@ const ProjectsDetails = () => {
                                 {projectContent[0].acf.location}
                             </StyledParagraph>
                             <StyledParagraph>{projectContent[0].acf.description}</StyledParagraph>
+                            <FlexParent>
+                                {projectContent[0].acf.colors
+                                    ? Object.keys(projectContent[0].acf.colors).map(color => (
+                                          <Column key={color}>
+                                              <ColorCircle
+                                                  color={projectContent[0].acf.colors[color].color_code_}
+                                              ></ColorCircle>
+                                              <StyledParagraph>
+                                                  {projectContent[0].acf.colors[color].color_name}
+                                              </StyledParagraph>
+                                          </Column>
+                                      ))
+                                    : null}
+                            </FlexParent>
                         </article>
                     </SectionContainer>
                     <GalleryWrapper>
@@ -175,7 +217,7 @@ const ProjectsDetails = () => {
                             <StyledH2>Flere prosjekt</StyledH2>
 
                             <FlexParent>
-                                <Column>
+                                <FlexColumn>
                                     <Link
                                         to={`${PROJECT_WITH_ID.getPathWithId(
                                             paramCategory,
@@ -188,15 +230,15 @@ const ProjectsDetails = () => {
                                         />
                                         <StyledParagraph>{category[previousIndex].acf.title}</StyledParagraph>
                                     </Link>
-                                </Column>
-                                <Column>
+                                </FlexColumn>
+                                <FlexColumn>
                                     <Link
                                         to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}
                                     >
                                         <Image src={category[nextIndex].acf.featured_image} alt="next project" />
                                         <StyledParagraph>{category[nextIndex].acf.title}</StyledParagraph>
                                     </Link>
-                                </Column>
+                                </FlexColumn>
                             </FlexParent>
                         </SectionContainer>
                     ) : null}
