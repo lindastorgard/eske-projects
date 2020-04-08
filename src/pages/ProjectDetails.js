@@ -153,7 +153,6 @@ const ProjectsDetails = () => {
         setLightboxIndex(index);
         setToggler(!toggler);
     };
-    console.log(PROJECT_WITH_CATEGORY.getPathWithId(paramCategory));
 
     return (
         <Layout>
@@ -216,7 +215,6 @@ const ProjectsDetails = () => {
                     {category ? (
                         <SectionContainer>
                             <StyledH2>Flere prosjekt</StyledH2>
-
                             <FlexParent>
                                 <FlexColumn>
                                     <Link
