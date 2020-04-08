@@ -19,6 +19,10 @@ const StyledSection = styled.section`
     ${({ theme }) => theme.md`
         grid-template-columns: repeat(3, minmax(0, 1fr));
     `};
+    ${({ theme }) => theme.lg`    
+      margin-top: ${({ theme }) => theme.space[1]};
+      margin-right: ${({ theme }) => theme.space[1]};
+    `};
 `;
 
 const Title = styled(StyledH2)`
@@ -49,7 +53,9 @@ const CategorySection = styled.div`
 
 const Projects = () => {
     const param = useParams();
+
     const { category, error, isLoading } = useApi(param.category);
+
     return (
         <Layout>
             {isLoading ? (
@@ -58,16 +64,16 @@ const Projects = () => {
                 <StyledParagraph>{error}</StyledParagraph>
             ) : category ? (
                 <StyledSection>
-                    {category.map(project => {
+                    {category.map((project, index) => {
                         const { acf } = project;
                         return (
                             <>
-                            <CategorySection key={project.id} image={acf.featured_image}>
-                                <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
-                                    <Title>{acf.title}</Title>
-                                </Link>
-                            </CategorySection>
-                            <ScrollToTopButton />
+                                <CategorySection key={project.id} image={acf.featured_image}>
+                                    <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
+                                        <Title>{acf.title}</Title>
+                                    </Link>
+                                </CategorySection>
+                                <ScrollToTopButton />
                             </>
                         );
                     })}

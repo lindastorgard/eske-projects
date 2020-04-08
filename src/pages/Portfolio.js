@@ -15,6 +15,8 @@ const Container = styled.div`
     grid-template-rows: repeat(2, calc(50vh - 56px));
     grid-gap: ${({ theme }) => theme.space[0]};
     overflow: hidden;
+    margin-top: ${({ theme }) => theme.space[1]};
+    margin-right: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.lg`
 		  grid-template-columns: repeat(2, 1fr);
 		  grid-template-rows: calc(100vh - 32px);

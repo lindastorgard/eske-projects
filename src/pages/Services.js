@@ -4,7 +4,7 @@ import { StyledH1, StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
-import quotes from '../assets/quotes.png';
+import ScrollMemory from 'react-router-scroll-memory';
 
 const GridContainer = styled.div`
     display: grid;
@@ -37,19 +37,22 @@ const Quote = styled.div`
         font-size: ${({ theme }) => theme.fontSizes[5]};
         margin: 0;
         margin-top: ${({ theme }) => theme.space[0]};
+        &:before {
+            color: ${({ theme }) => theme.brand};
+            content: open-quote;
+            font-size: 150px;
+            line-height: 0;
+            vertical-align: -0.4em;
+            margin-right: -${({ theme }) => theme.space[2]};
+            margin-left: -35px;
+        }
         ${({ theme }) => theme.sm`
         font-size: ${({ theme }) => theme.fontSizes[6]};
+        &:before {
+          font-size: 180px;
+      }
     `};
     }
-`;
-
-const QuoteMark = styled.img`
-    width: ${({ theme }) => theme.fontSizes[6]};
-    margin-right: -60px;
-    height: 100%;
-    ${({ theme }) => theme.sm`
-      margin-right: -20px;
-      `};
 `;
 
 const FlexParent = styled.div`
@@ -60,6 +63,9 @@ const FlexParent = styled.div`
         &:nth-child(odd) {
           flex-direction: row-reverse;  
         }
+    `};
+    ${({ theme }) => theme.lg`    
+      margin-right: ${({ theme }) => theme.space[1]};
     `};
 `;
 
@@ -83,7 +89,7 @@ const Column = styled.div`
 const Number = styled.p`
     font-size: ${({ theme }) => theme.fontSizes[7]};
     font-family: ${({ theme }) => theme.fonts.heading};
-    margin: 0 0 ${({ theme }) => theme.space[2]} 0;
+    margin: 0;
 `;
 
 const Underline = styled.div`
@@ -104,48 +110,50 @@ function Services() {
     const { servicespage, error, isLoading } = useApi();
 
     return (
-        <Layout>
-            {isLoading ? (
-                <CircleLoader />
-            ) : error ? (
-                <StyledParagraph>{error}</StyledParagraph>
-            ) : servicespage && servicespage[0].acf ? (
-                <GridContainer>
-                    <HeroImage image={servicespage[0].acf.hero_image} />
-                    <Quote>
-                        <QuoteMark src={quotes} alt="quotemarks" />
-                        <StyledH1>{servicespage[0].acf.quote}</StyledH1>
-                    </Quote>
+        <>
+            <ScrollMemory />
+            <Layout>
+                {isLoading ? (
+                    <CircleLoader />
+                ) : error ? (
+                    <StyledParagraph>{error}</StyledParagraph>
+                ) : servicespage && servicespage[0].acf ? (
+                    <GridContainer>
+                        <HeroImage image={servicespage[0].acf.hero_image} />
+                        <Quote>
+                            <StyledH1>{servicespage[0].acf.quote}</StyledH1>
+                        </Quote>
 
-                    {Object.keys(servicespage[0].acf.sections).map((section, index) => {
-                        const {
-                            acf: { sections },
-                        } = servicespage[0];
-                        return (
-                            <FlexParent key={index}>
-                                <Column>
-                                    <img src={sections[section].image} alt="tjenster" />
-                                </Column>
-                                <Column>
-                                    <article>
-                                        <Number>{sections[section].section_nr}</Number>
-                                        <Underline />
-                                        <StyledLargeH2>{sections[section].title}</StyledLargeH2>
-                                        <StyledParagraph>{sections[section].text}</StyledParagraph>
-                                        <ul>
-                                            {sections[section].list_items &&
-                                                sections[section].list_items.map((li, index) => (
-                                                    <StyledListItem key={index}>{li.list_item}</StyledListItem>
-                                                ))}
-                                        </ul>
-                                    </article>
-                                </Column>
-                            </FlexParent>
-                        );
-                    })}
-                </GridContainer>
-            ) : null}
-        </Layout>
+                        {Object.keys(servicespage[0].acf.sections).map((section, index) => {
+                            const {
+                                acf: { sections },
+                            } = servicespage[0];
+                            return (
+                                <FlexParent key={index}>
+                                    <Column>
+                                        <img src={sections[section].image} alt="tjenster" />
+                                    </Column>
+                                    <Column>
+                                        <article>
+                                            <Number>{sections[section].section_nr}</Number>
+                                            <Underline />
+                                            <StyledLargeH2>{sections[section].title}</StyledLargeH2>
+                                            <StyledParagraph>{sections[section].text}</StyledParagraph>
+                                            <ul>
+                                                {sections[section].list_items &&
+                                                    sections[section].list_items.map((li, index) => (
+                                                        <StyledListItem key={index}>{li.list_item}</StyledListItem>
+                                                    ))}
+                                            </ul>
+                                        </article>
+                                    </Column>
+                                </FlexParent>
+                            );
+                        })}
+                    </GridContainer>
+                ) : null}
+            </Layout>
+        </>
     );
 }
 

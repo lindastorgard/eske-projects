@@ -31,7 +31,7 @@ const IconContainer = styled.div`
     display: flex;
     flex-direction: row;
     position: absolute;
-    bottom: ${({ theme }) => theme.space[5]};
+    bottom: 120px;
     padding-left: ${({ theme }) => theme.space[4]};
     svg {
         padding-right: 24px;
