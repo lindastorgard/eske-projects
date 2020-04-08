@@ -21,7 +21,7 @@ const StyledBurger = styled.button`
     }
     div {
         height: 2px;
-        background: ${({ open }) => (open ? 'black' : props => props.color)};
+        background: ${({ open }) => (open ? 'black' : props => props.colorProp)};
         border-radius: 10px;
         transition: all 0.3s linear;
         position: relative;
@@ -51,7 +51,7 @@ const Hamburger = ({ open, setOpen }) => {
 
     return (
         <StyledBurger
-            color={pathname === '/' ? ({ theme }) => theme.brand : ({ theme }) => theme.text}
+            colorProp={pathname === '/' ? ({ theme }) => theme.brand : ({ theme }) => theme.text}
             open={open}
             onClick={() => setOpen(!open)}
         >
