@@ -113,7 +113,6 @@ const ColorCircle = styled.div`
         height: 80px;
     `};
 `;
-
 const StyledLine = styled.div`
     background-color: ${({ theme }) => theme.secondary};
     height: 1px;
@@ -157,6 +156,7 @@ const AsideImage = styled(ImageWrapper)`
 const AsideSubheader = styled.h3`
     color: ${({ theme }) => theme.text};
     font-weight: 400;
+    text-transform: capitalize;
 `;
 
 const ProjectsDetails = () => {
