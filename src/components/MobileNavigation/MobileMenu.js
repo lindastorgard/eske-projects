@@ -53,10 +53,10 @@ const MobileMenu = ({ open, setOpen }) => {
                 </div>
             </nav>
             <IconContainer>
-                <a href="/">
+                <a href="https://www.facebook.com/EskeInterior/">
                     <FacebookIcon />
                 </a>
-                <a href="/">
+                <a href="https://www.instagram.com/eskeinterior/">
                     <InstagramIcon />
                 </a>
             </IconContainer>
