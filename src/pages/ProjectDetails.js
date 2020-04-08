@@ -44,6 +44,7 @@ const GalleryWrapper = styled.div`
          grid-template-columns: repeat(3, 1fr);
 	`};
 `;
+
 const ImageWrapper = styled.div`
     grid-column: span 1;
     overflow: hidden;
@@ -113,8 +114,49 @@ const ColorCircle = styled.div`
     `};
 `;
 
-const FlexColumn = styled.div`
-    flex: 1;
+const StyledLine = styled.div`
+    background-color: ${({ theme }) => theme.secondary};
+    height: 1px;
+    margin: ${({ theme }) => theme.space[5]} 0;
+    ${({ theme }) => theme.lg`
+       margin-right: ${({ theme }) => theme.space[1]} 
+	`};
+`;
+
+const Aside = styled(GalleryWrapper)`
+    grid-gap: ${({ theme }) => theme.space[1]};
+    text-align: center;
+    ${({ theme }) => theme.sm`
+         grid-template-columns: repeat(2, 1fr);
+	`};
+    ${({ theme }) => theme.lg`
+       margin-right: ${({ theme }) => theme.space[1]} 
+	`};
+    a {
+        text-decoration: none;
+    }
+`;
+
+const AsideHeader = styled(StyledH2)`
+    grid-column: 1/3;
+    font-size: ${({ theme }) => theme.fontSizes[5]};
+`;
+const AsideImage = styled(ImageWrapper)`
+    background: ${props => `url(${props.image})`};
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+    ${({ theme }) => theme.sm`
+    height: 300px;   
+	`};
+    ${({ theme }) => theme.lg`
+       height: 400px;  
+	`};
+`;
+const AsideSubheader = styled.h3`
+    color: ${({ theme }) => theme.text};
+    font-weight: 400;
 `;
 
 const ProjectsDetails = () => {
@@ -212,34 +254,21 @@ const ProjectsDetails = () => {
                             <Image src={url} alt={title} />
                         ))}
                     />
+                    <StyledLine />
                     {category ? (
-                        <SectionContainer>
-                            <StyledH2>Flere prosjekt</StyledH2>
-                            <FlexParent>
-                                <FlexColumn>
-                                    <Link
-                                        to={`${PROJECT_WITH_ID.getPathWithId(
-                                            paramCategory,
-                                            category[previousIndex].id,
-                                        )}`}
-                                    >
-                                        <Image
-                                            src={category[previousIndex].acf.featured_image}
-                                            alt="previous project"
-                                        />
-                                        <StyledParagraph>{category[previousIndex].acf.title}</StyledParagraph>
-                                    </Link>
-                                </FlexColumn>
-                                <FlexColumn>
-                                    <Link
-                                        to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}
-                                    >
-                                        <Image src={category[nextIndex].acf.featured_image} alt="next project" />
-                                        <StyledParagraph>{category[nextIndex].acf.title}</StyledParagraph>
-                                    </Link>
-                                </FlexColumn>
-                            </FlexParent>
-                        </SectionContainer>
+                        <Aside>
+                            <AsideHeader>Flere prosjekt</AsideHeader>
+
+                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
+                                <AsideImage image={category[previousIndex].acf.featured_image} />
+                                <AsideSubheader>{category[previousIndex].acf.title}</AsideSubheader>
+                            </Link>
+
+                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}>
+                                <AsideImage image={category[nextIndex].acf.featured_image} />
+                                <AsideSubheader>{category[nextIndex].acf.title}</AsideSubheader>
+                            </Link>
+                        </Aside>
                     ) : null}
                 </>
             ) : null}
