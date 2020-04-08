@@ -81,7 +81,7 @@ const LandingPage = () => {
         <Container>
             <Link to={PORTFOLIO.path} link="Portfolio">
                 <HeaderTextContainer>
-                    <StyledH2>Eske Prosjekt er forlengelsen av designuniverset Eske Interiør </StyledH2>
+                    <StyledH2>Vi forvandler din bolig til et drømmehjem</StyledH2>
                     <StyledButton>Kom inn</StyledButton>
                 </HeaderTextContainer>
             </Link>
