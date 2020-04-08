@@ -11,6 +11,7 @@ import FsLightbox from 'fslightbox-react';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
 import { PROJECT_WITH_ID, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
+import PrimaryButton from '../components/PrimaryButton';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -158,6 +159,11 @@ const AsideSubheader = styled.h3`
     font-weight: 400;
     text-transform: capitalize;
 `;
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+`;
 
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
@@ -174,6 +180,7 @@ const ProjectsDetails = () => {
             setProjectContent(project);
         }
     }, [id, project]);
+    console.log(projectContent);
 
     useEffect(() => {
         if (category && project) {
@@ -254,6 +261,15 @@ const ProjectsDetails = () => {
                             <Image src={url} alt={title} />
                         ))}
                     />
+                    <ButtonWrapper>
+                        {projectContent[0].acf.shop_button ? (
+                            <PrimaryButton revertStyle>
+                                <a href={projectContent[0].acf.shop_button.url}>
+                                    {projectContent[0].acf.shop_button.title}
+                                </a>
+                            </PrimaryButton>
+                        ) : null}
+                    </ButtonWrapper>
                     <StyledLine />
                     {category ? (
                         <Aside>

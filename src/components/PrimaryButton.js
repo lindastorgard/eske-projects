@@ -17,6 +17,11 @@ const StyledButton = styled.button`
     ${({ theme }) => theme.sm`
         font-size: ${({ theme }) => theme.fontSizes[3]};
     `}
+    a {
+        color: ${({ theme }) => theme.secondary};
+        text-decoration: none;
+        font-size: ${({ theme }) => theme.fontSizes[2]};
+    }
 `;
 
 const PrimaryButton = ({ children, revertStyle }) => (
