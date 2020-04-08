@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
@@ -55,20 +55,7 @@ const Projects = () => {
     const param = useParams();
 
     const { category, error, isLoading } = useApi(param.category);
-    const setLocalStorage = useCallback((prev, next) => {
-        if (prev && prev >= 0 && next < category.length) {
-            localStorage.setItem('previousIndex', prev);
-            localStorage.setItem('nextIndex', next);
-        } else {
-            localStorage.setItem('previousIndex', 0);
-            localStorage.setItem('nextIndex', category.length - 1);
-        }
-    });
-    useEffect(() => {
-        if (category) {
-            setLocalStorage(0, 0);
-        }
-    }, [category, setLocalStorage]);
+
     return (
         <Layout>
             {isLoading ? (
@@ -82,10 +69,7 @@ const Projects = () => {
                         return (
                             <>
                                 <CategorySection key={project.id} image={acf.featured_image}>
-                                    <Link
-                                        to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}
-                                        onClick={() => setLocalStorage(index - 1, index + 1)}
-                                    >
+                                    <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
                                         <Title>{acf.title}</Title>
                                     </Link>
                                 </CategorySection>

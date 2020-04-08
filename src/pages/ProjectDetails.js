@@ -91,24 +91,35 @@ const Column = styled.div`
 
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
-
     const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
-
     const [projectContent, setProjectContent] = useState();
-
     const [toggler, setToggler] = useState(false);
-
     const [lightboxIndex, setLightboxIndex] = useState(0);
 
-    let previousIndex = localStorage.getItem('previousIndex');
-    let nextIndex = localStorage.getItem('nextIndex');
+    const [previousIndex, setPreviousIndex] = useState(0);
+    const [nextIndex, setNextIndex] = useState(0);
 
     useEffect(() => {
         if (id) {
             setProjectContent(project);
-            console.log(project);
         }
     }, [id, project]);
+
+    useEffect(() => {
+        if (category && project) {
+            const currentIndex = category.findIndex(p => p.id === project[0].id);
+
+            if (currentIndex > 0 && currentIndex < category.length - 1) {
+                setPreviousIndex(currentIndex - 1);
+                setNextIndex(currentIndex + 1);
+            } else if (currentIndex === category.length - 1) {
+                setPreviousIndex(currentIndex - 1);
+            } else if (currentIndex === 0) {
+                setNextIndex(currentIndex + 1);
+                setPreviousIndex(category.length - 1);
+            }
+        }
+    }, [categories, category, nextIndex, previousIndex, project]);
 
     const toggleLightbox = index => {
         setLightboxIndex(index);
@@ -162,6 +173,7 @@ const ProjectsDetails = () => {
                     {category ? (
                         <SectionContainer>
                             <StyledH2>Flere prosjekt</StyledH2>
+
                             <FlexParent>
                                 <Column>
                                     <Link

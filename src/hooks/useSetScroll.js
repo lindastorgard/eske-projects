@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 
-const setScroll = () => {
+const useSetScroll = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useLayoutEffect(() => {
         // Get original value of body overflow
@@ -12,4 +12,4 @@ const setScroll = () => {
     }, []); // Empty array ensures effect is only run on mount and unmount
 };
 
-export default setScroll;
+export default useSetScroll;
