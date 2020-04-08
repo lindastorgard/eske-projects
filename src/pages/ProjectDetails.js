@@ -166,7 +166,7 @@ const AsideSubheader = styled(StyledH2)`
 const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: ${({ theme }) => theme.space[5]};
 `;
 
 const ProjectsDetails = () => {
@@ -235,6 +235,13 @@ const ProjectsDetails = () => {
                                 {projectContent[0].acf.location}
                             </StyledParagraph>
                             <StyledParagraph>{projectContent[0].acf.description}</StyledParagraph>
+                            {projectContent[0].acf.shop_button ? (
+                                <PrimaryButton revertStyle>
+                                    <a href={projectContent[0].acf.shop_button.url}>
+                                        {projectContent[0].acf.shop_button.title}
+                                    </a>
+                                </PrimaryButton>
+                            ) : null}
                             <FlexParent>
                                 {projectContent[0].acf.colors
                                     ? Object.keys(projectContent[0].acf.colors).map(color => (

@@ -12,7 +12,10 @@ const StyledButton = styled.button`
     padding: ${({ theme }) => theme.space[1]} ${({ theme }) => theme.space[2]};
     cursor: pointer;
     &:hover {
-        background: ${props => (props.revertColor ? 'white' : 'black')};
+        background: ${props => (props.revertColor ? 'black' : 'white')};
+        a {
+            color: ${props => (props.revertColor ? 'white' : 'black')};
+        }
     }
     ${({ theme }) => theme.sm`
         font-size: ${({ theme }) => theme.fontSizes[3]};
