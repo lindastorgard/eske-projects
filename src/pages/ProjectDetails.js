@@ -16,6 +16,8 @@ const SectionContainer = styled.section`
         margin-bottom: ${({ theme }) => theme.space[5]}   
     `};
     ${({ theme }) => theme.lg`
+     margin-top: ${({ theme }) => theme.space[1]};
+     margin-right: ${({ theme }) => theme.space[5]};
     display: flex;
     & > * {
         flex: 1;
@@ -61,6 +63,7 @@ const ImageWrapper = styled.div`
 	`};
     ${({ theme }) => theme.lg`
         max-height: 480px;
+        margin-right: ${({ theme }) => theme.space[1]};
 	`};
 `;
 
