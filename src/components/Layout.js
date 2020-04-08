@@ -11,9 +11,9 @@ const Container = styled.div`
     `};
     ${({ theme }) => theme.lg`
         margin-left: 200px;
-        margin-top: ${({ theme }) => theme.space[1]};
+        margin-top: 0;
         margin-bottom: ${({ theme }) => theme.space[1]};
-        margin-right: ${({ theme }) => theme.space[3]};
+        margin-right: 0;
 	`};
 `;
 

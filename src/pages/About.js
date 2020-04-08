@@ -12,6 +12,9 @@ const FlexParent = styled.section`
     ${({ theme }) => theme.sm`
         flex-direction: row;
     `};
+    ${({ theme }) => theme.lg`    
+      margin-right: ${({ theme }) => theme.space[1]};
+    `};
 `;
 
 const ReverseRow = styled(FlexParent)`
@@ -19,6 +22,9 @@ const ReverseRow = styled(FlexParent)`
     padding: 0;
     ${({ theme }) => theme.sm`
         flex-direction: row;
+    `};
+    ${({ theme }) => theme.lg`    
+      margin-right: ${({ theme }) => theme.space[1]};
     `};
 `;
 
@@ -114,16 +120,16 @@ const About = () => {
                     <HeroImage src={aboutContent.hero_image} />
                     <StyledSection>
                         <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
-                        {aboutContent.om_oss.text.map(text => (
-                            <StyledParagraph>{text.textrow}</StyledParagraph>
+                        {aboutContent.om_oss.text.map((text, index) => (
+                            <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
                         ))}
                     </StyledSection>
                     <ReverseRow>
                         <Column>
                             <article>
                                 <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
-                                {aboutContent.var_filosofi.text.map(text => (
-                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                {aboutContent.var_filosofi.text.map((text, index) => (
+                                    <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
                                 ))}
                             </article>
                         </Column>
@@ -133,8 +139,8 @@ const About = () => {
                     </ReverseRow>
                     <FlexParent>
                         <Column>
-                            {Object.keys(aboutContent.inspiration.videos).map(url => (
-                                <IframeWrapper key={url}>
+                            {Object.keys(aboutContent.inspiration.videos).map((url, index) => (
+                                <IframeWrapper key={index}>
                                     <iframe
                                         title="eskeinterior"
                                         src={aboutContent.inspiration.videos[url]}
@@ -148,8 +154,8 @@ const About = () => {
                         <Column>
                             <article>
                                 <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
-                                {aboutContent.inspiration.text.map(text => (
-                                    <StyledParagraph>{text.textrow}</StyledParagraph>
+                                {aboutContent.inspiration.text.map((text, index) => (
+                                    <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
                                 ))}
                             </article>
                         </Column>

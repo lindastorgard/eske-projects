@@ -64,6 +64,9 @@ const FlexParent = styled.div`
           flex-direction: row-reverse;  
         }
     `};
+    ${({ theme }) => theme.lg`    
+      margin-right: ${({ theme }) => theme.space[1]};
+    `};
 `;
 
 const Column = styled.div`
@@ -86,7 +89,7 @@ const Column = styled.div`
 const Number = styled.p`
     font-size: ${({ theme }) => theme.fontSizes[7]};
     font-family: ${({ theme }) => theme.fonts.heading};
-    margin: 0 0 ${({ theme }) => theme.space[2]} 0;
+    margin: 0;
 `;
 
 const Underline = styled.div`

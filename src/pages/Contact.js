@@ -35,8 +35,8 @@ const Wrapper = styled.section`
        grid-column: span 1;
       } 
       &:nth-of-type(5) {
-     
         grid-column: span 1;
+        margin-right: ${({ theme }) => theme.space[1]};
        } 
     `};
     ${({ theme }) => theme.xl`
@@ -129,7 +129,7 @@ const StyledHr = styled.hr`
     height: 1px;
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.text};
-    margin: ${({ theme }) => theme.space[2]} 0;
+    margin: ${({ theme }) => theme.space[0]} 0 ${({ theme }) => theme.space[2]} 0;
     width: 100%;
 `;
 
@@ -201,7 +201,7 @@ function Services() {
                             <HeaderContainer>
                                 <HeaderAdress>
                                     {contactPageContent.contact_details.contact_title}
-                                    <StyledHr></StyledHr>
+                                    <StyledHr />
                                 </HeaderAdress>
                             </HeaderContainer>
                             <IconWrapper>
