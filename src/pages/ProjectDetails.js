@@ -215,7 +215,6 @@ const ProjectsDetails = () => {
                     {category ? (
                         <SectionContainer>
                             <StyledH2>Flere prosjekt</StyledH2>
-
                             <FlexParent>
                                 <FlexColumn>
                                     <Link
