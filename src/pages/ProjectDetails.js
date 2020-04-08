@@ -185,7 +185,7 @@ const ProjectsDetails = () => {
                             <FlexParent>
                                 {projectContent[0].acf.colors
                                     ? Object.keys(projectContent[0].acf.colors).map(color => (
-                                          <Column>
+                                          <Column key={color}>
                                               <ColorCircle
                                                   color={projectContent[0].acf.colors[color].color_code_}
                                               ></ColorCircle>
