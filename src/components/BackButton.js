@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BackArrowIcon from './icons/BackArrowIcon';
 
-const StyledButton = styled.button`
+const StyledButton = styled(Link)`
     border: none;
     background: transparent;
     align-self: flex-start;
     text-decoration: none;
     display: flex;
     align-items: center;
+    color: ${({ theme }) => theme.secondary};
     padding: ${({ theme }) => theme.space[2]} 0 0 0;
     cursor: pointer;
     &:hover {
@@ -31,10 +32,9 @@ const StyledButton = styled.button`
     }
 `;
 
-const BackButton = ({ children }) => {
-    const history = useHistory();
+const BackButton = ({ children, href }) => {
     return (
-        <StyledButton type="button" onClick={() => history.goBack()}>
+        <StyledButton to={href}>
             <BackArrowIcon />
             <span>{children}</span>
         </StyledButton>
@@ -45,4 +45,5 @@ export default BackButton;
 
 BackButton.propTypes = {
     children: PropTypes.node.isRequired,
+    href: PropTypes.string.isRequired,
 };
