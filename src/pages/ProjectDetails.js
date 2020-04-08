@@ -12,9 +12,7 @@ import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
 
 const SectionContainer = styled.section`
-    ${({ theme }) => theme.sm`  
-        margin-bottom: ${({ theme }) => theme.space[5]}   
-    `};
+    margin-bottom: ${({ theme }) => theme.space[2]};
     ${({ theme }) => theme.lg`
     display: flex;
     & > * {
@@ -22,8 +20,7 @@ const SectionContainer = styled.section`
     }
     article {
         margin-top: 100px;
-    }
-    margin-bottom: ${({ theme }) => theme.space[5]}     
+    }   
     `};
 `;
 
@@ -77,6 +74,41 @@ const Dash = styled.span`
     margin: 4px ${({ theme }) => theme.space[1]};
 `;
 
+const FlexParent = styled.div`
+    display: flex;
+    padding-top: ${({ theme }) => theme.space[3]};
+    width: 100%;
+    ${({ theme }) => theme.md`
+        width: 70%;
+    `};
+    ${({ theme }) => theme.lg`
+        width: 85%;
+	`};
+`;
+
+const Column = styled.div`
+    width: 90px;
+    padding: ${({ theme }) => theme.space[0]};
+    ${StyledParagraph} {
+        text-align: center;
+    }
+    &:first-of-type {
+        padding-left: 0;
+    }
+`;
+
+const ColorCircle = styled.div`
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: ${props => props.color};
+    ${({ theme }) => theme.lg`
+        width: 80px;
+        height: 80px;
+    `};
+`;
+
 const ProjectsDetails = () => {
     const { id, category } = useParams();
     const { project, error, isLoading, categories } = useApi('', id);
@@ -86,6 +118,7 @@ const ProjectsDetails = () => {
 
     useEffect(() => {
         if (project) {
+            console.log(project);
             project[0].acf.image.forEach(({ url }) => {
                 urlList.push(url);
             });
@@ -125,9 +158,22 @@ const ProjectsDetails = () => {
                                 {project[0].acf.location}
                             </StyledParagraph>
                             <StyledParagraph>{project[0].acf.description}</StyledParagraph>
+                            <FlexParent>
+                                {project[0].acf.colors
+                                    ? Object.keys(project[0].acf.colors).map(color => (
+                                          <Column>
+                                              <ColorCircle
+                                                  color={project[0].acf.colors[color].color_code_}
+                                              ></ColorCircle>
+                                              <StyledParagraph>
+                                                  {project[0].acf.colors[color].color_name}
+                                              </StyledParagraph>
+                                          </Column>
+                                      ))
+                                    : null}
+                            </FlexParent>
                         </article>
                     </SectionContainer>
-
                     <GalleryWrapper>
                         {project[0].acf.image.map(({ url, id, title }, index) => (
                             <ImageWrapper key={id}>

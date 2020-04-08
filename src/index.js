@@ -16,7 +16,6 @@ WebFont.load({
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
     max-width: 1600px;
     margin: 0 auto;
