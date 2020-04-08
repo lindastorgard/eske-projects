@@ -4,13 +4,7 @@ import { StyledH1, StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
-<<<<<<< HEAD
-import quotes from '../assets/quotes.png';
 import ScrollMemory from 'react-router-scroll-memory';
-||||||| parent of f1e652a... typo
-import quotes from '../assets/quotes.png';
-=======
->>>>>>> f1e652a... typo
 
 const GridContainer = styled.div`
     display: grid;
