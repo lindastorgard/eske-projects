@@ -4,6 +4,7 @@ import { StyledLargeH2, StyledParagraph } from '../styles/typography';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
+import ScrollMemory from 'react-router-scroll-memory';
 
 const FlexParent = styled.section`
     display: flex;
@@ -103,6 +104,7 @@ const About = () => {
 
     return (
         <Layout>
+            <ScrollMemory />
             {isLoading ? (
                 <CircleLoader />
             ) : error ? (

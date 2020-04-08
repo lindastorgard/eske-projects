@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import quotes from '../assets/quotes.png';
+import ScrollMemory from 'react-router-scroll-memory';
 
 const GridContainer = styled.div`
     display: grid;
@@ -104,48 +105,51 @@ function Services() {
     const { servicespage, error, isLoading } = useApi();
 
     return (
-        <Layout>
-            {isLoading ? (
-                <CircleLoader />
-            ) : error ? (
-                <StyledParagraph>{error}</StyledParagraph>
-            ) : servicespage && servicespage[0].acf ? (
-                <GridContainer>
-                    <HeroImage image={servicespage[0].acf.hero_image} />
-                    <Quote>
-                        <QuoteMark src={quotes} alt="quotemarks" />
-                        <StyledH1>{servicespage[0].acf.quote}</StyledH1>
-                    </Quote>
+        <>
+            <ScrollMemory />
+            <Layout>
+                {isLoading ? (
+                    <CircleLoader />
+                ) : error ? (
+                    <StyledParagraph>{error}</StyledParagraph>
+                ) : servicespage && servicespage[0].acf ? (
+                    <GridContainer>
+                        <HeroImage image={servicespage[0].acf.hero_image} />
+                        <Quote>
+                            <QuoteMark src={quotes} alt="quotemarks" />
+                            <StyledH1>{servicespage[0].acf.quote}</StyledH1>
+                        </Quote>
 
-                    {Object.keys(servicespage[0].acf.sections).map((section, index) => {
-                        const {
-                            acf: { sections },
-                        } = servicespage[0];
-                        return (
-                            <FlexParent key={index}>
-                                <Column>
-                                    <img src={sections[section].image} alt="tjenster" />
-                                </Column>
-                                <Column>
-                                    <article>
-                                        <Number>{sections[section].section_nr}</Number>
-                                        <Underline />
-                                        <StyledLargeH2>{sections[section].title}</StyledLargeH2>
-                                        <StyledParagraph>{sections[section].text}</StyledParagraph>
-                                        <ul>
-                                            {sections[section].list_items &&
-                                                sections[section].list_items.map((li, index) => (
-                                                    <StyledListItem key={index}>{li.list_item}</StyledListItem>
-                                                ))}
-                                        </ul>
-                                    </article>
-                                </Column>
-                            </FlexParent>
-                        );
-                    })}
-                </GridContainer>
-            ) : null}
-        </Layout>
+                        {Object.keys(servicespage[0].acf.sections).map((section, index) => {
+                            const {
+                                acf: { sections },
+                            } = servicespage[0];
+                            return (
+                                <FlexParent key={index}>
+                                    <Column>
+                                        <img src={sections[section].image} alt="tjenster" />
+                                    </Column>
+                                    <Column>
+                                        <article>
+                                            <Number>{sections[section].section_nr}</Number>
+                                            <Underline />
+                                            <StyledLargeH2>{sections[section].title}</StyledLargeH2>
+                                            <StyledParagraph>{sections[section].text}</StyledParagraph>
+                                            <ul>
+                                                {sections[section].list_items &&
+                                                    sections[section].list_items.map((li, index) => (
+                                                        <StyledListItem key={index}>{li.list_item}</StyledListItem>
+                                                    ))}
+                                            </ul>
+                                        </article>
+                                    </Column>
+                                </FlexParent>
+                            );
+                        })}
+                    </GridContainer>
+                ) : null}
+            </Layout>
+        </>
     );
 }
 
