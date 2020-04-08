@@ -35,22 +35,26 @@ const Quote = styled.div`
       padding: ${({ theme }) => theme.space[5]}; 
     `};
     ${StyledH1} {
+        z-index: 2;
         font-size: ${({ theme }) => theme.fontSizes[5]};
         margin: 0;
         margin-top: ${({ theme }) => theme.space[0]};
+        &:before {
+            color: ${({ theme }) => theme.brand};
+            content: open-quote;
+            font-size: 150px;
+            line-height: 0;
+            vertical-align: -0.4em;
+            margin-right: -${({ theme }) => theme.space[2]};
+            margin-left: -35px;
+        }
         ${({ theme }) => theme.sm`
         font-size: ${({ theme }) => theme.fontSizes[6]};
+        &:before {
+          font-size: 180px;
+      }
     `};
     }
-`;
-
-const QuoteMark = styled.img`
-    width: ${({ theme }) => theme.fontSizes[6]};
-    margin-right: -60px;
-    height: 100%;
-    ${({ theme }) => theme.sm`
-      margin-right: -20px;
-      `};
 `;
 
 const FlexParent = styled.div`
@@ -116,7 +120,6 @@ function Services() {
                     <GridContainer>
                         <HeroImage image={servicespage[0].acf.hero_image} />
                         <Quote>
-                            <QuoteMark src={quotes} alt="quotemarks" />
                             <StyledH1>{servicespage[0].acf.quote}</StyledH1>
                         </Quote>
 
