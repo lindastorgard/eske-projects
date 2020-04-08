@@ -91,23 +91,30 @@ const Column = styled.div`
 
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
+
     const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
+
     const [projectContent, setProjectContent] = useState();
+
     const [toggler, setToggler] = useState(false);
+
     const [lightboxIndex, setLightboxIndex] = useState(0);
+
     let previousIndex = localStorage.getItem('previousIndex');
     let nextIndex = localStorage.getItem('nextIndex');
 
     useEffect(() => {
         if (id) {
             setProjectContent(project);
+            console.log(project);
         }
-    }, [project]);
+    }, [id, project]);
 
     const toggleLightbox = index => {
         setLightboxIndex(index);
         setToggler(!toggler);
     };
+
     return (
         <Layout>
             <ScrollMemory />

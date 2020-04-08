@@ -165,7 +165,7 @@ const Paragraph = styled(StyledParagraph)`
     margin: 0;
 `;
 
-function Services() {
+const Contact = () => {
     const { isLoading, error, contactpage } = useApi();
     const [contactPageContent, setContactPage] = useState(null);
 
@@ -250,6 +250,6 @@ function Services() {
             ) : null}
         </Layout>
     );
-}
+};
 
-export default Services;
+export default Contact;

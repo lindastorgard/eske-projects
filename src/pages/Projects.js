@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
@@ -53,6 +53,7 @@ const CategorySection = styled.div`
 
 const Projects = () => {
     const param = useParams();
+
     const { category, error, isLoading } = useApi(param.category);
     const setLocalStorage = useCallback((prev, next) => {
         if (prev && prev >= 0 && next < category.length) {
