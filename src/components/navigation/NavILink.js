@@ -47,9 +47,9 @@ const NavItem = styled(Link)`
     text-transform: uppercase;
     color: ${({ theme }) => theme.text};
     ${({ theme }) => theme.lg`
-       color: ${props => props.color};
+       color: ${props => props.colorProp};
        &:hover{
-	   color: ${props => props.hover};
+	   color: ${props => props.hoverColor};
 
      }
     `}
@@ -64,8 +64,8 @@ const NavLink = ({ url, link }) => {
         <Wrapper active={active ? true : false}>
             <Background gradient={pathname === '/' ? 'none' : 'linear-gradient(to right, #ebe0e0, #fff)'} />
             <NavItem
-                color={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.text}
-                hover={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.text}
+                colorProp={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.text}
+                hoverColor={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.text}
                 to={url}
                 isActive={match => {
                     if (match) {

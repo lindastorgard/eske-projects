@@ -11,10 +11,10 @@ const StyledIcon = styled.svg`
         fill: ${({ theme }) => theme.brand};
     }
     ${({ theme }) => theme.lg`
-    fill: ${props => props.fill};
-    &:hover{
-        fill: ${props => props.hover};
-    }
+        fill: ${props => props.fillColor};
+        &:hover{
+            fill: ${props => props.hover};
+        }
 `}
 `;
 
@@ -22,7 +22,7 @@ const FacebookIcon = () => {
     const { pathname } = useLocation();
     return (
         <StyledIcon
-            fill={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.darkbrand}
+            fillColor={pathname === '/' ? ({ theme }) => theme.primary : ({ theme }) => theme.darkbrand}
             hover={pathname === '/' ? ({ theme }) => theme.darkbrand : ({ theme }) => theme.brand}
             aria-hidden="true"
             focusable="false"

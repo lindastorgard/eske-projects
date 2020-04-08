@@ -124,6 +124,10 @@ const HeaderAdress = styled(StyledLargeH2)`
     `};
 `;
 
+const Address = styled.div`
+    text-align: left;
+`;
+
 const StyledHr = styled.hr`
     border: 0;
     height: 1px;
@@ -228,11 +232,11 @@ const Contact = () => {
 
                             <IconWrapper>
                                 <LocationIcon />
-                                <div>
+                                <Address>
                                     <Paragraph>{contactPageContent.contact_details.address.street}</Paragraph>
                                     <Paragraph>{contactPageContent.contact_details.address.postal_code}</Paragraph>
                                     <Paragraph>{contactPageContent.contact_details.address.country}</Paragraph>
-                                </div>
+                                </Address>
                             </IconWrapper>
                         </Wrapper>
                         <Wrapper>

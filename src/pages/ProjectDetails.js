@@ -50,6 +50,7 @@ const ImageWrapper = styled.div`
     grid-column: span 1;
     overflow: hidden;
     max-height: 250px;
+    width: 100%;
     cursor: pointer;
     &:nth-of-type(5n + 5) {
         grid-column: 1 / 3;
@@ -64,6 +65,9 @@ const ImageWrapper = styled.div`
     ${({ theme }) => theme.lg`
         max-height: 480px;
         margin-right: ${({ theme }) => theme.space[1]};
+	`};
+    ${({ theme }) => theme.xl`
+        max-height: 500px; 
 	`};
 `;
 
@@ -154,7 +158,7 @@ const AsideImage = styled(ImageWrapper)`
        height: 400px;  
 	`};
 `;
-const AsideSubheader = styled.h3`
+const AsideSubheader = styled(StyledH2)`
     color: ${({ theme }) => theme.text};
     font-weight: 400;
     text-transform: capitalize;
