@@ -10,7 +10,7 @@ import { HideAt } from 'react-with-breakpoints';
 import FsLightbox from 'fslightbox-react';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
-import { PROJECT_WITH_ID } from '../utils/urlRoutes';
+import { PROJECT_WITH_ID, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -153,6 +153,7 @@ const ProjectsDetails = () => {
         setLightboxIndex(index);
         setToggler(!toggler);
     };
+    console.log(PROJECT_WITH_CATEGORY.getPathWithId(paramCategory));
 
     return (
         <Layout>
@@ -167,7 +168,7 @@ const ProjectsDetails = () => {
                     <SectionContainer>
                         <div>
                             <HideAt breakpoint="largeAndBelow">
-                                <BackButton>
+                                <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
                                     {category === 'residential'
                                         ? categories[1].acf.category_name
                                         : categories[0].acf.category_name}
