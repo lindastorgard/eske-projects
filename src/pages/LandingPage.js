@@ -4,7 +4,8 @@ import kitchen from '../assets/kitchen.png';
 import { PORTFOLIO } from '../utils/urlRoutes';
 import { Link } from 'react-router-dom';
 import { StyledH2 } from '../styles/typography';
-import setScroll from '../hooks/setScroll';
+import useSetScroll from '../hooks/useSetScroll';
+import PrimaryButton from '../components/PrimaryButton';
 
 const Container = styled.div`
     position: relative;
@@ -59,30 +60,14 @@ const HeaderTextContainer = styled.div`
     }
 `;
 
-const StyledButton = styled.button`
-    font-family: ${({ theme }) => theme.fonts.body};
-    font-size: ${({ theme }) => theme.fontSizes[2]};
-    text-transform: uppercase;
-    border: 1px solid ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
-    background: transparent;
-    padding: ${({ theme }) => theme.space[1]} ${({ theme }) => theme.space[2]};
-    &:hover {
-        background: ${({ theme }) => theme.secondary};
-    }
-    ${({ theme }) => theme.sm`
-        font-size: ${({ theme }) => theme.fontSizes[3]};
-    `}
-`;
-
 const LandingPage = () => {
-    setScroll();
+    useSetScroll();
     return (
         <Container>
             <Link to={PORTFOLIO.path} link="Portfolio">
                 <HeaderTextContainer>
                     <StyledH2>Vi forvandler din bolig til et drømmehjem</StyledH2>
-                    <StyledButton>Kom inn</StyledButton>
+                    <PrimaryButton>Kom inn</PrimaryButton>
                 </HeaderTextContainer>
             </Link>
             <Overlay />

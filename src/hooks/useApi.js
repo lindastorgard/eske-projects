@@ -120,7 +120,7 @@ const useAPI = (param, projectId = '') => {
             fetchProductWIthId();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [param]);
+    }, [param, projectId]);
 
     return {
         category,

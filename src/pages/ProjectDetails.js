@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
-import { StyledH1, StyledParagraph } from '../styles/typography';
+import { StyledH1, StyledParagraph, StyledH2 } from '../styles/typography';
 import { HideAt } from 'react-with-breakpoints';
 import FsLightbox from 'fslightbox-react';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
+import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 
 const SectionContainer = styled.section`
     ${({ theme }) => theme.sm`  
@@ -80,20 +81,45 @@ const Dash = styled.span`
     margin: 4px ${({ theme }) => theme.space[1]};
 `;
 
+const FlexParent = styled.div`
+    display: flex;
+`;
+
+const Column = styled.div`
+    flex: 1;
+`;
+
 const ProjectsDetails = () => {
-    const { id, category } = useParams();
-    const { project, error, isLoading, categories } = useApi('', id);
+    const { id, category: paramCategory } = useParams();
+    const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
+    const [projectContent, setProjectContent] = useState();
     const [toggler, setToggler] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
-    const urlList = [];
+
+    const [previousIndex, setPreviousIndex] = useState(0);
+    const [nextIndex, setNextIndex] = useState(0);
 
     useEffect(() => {
-        if (project) {
-            project[0].acf.image.forEach(({ url }) => {
-                urlList.push(url);
-            });
+        if (id) {
+            setProjectContent(project);
         }
-    }, [project, urlList]);
+    }, [id, project]);
+
+    useEffect(() => {
+        if (category && project) {
+            const currentIndex = category.findIndex(p => p.id === project[0].id);
+
+            if (currentIndex > 0 && currentIndex < category.length - 1) {
+                setPreviousIndex(currentIndex - 1);
+                setNextIndex(currentIndex + 1);
+            } else if (currentIndex === category.length - 1) {
+                setPreviousIndex(currentIndex - 1);
+            } else if (currentIndex === 0) {
+                setNextIndex(currentIndex + 1);
+                setPreviousIndex(category.length - 1);
+            }
+        }
+    }, [categories, category, nextIndex, previousIndex, project]);
 
     const toggleLightbox = index => {
         setLightboxIndex(index);
@@ -107,7 +133,7 @@ const ProjectsDetails = () => {
                 <CircleLoader />
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
-            ) : project && categories ? (
+            ) : projectContent && categories ? (
                 <>
                     <ScrollToTopButton />
                     <SectionContainer>
@@ -119,20 +145,19 @@ const ProjectsDetails = () => {
                                         : categories[0].acf.category_name}
                                 </BackButton>
                             </HideAt>
-                            <Header>{project[0].acf.title}</Header>
+                            <Header>{projectContent[0].acf.title}</Header>
                         </div>
                         <article>
                             <StyledParagraph>
-                                {project[0].acf.customer}
+                                {projectContent[0].acf.customer}
                                 <Dash />
-                                {project[0].acf.location}
+                                {projectContent[0].acf.location}
                             </StyledParagraph>
-                            <StyledParagraph>{project[0].acf.description}</StyledParagraph>
+                            <StyledParagraph>{projectContent[0].acf.description}</StyledParagraph>
                         </article>
                     </SectionContainer>
-
                     <GalleryWrapper>
-                        {project[0].acf.image.map(({ url, id, title }, index) => (
+                        {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                             <ImageWrapper key={id}>
                                 <Image onClick={() => toggleLightbox(index)} src={url} alt={title} />
                             </ImageWrapper>
@@ -141,10 +166,40 @@ const ProjectsDetails = () => {
                     <FsLightbox
                         toggler={toggler}
                         sourceIndex={lightboxIndex}
-                        customSources={project[0].acf.image.map(({ url, id, title }) => (
+                        customSources={projectContent[0].acf.image.map(({ url, title }) => (
                             <Image src={url} alt={title} />
                         ))}
                     />
+                    {category ? (
+                        <SectionContainer>
+                            <StyledH2>Flere prosjekt</StyledH2>
+
+                            <FlexParent>
+                                <Column>
+                                    <Link
+                                        to={`${PROJECT_WITH_ID.getPathWithId(
+                                            paramCategory,
+                                            category[previousIndex].id,
+                                        )}`}
+                                    >
+                                        <Image
+                                            src={category[previousIndex].acf.featured_image}
+                                            alt="previous project"
+                                        />
+                                        <StyledParagraph>{category[previousIndex].acf.title}</StyledParagraph>
+                                    </Link>
+                                </Column>
+                                <Column>
+                                    <Link
+                                        to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}
+                                    >
+                                        <Image src={category[nextIndex].acf.featured_image} alt="next project" />
+                                        <StyledParagraph>{category[nextIndex].acf.title}</StyledParagraph>
+                                    </Link>
+                                </Column>
+                            </FlexParent>
+                        </SectionContainer>
+                    ) : null}
                 </>
             ) : null}
         </Layout>

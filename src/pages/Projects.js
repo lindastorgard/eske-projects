@@ -53,7 +53,9 @@ const CategorySection = styled.div`
 
 const Projects = () => {
     const param = useParams();
+
     const { category, error, isLoading } = useApi(param.category);
+
     return (
         <Layout>
             {isLoading ? (
@@ -62,7 +64,7 @@ const Projects = () => {
                 <StyledParagraph>{error}</StyledParagraph>
             ) : category ? (
                 <StyledSection>
-                    {category.map(project => {
+                    {category.map((project, index) => {
                         const { acf } = project;
                         return (
                             <>
