@@ -13,6 +13,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     &:hover {
         background: ${props => (props.revertColor ? 'black' : 'white')};
+        color: ${props => (props.revertColor ? 'white' : 'black')};
         a {
             color: ${props => (props.revertColor ? 'white' : 'black')};
         }

@@ -184,7 +184,6 @@ const ProjectsDetails = () => {
             setProjectContent(project);
         }
     }, [id, project]);
-    console.log(projectContent);
 
     useEffect(() => {
         if (category && project) {
@@ -221,7 +220,7 @@ const ProjectsDetails = () => {
                         <div>
                             <HideAt breakpoint="largeAndBelow">
                                 <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
-                                    {category === 'residential'
+                                    {paramCategory === 'residential'
                                         ? categories[1].acf.category_name
                                         : categories[0].acf.category_name}
                                 </BackButton>
