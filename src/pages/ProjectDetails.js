@@ -140,6 +140,10 @@ const StyledLine = styled.div`
 const Aside = styled(GalleryWrapper)`
     grid-gap: ${({ theme }) => theme.space[1]};
     text-align: center;
+    a {
+        grid-column: 1/3;
+    }
+
     ${({ theme }) => theme.sm`
          grid-template-columns: repeat(2, 1fr);
 	`};
