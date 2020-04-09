@@ -13,7 +13,7 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { PROJECT_WITH_ID, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import PrimaryButton from '../components/PrimaryButton';
 import Pintrest from '../components/Pintrest';
-// import useScript from '../hooks/useScript';
+import useScript from '../hooks/useScript';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -46,6 +46,9 @@ const GalleryWrapper = styled.div`
     ${({ theme }) => theme.sm`
          grid-template-columns: repeat(3, 1fr);
          
+	`};
+    ${({ theme }) => theme.lg`
+        margin-right: ${({ theme }) => theme.space[1]};    
 	`};
 `;
 
@@ -176,6 +179,10 @@ const ButtonWrapper = styled.div`
     margin-top: ${({ theme }) => theme.space[5]};
 `;
 
+const PintrestWrapper = styled.div`
+    margin-bottom: ${({ theme }) => theme.space[2]};
+`;
+
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
     const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
@@ -186,7 +193,7 @@ const ProjectsDetails = () => {
     const [previousIndex, setPreviousIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(0);
 
-    // useScript('//assets.pinterest.com/js/pinit.js');
+    useScript('//assets.pinterest.com/js/pinit.js');
 
     useEffect(() => {
         if (id) {
@@ -242,7 +249,6 @@ const ProjectsDetails = () => {
                                 <Dash />
                                 {projectContent[0].acf.location}
                             </StyledParagraph>
-
                             <StyledParagraph>{projectContent[0].acf.description}</StyledParagraph>
                             {projectContent[0].acf.shop_button ? (
                                 <PrimaryButton revertStyle>
@@ -267,9 +273,9 @@ const ProjectsDetails = () => {
                             </FlexParent>
                         </article>
                     </SectionContainer>
-                    <span>
+                    <PintrestWrapper>
                         <Pintrest />
-                    </span>
+                    </PintrestWrapper>
                     <GalleryWrapper>
                         {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                             <ImageWrapper key={id}>
@@ -277,6 +283,7 @@ const ProjectsDetails = () => {
                             </ImageWrapper>
                         ))}
                     </GalleryWrapper>
+
                     <FsLightbox
                         toggler={toggler}
                         sourceIndex={lightboxIndex}

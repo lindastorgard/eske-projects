@@ -7,7 +7,6 @@ const PinterestWidget = () => {
     return (
         <a
             data-pin-do="buttonBookmark"
-            data-pin-hover="true"
             data-pin-round="true"
             data-pin-tall="true"
             href="https://www.pinterest.com/pin/create/button/"

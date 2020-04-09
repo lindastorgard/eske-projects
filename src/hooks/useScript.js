@@ -7,10 +7,10 @@ const useScript = url => {
         script.src = url;
         script.async = true;
         script.dataset.pinBuild = 'doBuild';
+        script.defer = true;
 
         document.body.appendChild(script);
         if (window.doBuild) window.doBuild();
-
         return () => {
             document.body.removeChild(script);
         };
