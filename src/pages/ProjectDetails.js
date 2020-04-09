@@ -17,6 +17,11 @@ import useScript from '../hooks/useScript';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
+    article {
+        button {
+            margin-top: ${({ theme }) => theme.space[2]};
+        }
+    }
     ${({ theme }) => theme.lg`
      margin-top: ${({ theme }) => theme.space[1]};
      margin-right: ${({ theme }) => theme.space[5]};
@@ -70,7 +75,7 @@ const ImageWrapper = styled.div`
         }
 	`};
     ${({ theme }) => theme.lg`
-        max-height: 480px;
+        max-height: 420px;
         
 	`};
     ${({ theme }) => theme.xl`
@@ -131,7 +136,7 @@ const ColorCircle = styled.div`
 const StyledLine = styled.div`
     background-color: ${({ theme }) => theme.secondary};
     height: 1px;
-    margin: ${({ theme }) => theme.space[5]} 0;
+    margin: ${({ theme }) => theme.space[6]} 0;
     ${({ theme }) => theme.lg`
        margin-right: ${({ theme }) => theme.space[1]} 
 	`};
@@ -148,10 +153,15 @@ const Aside = styled(GalleryWrapper)`
 	`};
     a {
         text-decoration: none;
+        grid-column: 1/3;
+        ${({ theme }) => theme.sm`
+         grid-column: span 1;
+	`};
     }
 `;
 
 const AsideHeader = styled(StyledH2)`
+    margin-top: 0;
     grid-column: 1/3;
     font-size: ${({ theme }) => theme.fontSizes[5]};
 `;
@@ -176,7 +186,10 @@ const AsideSubheader = styled(StyledH2)`
 const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: ${({ theme }) => theme.space[5]};
+    margin-top: ${({ theme }) => theme.space[6]};
+    ${({ theme }) => theme.lg`
+       margin-right: ${({ theme }) => theme.space[1]};  
+	`};
 `;
 
 const PintrestWrapper = styled.div`
@@ -303,7 +316,7 @@ const ProjectsDetails = () => {
                     <StyledLine />
                     {category ? (
                         <Aside>
-                            <AsideHeader>Flere prosjekt</AsideHeader>
+                            <AsideHeader>Flere prosjekter</AsideHeader>
 
                             <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
                                 <AsideImage image={category[previousIndex].acf.featured_image} />
