@@ -11,9 +11,6 @@ const useScript = url => {
 
         document.body.appendChild(script);
         if (window.doBuild) window.doBuild();
-        return () => {
-            document.body.removeChild(script);
-        };
     }, [url]);
 };
 

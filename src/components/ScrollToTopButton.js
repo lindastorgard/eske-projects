@@ -32,7 +32,7 @@ const ScrollToTopButton = () => {
 
     const pageScroll = function() {
         const currentScroll = window.pageYOffset;
-        if (currentScroll > 1000) {
+        if (currentScroll > 300) {
             setShowButton(true);
         } else {
             setShowButton(false);
