@@ -4,6 +4,7 @@ import { PORTFOLIO, CONTACT, ABOUT, SERVICES } from '../../utils/urlRoutes';
 import NavLink from '../navigation/NavILink';
 import InstagramIcon from '../icons/InstagramIcon';
 import FacebookIcon from '../icons/FacebookIcon';
+import PropTypes from 'prop-types';
 
 const NavigationWrapper = styled.nav`
     display: flex;
@@ -65,3 +66,7 @@ const MobileMenu = ({ open, setOpen }) => {
 };
 
 export default MobileMenu;
+MobileMenu.propTypes = {
+    open: PropTypes.bool.isRequired,
+    setOpen: PropTypes.func.isRequired,
+};
