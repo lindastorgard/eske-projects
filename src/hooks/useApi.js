@@ -19,7 +19,7 @@ const useAPI = (param, projectId = '') => {
         setError(null);
         try {
             setIsLoading(true);
-            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/main_categories');
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/main_categories?filter[order]=asc');
             setCategories(result.data);
         } catch (e) {
             setError(e.toString());
