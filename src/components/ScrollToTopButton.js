@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     color: white;
     display: inline-block;
     position: fixed;
-    bottom: 16px;
+    bottom: 104px;
     right: 16px;
     z-index: 1;
     font-size: 18px;
@@ -32,7 +32,7 @@ const ScrollToTopButton = () => {
 
     const pageScroll = function() {
         const currentScroll = window.pageYOffset;
-        if (currentScroll > 100) {
+        if (currentScroll > 300) {
             setShowButton(true);
         } else {
             setShowButton(false);
@@ -42,7 +42,7 @@ const ScrollToTopButton = () => {
     const scrollToTop = () => {
         window.scroll({
             top: 0,
-            right: 0,
+            left: 0,
             behavior: 'smooth',
         });
     };
