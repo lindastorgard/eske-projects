@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const StyledBurger = styled.button`
     position: absolute;
@@ -63,3 +64,8 @@ const Hamburger = ({ open, setOpen }) => {
 };
 
 export default Hamburger;
+
+Hamburger.propTypes = {
+    open: PropTypes.bool.isRequired,
+    setOpen: PropTypes.func.isRequired,
+};
