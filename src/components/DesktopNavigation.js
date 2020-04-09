@@ -10,6 +10,7 @@ import FacebookIcon from './icons/FacebookIcon';
 const NavigationWrapper = styled.nav`
     width: 200px;
     height: 100%;
+    min-height: 400px;
     position: fixed;
     z-index: 99;
     top: 0;

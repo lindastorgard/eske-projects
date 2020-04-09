@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Projects from './Projects';
 import LandingPage from './LandingPage';
 import ProjectDetails from './ProjectDetails';
+import ConsentCookie from '../components/ConsentCookie';
 import {
     LANDING_PAGE,
     ABOUT,
@@ -46,6 +47,7 @@ function App() {
                         <Route exact path={PROJECT_WITH_CATEGORY.path} component={Projects} />
                         <Route component={NoMatch} />
                     </Switch>
+                    <ConsentCookie />
                 </Router>
             </ThemeProvider>
         </BreakpointsProvider>
