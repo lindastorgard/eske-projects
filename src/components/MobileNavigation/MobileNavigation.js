@@ -37,7 +37,7 @@ const MobileNavigation = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <NavigationWrapper color={pathname === '/' ? 'transparent' : ({ theme }) => theme.primary}>
+        <NavigationWrapper color={pathname === '/' ? 'transparent' : 'white'}>
             <StyledLogo>
                 <Link to={LANDING_PAGE.path} open={open} onClick={() => setOpen(false)}>
                     <Logo />
