@@ -12,6 +12,8 @@ import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
 import { PROJECT_WITH_ID, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import PrimaryButton from '../components/PrimaryButton';
+import Pintrest from '../components/Pintrest';
+// import useScript from '../hooks/useScript';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -43,6 +45,7 @@ const GalleryWrapper = styled.div`
     grid-gap: 4px;
     ${({ theme }) => theme.sm`
          grid-template-columns: repeat(3, 1fr);
+         
 	`};
 `;
 
@@ -51,6 +54,7 @@ const ImageWrapper = styled.div`
     overflow: hidden;
     max-height: 250px;
     width: 100%;
+    position: relative;
     cursor: pointer;
     &:nth-of-type(5n + 5) {
         grid-column: 1 / 3;
@@ -64,11 +68,14 @@ const ImageWrapper = styled.div`
 	`};
     ${({ theme }) => theme.lg`
         max-height: 480px;
-        margin-right: ${({ theme }) => theme.space[1]};
+        
 	`};
     ${({ theme }) => theme.xl`
         max-height: 500px; 
 	`};
+    span {
+        position: absolute;
+    }
 `;
 
 const Image = styled.img`
@@ -179,6 +186,8 @@ const ProjectsDetails = () => {
     const [previousIndex, setPreviousIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(0);
 
+    // useScript('//assets.pinterest.com/js/pinit.js');
+
     useEffect(() => {
         if (id) {
             setProjectContent(project);
@@ -233,6 +242,7 @@ const ProjectsDetails = () => {
                                 <Dash />
                                 {projectContent[0].acf.location}
                             </StyledParagraph>
+
                             <StyledParagraph>{projectContent[0].acf.description}</StyledParagraph>
                             {projectContent[0].acf.shop_button ? (
                                 <PrimaryButton revertStyle>
@@ -257,6 +267,9 @@ const ProjectsDetails = () => {
                             </FlexParent>
                         </article>
                     </SectionContainer>
+                    <span>
+                        <Pintrest />
+                    </span>
                     <GalleryWrapper>
                         {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                             <ImageWrapper key={id}>
