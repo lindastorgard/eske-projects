@@ -63,6 +63,10 @@ const CategorySection = styled.div`
 
 const Portfolio = () => {
     const { categories, error, isLoading } = useApi();
+    if (categories) {
+        categories.sort((a, b) => a.id - b.id);
+    }
+
     return (
         <Layout>
             <ScrollMemory />
