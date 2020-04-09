@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 const StyledIcon = styled.svg`
     display: block;
-    height: 18px;
-    padding-right: ${({ theme }) => theme.space[0]};
+    height: ${({ theme }) => theme.space[2]};
+    padding-right: ${({ theme }) => theme.space[1]};
     fill: ${({ theme }) => theme.darkbrand};
     &:hover {
         fill: ${({ theme }) => theme.brand};
