@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -17,7 +18,12 @@ const Container = styled.div`
 	`};
 `;
 
-const Layout = ({ children }) => <Container>{children}</Container>;
+const Layout = ({ children }) => (
+    <Container>
+        {children}
+        <Footer />
+    </Container>
+);
 export default Layout;
 
 Layout.propTypes = {
