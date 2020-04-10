@@ -9,6 +9,7 @@ const useAPI = (param, projectId = '') => {
     const [category, setCategory] = useState(null);
     const [landingpage, setLandingpage] = useState(null);
     const [aboutpage, setAboutpage] = useState(null);
+    const [termsPage, setTermsPage] = useState(null);
     const [servicespage, setServicespage] = useState(null);
     const [contactpage, setContactpage] = useState(null);
     const [project, setProject] = useState(null);
@@ -106,6 +107,19 @@ const useAPI = (param, projectId = '') => {
         }
     };
 
+    const fetchTermsAndConditions = async () => {
+        setError(null);
+        try {
+            setIsLoading(true);
+            const result = await axios('https://eskeprosjekt.no/wp/wp-json/wp/v2/personvern');
+            setTermsPage(result.data);
+        } catch (e) {
+            setError(e.toString());
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     useEffect(() => {
         fetchCategories();
         fetchCategory();
@@ -116,6 +130,7 @@ const useAPI = (param, projectId = '') => {
         fetchAboutPage();
         fetchContactPage();
         fetchServicesPage();
+        fetchTermsAndConditions();
         if (projectId) {
             fetchProductWIthId();
         }
@@ -129,6 +144,7 @@ const useAPI = (param, projectId = '') => {
         aboutpage,
         contactpage,
         servicespage,
+        termsPage,
         project,
         isLoading,
         error,
