@@ -7,7 +7,6 @@ import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph, StyledH2 } from '../styles/typography';
-import { HideAt } from 'react-with-breakpoints';
 
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
@@ -17,6 +16,7 @@ import Pintrest from '../components/Pintrest';
 import useScript from '../hooks/useScript';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { useLightbox } from 'simple-react-lightbox';
+import Footer from '../components/Footer';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -39,10 +39,11 @@ const SectionContainer = styled.section`
 `;
 
 const Header = styled(StyledH1)`
-    margin-top: 120px;
+    margin-top: ${({ theme }) => theme.space[5]};
     text-transform: uppercase;
     ${({ theme }) => theme.lg` 
      margin-top: ${({ theme }) => theme.space[6]};
+     margin-top: 120px;
     `};
 `;
 
@@ -257,13 +258,11 @@ const ProjectsDetails = () => {
                     <ScrollToTopButton />
                     <SectionContainer>
                         <div>
-                            <HideAt breakpoint="largeAndBelow">
-                                <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
-                                    {paramCategory === 'residential'
-                                        ? categories[1].acf.category_name
-                                        : categories[0].acf.category_name}
-                                </BackButton>
-                            </HideAt>
+                            <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
+                                {paramCategory === 'residential'
+                                    ? categories[1].acf.category_name
+                                    : categories[0].acf.category_name}
+                            </BackButton>
                             <Header>{projectContent[0].acf.title}</Header>
                         </div>
                         <article>
@@ -335,6 +334,7 @@ const ProjectsDetails = () => {
                             </Link>
                         </Aside>
                     ) : null}
+                    <Footer />
                 </>
             ) : null}
         </Layout>

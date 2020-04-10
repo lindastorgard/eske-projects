@@ -7,6 +7,7 @@ import { PROJECT_WITH_ID } from '../utils/urlRoutes';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import Footer from '../components/Footer';
 
 const StyledSection = styled.section`
     display: grid;
@@ -63,21 +64,24 @@ const Projects = () => {
             ) : error ? (
                 <StyledParagraph>{error}</StyledParagraph>
             ) : category ? (
-                <StyledSection>
-                    {category.map((project, index) => {
-                        const { acf } = project;
-                        return (
-                            <>
-                                <CategorySection key={project.id} image={acf.featured_image}>
-                                    <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
-                                        <Title>{acf.title}</Title>
-                                    </Link>
-                                </CategorySection>
-                                <ScrollToTopButton />
-                            </>
-                        );
-                    })}
-                </StyledSection>
+                <>
+                    <StyledSection>
+                        {category.map((project, index) => {
+                            const { acf } = project;
+                            return (
+                                <>
+                                    <CategorySection key={project.id} image={acf.featured_image}>
+                                        <Link to={`${PROJECT_WITH_ID.getPathWithId(param.category, project.id)}`}>
+                                            <Title>{acf.title}</Title>
+                                        </Link>
+                                    </CategorySection>
+                                    <ScrollToTopButton />
+                                </>
+                            );
+                        })}
+                    </StyledSection>
+                    <Footer />
+                </>
             ) : null}
         </Layout>
     );

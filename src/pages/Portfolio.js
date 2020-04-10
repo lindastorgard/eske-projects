@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import { HideAt, ShowAt } from 'react-with-breakpoints';
 import ScrollMemory from 'react-router-scroll-memory';
+import Footer from '../components/Footer';
 
 const Container = styled.div`
     display: grid;
@@ -17,10 +18,15 @@ const Container = styled.div`
     overflow: hidden;
     margin-top: ${({ theme }) => theme.space[1]};
     ${({ theme }) => theme.lg`
-		  grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: calc(100vh - 32px);
-          margin-right: ${({ theme }) => theme.space[1]}; 
-		`};
+		grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: calc(100vh - 72px) 30px;
+        margin-right: ${({ theme }) => theme.space[1]}; 
+	`};
+`;
+const FooterWrapper = styled.div`
+    ${({ theme }) => theme.lg`
+	    grid-column: 2 / 3;
+    `};
 `;
 
 const Title = styled(StyledLargeH2)`
@@ -94,6 +100,9 @@ const Portfolio = () => {
                             </CategorySection>
                         ))}
                     </ShowAt>
+                    <FooterWrapper>
+                        <Footer />
+                    </FooterWrapper>
                 </Container>
             ) : null}
         </Layout>

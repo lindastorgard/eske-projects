@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import ScrollMemory from 'react-router-scroll-memory';
+import Footer from '../components/Footer';
 
 const FlexParent = styled.section`
     display: flex;
@@ -109,60 +110,63 @@ const About = () => {
     }, [aboutpage]);
 
     return (
-        <Layout>
-            <ScrollMemory />
-            {isLoading ? (
-                <CircleLoader />
-            ) : error ? (
-                <StyledParagraph>{error}</StyledParagraph>
-            ) : aboutContent ? (
-                <>
-                    <HeroImage src={aboutContent.hero_image} />
-                    <StyledSection>
-                        <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
-                        {aboutContent.om_oss.text.map((text, index) => (
-                            <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
-                        ))}
-                    </StyledSection>
-                    <ReverseRow>
-                        <Column>
-                            <article>
-                                <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
-                                {aboutContent.var_filosofi.text.map((text, index) => (
-                                    <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
-                                ))}
-                            </article>
-                        </Column>
-                        <Column>
-                            <img src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
-                        </Column>
-                    </ReverseRow>
-                    <FlexParent>
-                        <Column>
-                            {Object.keys(aboutContent.inspiration.videos).map((url, index) => (
-                                <IframeWrapper key={index}>
-                                    <iframe
-                                        title="eskeinterior"
-                                        src={aboutContent.inspiration.videos[url]}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                </IframeWrapper>
+        <>
+            <Layout>
+                <ScrollMemory />
+                {isLoading ? (
+                    <CircleLoader />
+                ) : error ? (
+                    <StyledParagraph>{error}</StyledParagraph>
+                ) : aboutContent ? (
+                    <>
+                        <HeroImage src={aboutContent.hero_image} />
+                        <StyledSection>
+                            <StyledLargeH2>{aboutContent.om_oss.title}</StyledLargeH2>
+                            {aboutContent.om_oss.text.map((text, index) => (
+                                <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
                             ))}
-                        </Column>
-                        <Column>
-                            <article>
-                                <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
-                                {aboutContent.inspiration.text.map((text, index) => (
-                                    <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
+                        </StyledSection>
+                        <ReverseRow>
+                            <Column>
+                                <article>
+                                    <SectionHeader>{aboutContent.var_filosofi.title}</SectionHeader>
+                                    {aboutContent.var_filosofi.text.map((text, index) => (
+                                        <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
+                                    ))}
+                                </article>
+                            </Column>
+                            <Column>
+                                <img src={aboutContent.var_filosofi.image} alt={aboutContent.var_filosofi.title} />
+                            </Column>
+                        </ReverseRow>
+                        <FlexParent>
+                            <Column>
+                                {Object.keys(aboutContent.inspiration.videos).map((url, index) => (
+                                    <IframeWrapper key={index}>
+                                        <iframe
+                                            title="eskeinterior"
+                                            src={aboutContent.inspiration.videos[url]}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        />
+                                    </IframeWrapper>
                                 ))}
-                            </article>
-                        </Column>
-                    </FlexParent>
-                </>
-            ) : null}
-        </Layout>
+                            </Column>
+                            <Column>
+                                <article>
+                                    <SectionHeader>{aboutContent.inspiration.title}</SectionHeader>
+                                    {aboutContent.inspiration.text.map((text, index) => (
+                                        <StyledParagraph key={index}>{text.textrow}</StyledParagraph>
+                                    ))}
+                                </article>
+                            </Column>
+                        </FlexParent>
+                        <Footer />
+                    </>
+                ) : null}
+            </Layout>
+        </>
     );
 };
 

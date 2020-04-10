@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     color: white;
     display: inline-block;
     position: fixed;
-    bottom: 70px;
+    bottom: 115px;
     right: 16px;
     z-index: 1;
     font-size: 18px;
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
     padding: 12px;
     border-radius: 4px;
     ${({ theme }) => theme.lg`
-        bottom: 88px;
+        bottom: 100px;
   
     `}
 `;
