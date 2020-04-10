@@ -235,6 +235,7 @@ const ProjectsDetails = () => {
     }, [categories, category, nextIndex, previousIndex, project]);
 
     const toggleLightbox = index => {
+        console.log(index);
         setLightboxIndex(index);
         setToggler(!toggler);
     };
@@ -301,13 +302,16 @@ const ProjectsDetails = () => {
                         ))}
                     </GalleryWrapper>
 
-                    <FsLightbox
-                        toggler={toggler}
-                        sourceIndex={lightboxIndex}
-                        customSources={projectContent[0].acf.image.map(({ url, title }) => (
-                            <Image src={url} alt={title} />
-                        ))}
-                    />
+                    {/* <FsLightbox
+                            toggler={toggler}
+                            sourceIndex={lightboxIndex}
+                            customSources={projectContent[0].acf.image.map(({ url, title }, i) => (
+                                <div>
+                                    <Image src={url} alt={title} key={i} />
+                                </div>
+                            ))}
+                        /> */}
+
                     <ButtonWrapper>
                         {projectContent[0].acf.shop_button ? (
                             <PrimaryButton revertStyle>
