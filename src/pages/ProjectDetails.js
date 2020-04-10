@@ -209,6 +209,7 @@ const options = {
     buttonsSize: '40px',
     autoplaySpeed: 0,
     transitionSpeed: 300,
+    enablePanzoom: false,
 };
 
 const ProjectsDetails = () => {
