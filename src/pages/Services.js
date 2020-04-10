@@ -79,7 +79,7 @@ const Column = styled.div`
     }
     article {
         text-align: center;
-        padding: ${({ theme }) => theme.space[4]};
+        padding: 0 ${({ theme }) => theme.space[3]};
         ul {
             text-align: left;
         }
