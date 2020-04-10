@@ -17,12 +17,14 @@ import {
     CONTACT,
     PORTFOLIO,
     SERVICES,
+    TERMS,
     PROJECT_WITH_CATEGORY,
     PROJECT_WITH_ID,
 } from '../utils/urlRoutes';
 import Services from './Services';
 import NoMatch from './NoMatch';
 import SimpleReactLightbox from 'simple-react-lightbox';
+import Terms from '../pages/Terms';
 
 const breakpoints = {
     xsmall: 468,
@@ -47,6 +49,7 @@ function App() {
                             <Route exact path={SERVICES.path} component={Services} />
                             <Route exact path={PROJECT_WITH_ID.path} component={ProjectDetails} />
                             <Route exact path={PROJECT_WITH_CATEGORY.path} component={Projects} />
+                            <Route exact path={TERMS.path} component={Terms} />
                             <Route component={NoMatch} />
                         </Switch>
                         <ConsentCookie />

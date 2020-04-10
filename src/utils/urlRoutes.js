@@ -16,6 +16,10 @@ export const PORTFOLIO = {
 export const SERVICES = {
     path: '/tjenster',
 };
+
+export const TERMS = {
+    path: '/personvern',
+};
 export const PROJECT_WITH_CATEGORY = {
     path: `${PORTFOLIO.path}/:category`,
     getPathWithId: category => `${PORTFOLIO.path}/${category}`,
