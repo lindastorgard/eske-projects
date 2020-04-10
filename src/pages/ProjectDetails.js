@@ -7,13 +7,15 @@ import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph, StyledH2 } from '../styles/typography';
 import { HideAt } from 'react-with-breakpoints';
-import FsLightbox from 'fslightbox-react';
+
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
 import { PROJECT_WITH_ID, PROJECT_WITH_CATEGORY } from '../utils/urlRoutes';
 import PrimaryButton from '../components/PrimaryButton';
 import Pintrest from '../components/Pintrest';
 import useScript from '../hooks/useScript';
+import { SRLWrapper } from 'simple-react-lightbox';
+import { useLightbox } from 'simple-react-lightbox';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -200,12 +202,17 @@ const PintrestWrapper = styled.div`
     margin-bottom: ${({ theme }) => theme.space[2]};
 `;
 
+// Lightbox options
+const options = {
+    showCaption: false,
+};
+
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
     const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
     const [projectContent, setProjectContent] = useState();
     const [toggler, setToggler] = useState(false);
-    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const openLightbox = useLightbox();
 
     const [previousIndex, setPreviousIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(0);
@@ -233,12 +240,6 @@ const ProjectsDetails = () => {
             }
         }
     }, [categories, category, nextIndex, previousIndex, project]);
-
-    const toggleLightbox = index => {
-        console.log(index);
-        setLightboxIndex(index);
-        setToggler(!toggler);
-    };
 
     return (
         <Layout>
@@ -295,22 +296,14 @@ const ProjectsDetails = () => {
                         <Pintrest />
                     </PintrestWrapper>
                     <GalleryWrapper>
-                        {projectContent[0].acf.image.map(({ url, id, title }, index) => (
-                            <ImageWrapper key={id}>
-                                <Image onClick={() => toggleLightbox(index)} src={url} alt={title} />
-                            </ImageWrapper>
-                        ))}
-                    </GalleryWrapper>
-
-                    {/* <FsLightbox
-                            toggler={toggler}
-                            sourceIndex={lightboxIndex}
-                            customSources={projectContent[0].acf.image.map(({ url, title }, i) => (
-                                <div>
-                                    <Image src={url} alt={title} key={i} />
-                                </div>
+                        <SRLWrapper>
+                            {projectContent[0].acf.image.map(({ url, id, title }, index) => (
+                                <ImageWrapper key={id}>
+                                    <Image onClick={() => openLightbox(url)} src={url} alt={title} />
+                                </ImageWrapper>
                             ))}
-                        /> */}
+                        </SRLWrapper>
+                    </GalleryWrapper>
 
                     <ButtonWrapper>
                         {projectContent[0].acf.shop_button ? (
