@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import customCss from '../styles/customCss.css';
 import useApi from '../hooks/useApi';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
@@ -205,13 +206,15 @@ const PintrestWrapper = styled.div`
 // Lightbox options
 const options = {
     showCaption: false,
+    buttonsSize: '40px',
+    autoplaySpeed: 0,
+    transitionSpeed: 300,
 };
 
 const ProjectsDetails = () => {
     const { id, category: paramCategory } = useParams();
     const { project, category, error, isLoading, categories } = useApi(paramCategory, id);
     const [projectContent, setProjectContent] = useState();
-    const [toggler, setToggler] = useState(false);
     const openLightbox = useLightbox();
 
     const [previousIndex, setPreviousIndex] = useState(0);
@@ -295,15 +298,16 @@ const ProjectsDetails = () => {
                     <PintrestWrapper>
                         <Pintrest />
                     </PintrestWrapper>
-                    <GalleryWrapper>
-                        <SRLWrapper>
+
+                    <SRLWrapper options={options}>
+                        <GalleryWrapper>
                             {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                                 <ImageWrapper key={id}>
                                     <Image onClick={() => openLightbox(url)} src={url} alt={title} />
                                 </ImageWrapper>
                             ))}
-                        </SRLWrapper>
-                    </GalleryWrapper>
+                        </GalleryWrapper>
+                    </SRLWrapper>
 
                     <ButtonWrapper>
                         {projectContent[0].acf.shop_button ? (
