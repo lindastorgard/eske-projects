@@ -1,7 +1,7 @@
 import React from 'react';
 import CookieConsent from 'react-cookie-consent';
 import { Link } from 'react-router-dom';
-// import { TERMS } from '../utils/urlRoutes';
+import { TERMS } from '../utils/urlRoutes';
 
 const ConsentCookie = () => {
     return (
@@ -17,9 +17,9 @@ const ConsentCookie = () => {
                 Nettstedet bruker cookies for å bedre møte dine forventninger. Hvis du ikke aksepterer cookies, kan du
                 deaktivere den i innstillingene til nettleseren din. Men det er en risiko for at enkelte funksjoner på
                 www.eskeinterior.no ikke vil fungere korrekt. &nbsp;
-                {/* <Link style={{ fontSize: '10px', fontFamily: 'Roboto Condensed', color: '#C199A6' }} to={TERMS.path} */}
-                    {/* Personvern */}
-                {/* </Link> */}
+                <Link style={{ fontSize: '10px', fontFamily: 'Roboto Condensed', color: '#C199A6' }} to={TERMS.path}>
+                    Personvern
+                </Link>
             </span>
         </CookieConsent>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { TERMS } from '../utils/urlRoutes';
+import { TERMS } from '../utils/urlRoutes';
 import { Link } from 'react-router-dom';
 import { StyledParagraph } from '../styles/typography';
 
@@ -34,7 +34,7 @@ const Footer = () => {
         <>
             <FlexParent>
                 <StyledFooterLink>
-                    {/* <Link to={TERMS.path}>Personvern</Link> */}
+                    <Link to={TERMS.path}>Personvern</Link>
                 </StyledFooterLink>
                 <StyledText>© Eske AS 2020</StyledText>
             </FlexParent>
