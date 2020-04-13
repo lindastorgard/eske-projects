@@ -225,13 +225,8 @@ const ProjectsDetails = () => {
     useScript('//assets.pinterest.com/js/pinit.js');
 
     useEffect(() => {
-        if (id) {
+        if (category && project && id) {
             setProjectContent(project);
-        }
-    }, [id, project]);
-
-    useEffect(() => {
-        if (category && project) {
             const currentIndex = category.findIndex(p => p.id === project[0].id);
 
             if (currentIndex > 0 && currentIndex < category.length - 1) {
@@ -244,7 +239,7 @@ const ProjectsDetails = () => {
                 setPreviousIndex(category.length - 1);
             }
         }
-    }, [categories, category, nextIndex, previousIndex, project]);
+    }, [categories, category, nextIndex, previousIndex, project, id]);
 
     return (
         <Layout>
@@ -303,7 +298,7 @@ const ProjectsDetails = () => {
                         <GalleryWrapper>
                             {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                                 <ImageWrapper key={id}>
-                                    <Image onClick={() => openLightbox(url)} src={url} alt={title} />
+                                    <Image onClick={() => openLightbox(index)} src={url} alt={title} />
                                 </ImageWrapper>
                             ))}
                         </GalleryWrapper>
@@ -323,15 +318,15 @@ const ProjectsDetails = () => {
                         <Aside>
                             <AsideHeader>Flere prosjekter</AsideHeader>
 
-                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
+                            <a href={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
                                 <AsideImage image={category[previousIndex].acf.featured_image} />
                                 <AsideSubheader>{category[previousIndex].acf.title}</AsideSubheader>
-                            </Link>
+                            </a>
 
-                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}>
+                            <a href={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}>
                                 <AsideImage image={category[nextIndex].acf.featured_image} />
                                 <AsideSubheader>{category[nextIndex].acf.title}</AsideSubheader>
-                            </Link>
+                            </a>
                         </Aside>
                     ) : null}
                     <Footer />
