@@ -43,7 +43,6 @@ const Header = styled(StyledH1)`
     text-transform: uppercase;
     ${({ theme }) => theme.lg` 
      margin-top: ${({ theme }) => theme.space[6]};
-     margin-top: 120px;
     `};
 `;
 
