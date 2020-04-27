@@ -6,6 +6,7 @@ const Container = styled.div`
     margin-right: ${({ theme }) => theme.space[1]};
     margin-left: ${({ theme }) => theme.space[1]};
     margin-top: 80px;
+    max-width: 1600px;
     ${({ theme }) => theme.sm`
     margin-top: 88px;
     `};
