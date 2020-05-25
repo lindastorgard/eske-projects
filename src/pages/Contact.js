@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import PhoneIcon from '../components/icons/PhoneIcon';
 import MailIcon from '../components/icons/MailIcon';
 import Mapbox from '../components/MapboxMap';
+import Footer from '../components/Footer';
 
 const Container = styled.div`
     display: grid;
@@ -250,6 +251,7 @@ const Contact = () => {
                             </ImageWrapper>
                         </Wrapper>
                     </Container>
+                    <Footer />
                 </>
             ) : null}
         </Layout>

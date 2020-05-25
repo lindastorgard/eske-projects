@@ -7,7 +7,6 @@ import Layout from '../components/Layout';
 import CircleLoader from '../components/CircleLoader';
 import BackButton from '../components/BackButton';
 import { StyledH1, StyledParagraph, StyledH2 } from '../styles/typography';
-import { HideAt } from 'react-with-breakpoints';
 
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import ScrollMemory from 'react-router-scroll-memory';
@@ -17,6 +16,7 @@ import Pintrest from '../components/Pintrest';
 import useScript from '../hooks/useScript';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { useLightbox } from 'simple-react-lightbox';
+import Footer from '../components/Footer';
 
 const SectionContainer = styled.section`
     margin-bottom: ${({ theme }) => theme.space[2]};
@@ -39,7 +39,7 @@ const SectionContainer = styled.section`
 `;
 
 const Header = styled(StyledH1)`
-    margin-top: 120px;
+    margin-top: ${({ theme }) => theme.space[5]};
     text-transform: uppercase;
     ${({ theme }) => theme.lg` 
      margin-top: ${({ theme }) => theme.space[6]};
@@ -224,13 +224,8 @@ const ProjectsDetails = () => {
     useScript('//assets.pinterest.com/js/pinit.js');
 
     useEffect(() => {
-        if (id) {
+        if (category && project && id) {
             setProjectContent(project);
-        }
-    }, [id, project]);
-
-    useEffect(() => {
-        if (category && project) {
             const currentIndex = category.findIndex(p => p.id === project[0].id);
 
             if (currentIndex > 0 && currentIndex < category.length - 1) {
@@ -243,7 +238,7 @@ const ProjectsDetails = () => {
                 setPreviousIndex(category.length - 1);
             }
         }
-    }, [categories, category, nextIndex, previousIndex, project]);
+    }, [categories, category, nextIndex, previousIndex, project, id]);
 
     return (
         <Layout>
@@ -257,13 +252,11 @@ const ProjectsDetails = () => {
                     <ScrollToTopButton />
                     <SectionContainer>
                         <div>
-                            <HideAt breakpoint="largeAndBelow">
-                                <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
-                                    {paramCategory === 'residential'
-                                        ? categories[1].acf.category_name
-                                        : categories[0].acf.category_name}
-                                </BackButton>
-                            </HideAt>
+                            <BackButton href={`${PROJECT_WITH_CATEGORY.getPathWithId(paramCategory)}`}>
+                                {paramCategory === 'residential'
+                                    ? categories[1].acf.category_name
+                                    : categories[0].acf.category_name}
+                            </BackButton>
                             <Header>{projectContent[0].acf.title}</Header>
                         </div>
                         <article>
@@ -304,7 +297,7 @@ const ProjectsDetails = () => {
                         <GalleryWrapper>
                             {projectContent[0].acf.image.map(({ url, id, title }, index) => (
                                 <ImageWrapper key={id}>
-                                    <Image onClick={() => openLightbox(url)} src={url} alt={title} />
+                                    <Image onClick={() => openLightbox(index)} src={url} alt={title} />
                                 </ImageWrapper>
                             ))}
                         </GalleryWrapper>
@@ -324,17 +317,18 @@ const ProjectsDetails = () => {
                         <Aside>
                             <AsideHeader>Flere prosjekter</AsideHeader>
 
-                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
+                            <a href={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[previousIndex].id)}`}>
                                 <AsideImage image={category[previousIndex].acf.featured_image} />
                                 <AsideSubheader>{category[previousIndex].acf.title}</AsideSubheader>
-                            </Link>
+                            </a>
 
-                            <Link to={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}>
+                            <a href={`${PROJECT_WITH_ID.getPathWithId(paramCategory, category[nextIndex].id)}`}>
                                 <AsideImage image={category[nextIndex].acf.featured_image} />
                                 <AsideSubheader>{category[nextIndex].acf.title}</AsideSubheader>
-                            </Link>
+                            </a>
                         </Aside>
                     ) : null}
+                    <Footer />
                 </>
             ) : null}
         </Layout>
